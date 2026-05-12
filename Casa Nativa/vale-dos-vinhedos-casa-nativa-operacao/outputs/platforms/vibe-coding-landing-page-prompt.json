@@ -1,0 +1,154 @@
+{
+  "project": {
+    "name": "Casa Nativa — Landing Page",
+    "type": "landing-page",
+    "description": "Landing page premium de alta conversão para 'Casa Nativa', uma hospedagem exclusiva no estilo tiny house de luxo localizada no Vale dos Vinhedos, Bento Gonçalves, Serra Gaúcha, RS, Brasil."
+  },
+  "brand": {
+    "concept": "Luxo Descalço — hospedagem íntima e premium onde o hóspede vivencia a Serra Gaúcha com autenticidade, conforto e exclusividade. Tiny house com sauna a lenha privativa, vista para os vinhedos e silêncio absoluto.",
+    "tone_of_voice": "Sensorial, sofisticado sem ser frio, acolhedor sem ser genérico. Usa linguagem que evoca sensações: aromas, texturas, silêncio, calor da madeira.",
+    "unique_value_proposition": "A única tiny house da Serra Gaúcha com sauna a lenha privativa e vista exclusiva para os vinhedos.",
+    "target_audience": "Casais 28-45 anos, renda média-alta, buscando experiências de hospedagem únicas e instagramáveis. Valorizam design, gastronomia, natureza e privacidade.",
+    "colors": {
+      "primary": "#80421c",
+      "primary_medium": "#945128",
+      "cream": "#f5ede0",
+      "sand": "#c4a882",
+      "brown_dark": "#5c3d22",
+      "gray": "#e8e7e7",
+      "white": "#faf8f4"
+    },
+    "typography": {
+      "headings": "Playfair Display (serif, italic para destaques)",
+      "body": "Inter (sans-serif, pesos 300-600)"
+    }
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": "Casa Nativa — Tiny House de Luxo no Vale dos Vinhedos",
+      "meta_description": "Viva a experiência do luxo descalço. Tiny house exclusiva com sauna privativa e vista para os vinhedos na Serra Gaúcha. Reserve sua estadia.",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero-fullscreen",
+          "objective": "Primeira impressão impactante. Conversão imediata.",
+          "h1": "Onde o silêncio tem vista para os vinhedos.",
+          "subtitle": "Tiny house exclusiva com sauna a lenha privativa no coração do Vale dos Vinhedos.",
+          "cta_primary": { "text": "Reservar Estadia", "action": "scroll_to_booking" },
+          "cta_secondary": { "text": "Conhecer a Casa", "action": "scroll_to_experience" },
+          "visual": "Imagem fullscreen da tiny house ao entardecer com vinhedos ao fundo. Overlay gradiente escuro sutil. Parallax scroll.",
+          "effects": ["parallax", "fade-in-text", "glassmorphism-nav"]
+        },
+        {
+          "id": "experience",
+          "type": "feature-section",
+          "objective": "Apresentar o conceito e vender a experiência sensorial.",
+          "h2": "Luxo Descalço",
+          "body": "Acorde com o aroma do orvalho nos vinhedos. Tome seu café envolto pelo silêncio da serra. Encerre o dia na sua sauna privativa, sob um céu estrelado que só existe aqui.",
+          "features": [
+            { "icon": "flame", "title": "Sauna a Lenha Privativa", "desc": "Exclusiva para você. A qualquer hora." },
+            { "icon": "mountain", "title": "Vista para os Vinhedos", "desc": "Panorama exclusivo do Vale." },
+            { "icon": "home", "title": "Tiny House Premium", "desc": "Design minimalista, máximo conforto." },
+            { "icon": "wine", "title": "No Coração do Enoturismo", "desc": "Vinícolas a minutos de distância." }
+          ],
+          "visual": "Grid de 4 cards com ícones SVG animados ao scroll.",
+          "effects": ["slide-up-on-scroll", "staggered-animation"]
+        },
+        {
+          "id": "the-house",
+          "type": "gallery-section",
+          "objective": "Mostrar a estrutura da casa e gerar desejo.",
+          "h2": "Sua Casa entre os Vinhedos",
+          "body": "Cada detalhe foi pensado para que você se sinta em casa — mas uma casa que flutua entre vinhas, madeira e céu aberto.",
+          "gallery_items": [
+            "Fachada da tiny house com deck",
+            "Interior — cama king com vista panorâmica",
+            "Sauna a lenha com iluminação âmbar",
+            "Deck externo com rede e vinhedos",
+            "Banheiro com acabamento em madeira",
+            "Área gourmet e espaço de café"
+          ],
+          "visual": "Carrossel de imagens com transição suave. Lightbox ao clicar.",
+          "effects": ["carousel-autoplay", "lightbox-zoom"]
+        },
+        {
+          "id": "testimonials",
+          "type": "social-proof",
+          "objective": "Gerar confiança e senso de escassez.",
+          "h2": "Quem viveu, recomenda.",
+          "testimonials_placeholder": [
+            { "text": "O lugar mais especial que já me hospedei na Serra Gaúcha. A sauna sob as estrelas foi inesquecível.", "author": "Mariana R.", "rating": 5 },
+            { "text": "Privacidade total, vista dos sonhos e um silêncio que a gente esqueceu que existia.", "author": "Lucas & Amanda", "rating": 5 },
+            { "text": "Se eu pudesse morar ali, moraria. Perfeito em cada detalhe.", "author": "Fernanda S.", "rating": 5 }
+          ],
+          "scarcity_badge": "Agenda limitada — poucas datas disponíveis este mês",
+          "visual": "Cards de depoimentos com estrelas douradas e animação de fade. Badge pulsante de escassez.",
+          "effects": ["fade-carousel", "pulse-badge"]
+        },
+        {
+          "id": "booking",
+          "type": "cta-section",
+          "objective": "Conversão final. Levar para WhatsApp ou formulário.",
+          "h2": "Reserve sua experiência",
+          "body": "Escolha suas datas e garanta sua estadia na Casa Nativa.",
+          "cta_primary": { "text": "Reservar pelo WhatsApp", "url": "https://wa.me/55XXXXXXXXXXX?text=Olá! Gostaria de reservar a Casa Nativa." },
+          "cta_secondary": { "text": "Ver no Airbnb", "url": "#" },
+          "visual": "Fundo com gradiente terra/creme. Botão grande e destacado.",
+          "effects": ["glow-button", "background-gradient-animation"]
+        },
+        {
+          "id": "faq",
+          "type": "accordion",
+          "objective": "Eliminar objeções finais.",
+          "h2": "Dúvidas Frequentes",
+          "items": [
+            { "q": "Quantos hóspedes a Casa Nativa acomoda?", "a": "Até 2 hóspedes. A experiência é pensada para casais." },
+            { "q": "Como funciona a sauna?", "a": "A sauna a lenha é 100% privativa e fica no deck da casa, disponível 24h." },
+            { "q": "Onde fica exatamente?", "a": "No Vale dos Vinhedos, entre Bento Gonçalves e Garibaldi, RS. A localização exata é enviada após a reserva." },
+            { "q": "Posso levar animais de estimação?", "a": "No momento a Casa Nativa não aceita pets para preservar a experiência dos próximos hóspedes." },
+            { "q": "Qual o horário de check-in e check-out?", "a": "Check-in a partir das 15h e check-out até às 11h. Horários flexíveis sob consulta." }
+          ],
+          "visual": "Accordion com transição suave de abertura/fechamento.",
+          "effects": ["smooth-accordion"]
+        },
+        {
+          "id": "footer",
+          "type": "footer",
+          "content": {
+            "brand": "Casa Nativa",
+            "tagline": "Luxo Descalço no Vale dos Vinhedos",
+            "social": { "instagram": "@casanativa.vinhedos" },
+            "contact": { "whatsapp": "https://wa.me/55XXXXXXXXXXX", "email": "contato@casanativa.com.br" },
+            "legal": "© 2026 Casa Nativa. Todos os direitos reservados.",
+            "partners": ["Comsteel Tiny House", "Alinea Hospedagem"]
+          }
+        }
+      ]
+    }
+  ],
+  "technical_requirements": {
+    "framework": "Pode ser HTML/CSS/JS puro, React, Next.js, Astro ou qualquer framework moderno",
+    "responsive": true,
+    "mobile_first": true,
+    "performance": "Lighthouse score > 90",
+    "animations": "Intersection Observer para scroll animations. CSS transitions para hover states.",
+    "seo": "Meta tags, Open Graph, Schema.org (LocalBusiness + LodgingBusiness)",
+    "accessibility": "WCAG 2.1 AA",
+    "hosting_suggestion": "Vercel, Netlify ou Cloudflare Pages"
+  },
+  "design_references": {
+    "mood": "Rustico-luxuoso. Madeira + vidro + natureza. Tons terrosos com toques dourados.",
+    "inspirations": [
+      "Cabanas premium do Airbnb Luxe",
+      "Hotéis boutique minimalistas",
+      "Vinícolas premium do Sul do Brasil"
+    ],
+    "avoid": [
+      "Cores neon ou vibrantes demais",
+      "Layouts genéricos de template",
+      "Excesso de texto sem espaço branco",
+      "Stock photos genéricas"
+    ]
+  }
+}

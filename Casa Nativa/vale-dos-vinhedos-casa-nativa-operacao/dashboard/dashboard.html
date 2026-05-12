@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Nativa — Painel de Operação</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital@1&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --terra: #80421c;
+      --terra-m: #945128;
+      --creme: #f5ede0;
+      --areia: #c4a882;
+      --marrom: #5c3d22;
+      --cinza: #e8e7e7;
+      --branco: #faf8f4;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--creme); color: var(--marrom); min-height: 100vh; }
+
+    /* HEADER */
+    header {
+      background: var(--terra);
+      color: #fff;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.25rem; font-weight: 400; }
+    header .sub { font-size: 0.7rem; opacity: 0.6; margin-top: 3px; }
+    .live { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; opacity: 0.8; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* TAREFA ATUAL — DESTAQUE PRINCIPAL */
+    .tarefa-atual {
+      background: var(--terra);
+      margin: 0;
+      padding: 20px 28px;
+      border-bottom: 3px solid var(--terra-m);
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .tarefa-atual .superior { display: flex; justify-content: space-between; align-items: flex-start; }
+    .tarefa-atual .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--areia); margin-bottom: 6px; }
+    .tarefa-atual .titulo { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .tarefa-atual .detalhe { font-size: 0.85rem; color: #fff; opacity: 0.8; font-style: italic; }
+    
+    .tarefa-atual .agente-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 99px; padding: 4px 12px;
+      font-size: 0.72rem; color: #fff; margin-top: 6px;
+    }
+    .tarefa-atual .agente-badge .dot-small {
+      width: 6px; height: 6px; border-radius: 50%; background: #fbbf24;
+      animation: blink 1s infinite;
+    }
+    
+    .tarefa-atual .progresso-container { margin-top: 10px; }
+    .tarefa-atual .progresso-label { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--areia); margin-bottom: 4px; }
+    .progress-bar { background: rgba(255,255,255,0.15); border-radius: 99px; height: 5px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--areia); border-radius: 99px; transition: width 0.5s ease; }
+    .tarefa-idle { font-size: 0.9rem; color: rgba(255,255,255,0.5); font-style: italic; }
+
+    /* LAYOUT */
+    .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+    .grid { display: grid; grid-template-columns: 280px 1fr 260px; gap: 18px; margin-bottom: 24px; }
+
+    /* CARD */
+    .card { background: var(--branco); border-radius: 12px; padding: 18px; border: 1px solid #ddd3c4; height: 100%; }
+    .card-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--terra-m); font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+
+    /* FASES */
+    .fase-item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--cinza); }
+    .fase-item:last-child { border-bottom: none; }
+    .fase-num {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; margin-top: 1px;
+    }
+    .fase-num.concluida { background: var(--terra); color: #fff; }
+    .fase-num.em_andamento { background: var(--terra-m); color: #fff; box-shadow: 0 0 0 3px rgba(148,81,40,0.2); }
+    .fase-num.pendente { background: var(--cinza); color: #aaa; }
+    .fase-body { flex: 1; }
+    .fase-nome { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+    .fase-entregavel { font-size: 0.68rem; color: #9a7a60; margin-top: 2px; line-height: 1.4; }
+    .status-pill {
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 2px 7px; border-radius: 99px; flex-shrink: 0; margin-top: 4px; display: inline-block;
+    }
+    .status-pill.concluida { background: #d1fae5; color: #065f46; border: 1px solid #10b981; }
+    .status-pill.em_andamento { background: #fef3c7; color: #92400e; border: 1px solid #fbbf24; }
+    .status-pill.pendente { background: var(--cinza); color: #777; border: 1px solid #d1d5db; }
+
+    /* AGENTES — CENTRO */
+    .agentes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .agente-card {
+      border-radius: 10px; padding: 12px 14px;
+      border: 1.5px solid var(--cinza);
+      background: var(--branco);
+      transition: all 0.3s;
+    }
+    .agente-card.running {
+      border-color: var(--terra-m);
+      background: #fff8f3;
+      box-shadow: 0 2px 12px rgba(148,81,40,0.12);
+    }
+    .agente-card.completed { border-color: #a7f3d0; background: #f0fdf9; }
+    .agente-card.error { border-color: #fca5a5; background: #fff5f5; }
+    .agente-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+    .agente-nome { font-size: 0.78rem; font-weight: 600; }
+    .agente-status-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .agente-status-dot.idle { background: var(--cinza); }
+    .agente-status-dot.running { background: #f59e0b; animation: blink 1s infinite; }
+    .agente-status-dot.completed { background: #34d399; }
+    .agente-status-dot.error { background: #f87171; }
+    .agente-tarefa { font-size: 0.68rem; color: #9a7a60; line-height: 1.4; }
+    .agente-output { font-size: 0.62rem; color: var(--terra-m); margin-top: 3px; font-style: italic; }
+    .agente-label-tag {
+      font-size: 0.58rem; font-weight: 700; text-transform: uppercase;
+      padding: 1px 6px; border-radius: 99px; margin-top: 5px; display: inline-block;
+    }
+    .agente-label-tag.idle { background: var(--cinza); color: #aaa; }
+    .agente-label-tag.running { background: #fef3c7; color: #92400e; }
+    .agente-label-tag.completed { background: #d1fae5; color: #065f46; }
+    .agente-label-tag.error { background: #fee2e2; color: #991b1b; }
+
+    /* LOG */
+    .log-box {
+      background: #1e1208; border-radius: 10px; padding: 14px;
+      font-family: 'Courier New', monospace;
+      height: 220px; overflow-y: auto;
+    }
+    .log-line { font-size: 0.68rem; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.5; }
+    .log-line:last-child { border-bottom: none; }
+    .log-ts { color: #80421c; margin-right: 6px; opacity: .7; }
+    .log-agent { color: var(--areia); font-weight: bold; margin-right: 5px; }
+    .log-msg { color: #c4a882; }
+    .log-box::-webkit-scrollbar { width: 3px; }
+    .log-box::-webkit-scrollbar-thumb { background: var(--terra-m); border-radius: 3px; }
+    .log-empty { font-size: 0.72rem; color: rgba(255,255,255,0.2); font-style: italic; }
+
+    /* PENDÊNCIAS */
+    .pend-item { display: flex; gap: 8px; align-items: flex-start; font-size: 0.76rem; padding: 8px 0; border-bottom: 1px solid var(--cinza); line-height: 1.4; }
+    .pend-item:last-child { border-bottom: none; }
+    .pend-icon { color: var(--terra-m); font-size: 0.7rem; margin-top: 1px; flex-shrink: 0; }
+    .pend-empty { font-size: 0.78rem; color: #34d399; padding: 8px 0; font-weight: 500; }
+
+    /* NOVA SEÇÃO: ENTREGAS E TAREFAS */
+    .entregas-section { margin-top: 12px; }
+    .entregas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 16px; }
+    .entrega-card { background: var(--branco); border-radius: 12px; padding: 20px; border: 1px solid #ddd3c4; position: relative; overflow: hidden; }
+    .entrega-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+    .entrega-card.concluida::before { background: #10b981; }
+    .entrega-card.em_andamento::before { background: var(--terra-m); }
+    .entrega-card.pendente::before { background: #d1d5db; }
+    
+    .ec-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .ec-title { font-size: 0.95rem; font-weight: 700; color: var(--marrom); display: flex; align-items: center; gap: 8px; }
+    .ec-objetivo { font-size: 0.75rem; color: var(--terra); margin-bottom: 16px; line-height: 1.4; font-style: italic; }
+    
+    .ec-subtitle { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--terra-m); font-weight: 700; margin-bottom: 8px; margin-top: 12px; border-bottom: 1px dashed #ddd3c4; padding-bottom: 4px; }
+    
+    .artefatos-list { list-style: none; font-size: 0.72rem; }
+    .artefatos-list li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; background: var(--creme); padding: 8px 10px; border-radius: 6px; }
+    .artefatos-list .key { font-weight: 600; color: var(--terra); display: inline-block; }
+    .artefatos-list .val { color: var(--marrom); font-family: 'Courier New', Courier, monospace; word-break: break-all; font-size: 0.68rem; }
+    
+    .tarefas-list { list-style: none; font-size: 0.75rem; }
+    .tarefas-list li { margin-bottom: 6px; padding: 4px 0; border-bottom: 1px solid var(--cinza); display: flex; justify-content: space-between; align-items: center; }
+    .tarefas-list li:last-child { border-bottom: none; }
+    .tarefas-list .t-nome { color: var(--marrom); }
+    .tarefas-list .t-status { font-size: 0.6rem; text-transform: uppercase; font-weight: 700; }
+    .t-status.done { color: #10b981; }
+    .t-status.active { color: var(--terra-m); }
+    .t-status.wait { color: #aaa; }
+
+    /* MODAL DE VISUALIZAÇÃO */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      z-index: 1000; display: none; justify-content: center; align-items: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--branco); border-radius: 12px; width: 90%; max-width: 900px;
+      max-height: 90vh; display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    .modal-header {
+      padding: 16px 24px; border-bottom: 1px solid var(--cinza);
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--creme);
+    }
+    .modal-title { font-weight: 700; font-size: 1rem; color: var(--marrom); font-family: 'Playfair Display', serif; }
+    .modal-close {
+      background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--terra); line-height: 1;
+    }
+    .modal-body {
+      padding: 24px; overflow-y: auto; flex: 1; font-size: 0.85rem; line-height: 1.6;
+    }
+    .modal-body h1, .modal-body h2, .modal-body h3 { margin-top: 1.2em; margin-bottom: 0.5em; color: var(--terra); line-height: 1.3; }
+    .modal-body h1 { font-size: 1.4rem; padding-bottom: 5px; border-bottom: 1px solid var(--cinza); }
+    .modal-body h2 { font-size: 1.2rem; }
+    .modal-body p { margin-bottom: 1em; }
+    .modal-body ul, .modal-body ol { margin-bottom: 1em; padding-left: 20px; }
+    .modal-body li { margin-bottom: 4px; }
+    .modal-body code { background: #f1ebd9; padding: 2px 4px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+    .modal-body pre { background: #1e1208; color: #e8e7e7; padding: 12px; border-radius: 6px; overflow-x: auto; margin-bottom: 1em; font-family: monospace; }
+    .modal-body pre code { background: none; padding: 0; color: inherit; }
+    .modal-body blockquote { border-left: 4px solid var(--terra-m); padding-left: 12px; color: #666; margin-left: 0; margin-bottom: 1em; font-style: italic; }
+    .modal-body table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
+    .modal-body th, .modal-body td { border: 1px solid var(--cinza); padding: 8px; text-align: left; }
+    .modal-body th { background: var(--creme); color: var(--marrom); }
+
+    .btn-veja {
+      background: var(--terra); color: #fff; border: none; padding: 4px 10px; border-radius: 6px;
+      font-size: 0.65rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+      transition: background 0.2s; flex-shrink: 0;
+    }
+    .btn-veja:hover { background: var(--marrom); }
+
+    /* RODAPÉ */
+    .footer { text-align: center; font-size: 0.68rem; color: #b09070; margin-top: 20px; padding-top: 14px; border-top: 1px solid #ddd3c4; }
+
+    @media(max-width:1024px) { 
+      .grid { grid-template-columns: 1fr; } 
+      .agentes-grid { grid-template-columns: 1fr; } 
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Casa Nativa — Painel de Operação</h1>
+    <div class="sub">Vale dos Vinhedos · Bento Gonçalves · RS</div>
+  </div>
+  <div class="live"><div class="dot"></div> Atualiza a cada 3s &nbsp;·&nbsp; <span id="ts">—</span></div>
+</header>
+
+<!-- TAREFA ATUAL -->
+<div class="tarefa-atual" id="tarefa-atual-box">
+  <div class="superior">
+    <div>
+      <div class="label">⚡ Executando agora</div>
+      <div class="titulo tarefa-idle" id="tarefa-titulo">Nenhuma tarefa ativa</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- LINHA 1: OVERVIEW GERAL -->
+  <div class="grid">
+    <!-- COL 1: FASES -->
+    <div class="card">
+      <div class="card-title">📍 Resumo das Fases</div>
+      <div id="fases"></div>
+    </div>
+
+    <!-- COL 2: AGENTES + LOG -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div class="card">
+        <div class="card-title">🤖 Força de Trabalho (Agentes)</div>
+        <div class="agentes-grid" id="agentes"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📋 Log de Execução</div>
+        <div class="log-box" id="log"></div>
+      </div>
+    </div>
+
+    <!-- COL 3: PENDÊNCIAS -->
+    <div class="card">
+      <div class="card-title">⏳ Pendências com o Humano</div>
+      <div id="pendencias"></div>
+    </div>
+  </div>
+
+  <!-- LINHA 2: DETALHAMENTO DE ENTREGAS E TAREFAS -->
+  <div class="entregas-section">
+    <div class="card-title" style="font-size: 0.85rem; letter-spacing: 1px;">📦 Repositório Final: Entregas, Tarefas e Artefatos</div>
+    <div class="entregas-grid" id="entregas-fases">
+      <!-- Preenchido via JS -->
+    </div>
+  </div>
+
+  <div class="footer">Projeto: Vale dos Vinhedos — Casa Nativa Operação &nbsp;·&nbsp; Automático</div>
+</div>
+
+<!-- MODAL VISUALIZAÇÃO -->
+<div class="modal-overlay" id="file-modal" onclick="if(event.target === this) fecharModal()">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Documento</div>
+      <button class="modal-close" onclick="fecharModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+      Carregando...
+    </div>
+  </div>
+</div>
+
+<script>
+  async function abrirDoc(filePath, titulo) {
+    document.getElementById('file-modal').classList.add('active');
+    document.getElementById('modal-title').textContent = titulo.toUpperCase();
+    document.getElementById('modal-body').innerHTML = '<div style="text-align:center; padding:40px; opacity:0.6;">Carregando documento...</div>';
+    
+    try {
+      const url = '../' + filePath + '?_=' + Date.now();
+      const r = await fetch(url);
+      if (!r.ok) throw new Error('Código HTTP ' + r.status);
+      const text = await r.text();
+      
+      const fileExt = filePath.toLowerCase();
+      if (fileExt.endsWith('.md') && typeof marked !== 'undefined') {
+        document.getElementById('modal-body').innerHTML = marked.parse(text);
+      } else {
+        document.getElementById('modal-body').innerHTML = '<pre>' + text.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';
+      }
+    } catch (e) {
+      document.getElementById('modal-body').innerHTML = `
+        <div style="color:#b91c1c;">
+          <p><strong>Erro ao ler documento.</strong> ${e.message}</p>
+          <p style="font-size:0.75rem; color:#666;">Pode ser um bloqueio de segurança do seu navegador (CORS) caso esteja executando este HTML localmente sem um servidor, ou o arquivo ainda está sendo processado.</p>
+          <br>
+          <a href="../${filePath}" target="_blank" style="color:var(--terra-m); text-decoration:none; font-weight:bold;">↳ Abrir arquivo em uma nova aba</a>
+        </div>
+      `;
+    }
+  }
+
+  function fecharModal() {
+    document.getElementById('file-modal').classList.remove('active');
+  }
+  const STATUS_PT = { concluida:'Concluída', em_andamento:'Em andamento', pendente:'Pendente' };
+  const AGENT_PT  = { idle:'Idle', running:'Executando', completed:'Concluído', error:'Erro',
+                      em_andamento:'Executando', concluido:'Concluído' };
+
+  function fmt(ts) {
+    if (!ts) return '—';
+    try { const d = new Date(ts); return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
+    catch { return ts; }
+  }
+
+  function norm(s) {
+    if (!s) return 'idle';
+    const map = { 'em_andamento':'running','concluida':'completed','pendente':'idle','concluido':'completed', 'pending':'idle' };
+    return map[s] || s;
+  }
+
+  function render(s) {
+    document.getElementById('ts').textContent = fmt(s.ultima_atualizacao);
+
+    // ==========================================
+    // TAREFA ATUAL & BARRA DE PROGRESSO
+    // ==========================================
+    const ativos = (s.agentes||[]).filter(a => norm(a.status) === 'running' || a.status === 'em_andamento');
+    const box = document.getElementById('tarefa-atual-box');
+    const totalFases = (s.fases||[]).length;
+    const concluidas = (s.fases||[]).filter(f=>f.status==='concluida').length;
+    const pct = totalFases > 0 ? Math.round((concluidas / totalFases) * 100) : 0;
+
+    if (s.tarefa_atual && (s.tarefa_atual.descricao || s.tarefa_atual.fase)) {
+       const t = s.tarefa_atual;
+       box.innerHTML = `
+        <div class="superior">
+          <div>
+            <div class="label">⚡ Executando agora · ${t.fase || s.fase_atual}</div>
+            <div class="titulo">${t.descricao || 'Tarefa em andamento...'}</div>
+            <div class="detalhe">${t.detalhe ? '↳ ' + t.detalhe : ''}</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="label">Passo atual</div>
+            <div style="color:#fff; font-size:1.1rem; font-weight:600;">${t.numero||'-'} / ${t.total||'-'}</div>
+          </div>
+        </div>
+        <div>
+          ${ativos.length > 0 ? ativos.map(a => `<span class="agente-badge"><span class="dot-small"></span>${a.nome}</span>`).join('') : `<span class="agente-badge">${t.agente || ''}</span>`}
+        </div>
+        <div class="progresso-container">
+          <div class="progresso-label">
+            <span>Progresso total do projeto</span>
+            <span>${pct}% (${concluidas} de ${totalFases} fases concluídas)</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+      `;
+    } else if (ativos.length > 0) {
+      const nomes = ativos.map(a => a.ultima_tarefa || a.nome).join(' · ');
+      box.innerHTML = `
+        <div class="superior">
+          <div>
+            <div class="label">⚡ Executando agora · ${s.fase_atual || ''}</div>
+            <div class="titulo">${nomes}</div>
+          </div>
+        </div>
+        <div class="progresso-container">
+          <div class="progresso-label"><span>Progresso total do projeto</span><span>${pct}%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+      `;
+    } else {
+      box.innerHTML = `
+        <div class="superior">
+          <div>
+            <div class="label">⚡ Status do Projeto</div>
+            <div class="titulo tarefa-idle">Sistema em repouso — ${s.fase_atual || 'Início'}</div>
+          </div>
+        </div>
+        <div class="progresso-container">
+          <div class="progresso-label"><span>Progresso total do projeto</span><span>${pct}%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+      `;
+    }
+
+    // ==========================================
+    // FASES - RESUMO
+    // ==========================================
+    document.getElementById('fases').innerHTML = (s.fases||[]).map(f => {
+      const ns = norm(f.status);
+      return `
+        <div class="fase-item">
+          <div class="fase-num ${f.status}">${f.id}</div>
+          <div class="fase-body">
+            <div class="fase-nome">${f.nome}</div>
+            <div class="fase-entregavel">${f.entregavel}</div>
+            <span class="status-pill ${f.status}">${STATUS_PT[f.status]||f.status}</span>
+          </div>
+        </div>`;
+    }).join('');
+
+    // ==========================================
+    // AGENTES
+    // ==========================================
+    document.getElementById('agentes').innerHTML = (s.agentes||[]).map(a => {
+      const ns = norm(a.status);
+      return `
+        <div class="agente-card ${ns}">
+          <div class="agente-top">
+            <div class="agente-nome">${a.nome}</div>
+            <div class="agente-status-dot ${ns}"></div>
+          </div>
+          ${a.ultima_tarefa ? `<div class="agente-tarefa">${a.ultima_tarefa}</div>` : '<div class="agente-tarefa" style="opacity:.4">Aguardando</div>'}
+          ${a.output ? `<div class="agente-output">→ ${a.output.length > 50 ? a.output.substring(0,50)+'...' : a.output}</div>` : ''}
+          <span class="agente-label-tag ${ns}">${AGENT_PT[ns]||a.status}</span>
+        </div>`;
+    }).join('');
+
+    // ==========================================
+    // LOG
+    // ==========================================
+    const logEl = document.getElementById('log');
+    if (s.log && s.log.length > 0) {
+      logEl.innerHTML = [...s.log].reverse().map(l =>
+        `<div class="log-line"><span class="log-ts">${fmt(l.timestamp)}</span><span class="log-agent">[${l.agente}]</span><span class="log-msg">${l.acao}</span></div>`
+      ).join('');
+    } else {
+      logEl.innerHTML = '<div class="log-empty">Nenhuma execução registrada.</div>';
+    }
+
+    // ==========================================
+    // PENDÊNCIAS
+    // ==========================================
+    const pEl = document.getElementById('pendencias');
+    if (s.pendencias && s.pendencias.length > 0) {
+      pEl.innerHTML = s.pendencias.map(p =>
+        `<div class="pend-item"><span class="pend-icon">○</span><div>${p}</div></div>`
+      ).join('');
+    } else {
+      pEl.innerHTML = '<div class="pend-empty">✅ Zero pendências!</div>';
+    }
+
+    // ==========================================
+    // DETALHAMENTO DE ENTREGAS E TAREFAS
+    // ==========================================
+    const entregasEl = document.getElementById('entregas-fases');
+    entregasEl.innerHTML = (s.fases||[]).map(f => {
+      
+      // Busca artefatos no root do JSON baseados no ID da fase ou no fallback visual
+      const entregaveisKey = `fase_${f.id}_entregaveis`;
+      const artefatosObj = s[entregaveisKey] || {};
+      const chavesArt = Object.keys(artefatosObj);
+      
+      let artefatosHtml = '';
+      if (chavesArt.length > 0) {
+        artefatosHtml = '<ul class="artefatos-list">' + chavesArt.map(k => {
+          let label = k.replace(/_/g, ' ');
+          let val = artefatosObj[k];
+          let isViewable = val.endsWith('.md') || val.endsWith('.txt') || val.endsWith('.html');
+          return `<li style="align-items: center;">
+            <div style="flex:1">
+              <span class="key" style="text-transform: capitalize;">${label}:</span> <span class="val">${val}</span>
+            </div>
+            ${isViewable ? `<button class="btn-veja" onclick="abrirDoc('${val}', '${label}')">👁️ Ler</button>` : ''}
+          </li>`;
+        }).join('') + '</ul>';
+      } else {
+        artefatosHtml = `<div style="font-size:0.7rem; color:#aaa; font-style:italic;">Nenhum artefato gerado para esta fase ainda.</div>`;
+      }
+
+      // Se a fase tiver uma lista declarada de tarefas (`f.tarefas`), desenha elas.
+      let tarefasHtml = '';
+      if (f.tarefas && f.tarefas.length > 0) {
+        tarefasHtml = `<div class="ec-subtitle">Tarefas Previstas / Executadas</div>`;
+        tarefasHtml += '<ul class="tarefas-list">' + f.tarefas.map(t => {
+          let st = (t.status === 'concluida') ? 'done' : (t.status === 'em_andamento' ? 'active' : 'wait');
+          let stLabel = STATUS_PT[t.status] || 'Aguardando';
+          return `<li><span class="t-nome">${t.nome}</span><span class="t-status ${st}">${stLabel}</span></li>`;
+        }).join('') + '</ul>';
+      } else {
+        // Fallback: se for a fase atual, exibe a tarefa atual se houver.
+        if (s.fase_atual && s.fase_atual.includes(f.nome) && s.tarefa_atual) {
+           tarefasHtml = `<div class="ec-subtitle">Tarefa em Progresso</div>
+             <ul class="tarefas-list">
+               <li><span class="t-nome">Passo ${s.tarefa_atual.numero}: ${s.tarefa_atual.descricao}</span><span class="t-status active">Ativa</span></li>
+             </ul>`;
+        }
+      }
+
+      return `
+        <div class="entrega-card ${f.status}">
+          <div class="ec-header">
+            <div class="ec-title"><span class="fase-num ${f.status}" style="width:22px;height:22px;font-size:0.6rem;">${f.id}</span> Fase: ${f.nome}</div>
+            <span class="status-pill ${f.status}">${STATUS_PT[f.status]||f.status}</span>
+          </div>
+          <div class="ec-objetivo"><strong>Objetivo:</strong> ${f.entregavel}</div>
+          
+          <div class="ec-subtitle">📦 Artefatos Gerados</div>
+          ${artefatosHtml}
+          
+          ${tarefasHtml}
+        </div>
+      `;
+    }).join('');
+
+  }
+
+  async function load() {
+    try {
+      const r = await fetch('state.json?_='+Date.now());
+      if (!r.ok) throw new Error('Falha no HTTP');
+      const data = await r.json();
+      render(data);
+      document.getElementById('ts').style.color = '#fff';
+    } catch(e) {
+      document.getElementById('ts').textContent = 'erro ao atualizar (offline)';
+      document.getElementById('ts').style.color = '#f87171';
+    }
+  }
+
+  load();
+  setInterval(load, 3000);
+</script>
+</body>
+</html>

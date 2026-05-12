@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comsteel Tiny House — Serra Gaúcha & Enoturismo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:     #8a704f;
+  --gold-l:   #b09068;
+  --gold-xl:  #d4b896;
+  --dark:     #120d05;
+  --brown:    #2a1a08;
+  --mid:      #3d2b12;
+  --warm:     #5c3e1c;
+  --cream:    #f6eddc;
+  --cream-l:  #fdf8f0;
+  --orange:   #e07030;
+  --orange-l: #f09050;
+  --wine:     #6b1a2a;
+  --wine-l:   #8b2a3a;
+  --grey:     #7a6a50;
+  --white:    #ffffff;
+  --text:     #2a1a08;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--dark);
+  color:var(--cream);
+  overflow-x:hidden;
+}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--brown)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(18,13,5,0.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(138,112,79,0.25);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;height:52px;
+}
+.nav-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--orange);font-weight:700;white-space:nowrap;
+}
+.nav-menu{display:flex;gap:2px;list-style:none;flex-wrap:nowrap;overflow-x:auto}
+.nav-menu a{
+  color:var(--gold-l);text-decoration:none;font-size:10px;font-weight:500;
+  letter-spacing:1px;text-transform:uppercase;padding:5px 8px;border-radius:3px;
+  transition:all .2s;white-space:nowrap;
+}
+.nav-menu a:hover,.nav-menu a.active{color:var(--orange);background:rgba(224,112,48,.1)}
+.nav-right{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.nav-badge{
+  font-size:9px;background:rgba(107,26,42,.3);border:1px solid rgba(107,26,42,.5);
+  color:#d08090;padding:3px 10px;border-radius:20px;letter-spacing:1px;
+}
+
+/* PROGRESS */
+#progress{
+  position:fixed;top:52px;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--orange));
+  z-index:199;transition:width .08s;
+}
+
+/* SLIDE BASE */
+main{padding-top:52px}
+.slide{position:relative;overflow:hidden}
+
+/* GRAIN TEXTURE */
+.slide::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+/* COVER */
+#cover{
+  min-height:100vh;background:var(--dark);
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  align-items:center;gap:48px;padding:100px 64px 80px;
+}
+#cover::after{
+  content:'SG';position:absolute;right:-40px;top:50%;
+  transform:translateY(-55%);
+  font-family:'Cormorant Garamond',serif;font-size:520px;font-weight:700;
+  color:rgba(42,26,8,.55);pointer-events:none;line-height:1;z-index:0;
+}
+.cover-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(224,112,48,.1);border:1px solid rgba(224,112,48,.3);
+  color:var(--orange);font-size:10px;font-weight:600;letter-spacing:3px;
+  text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:24px;
+}
+.cover-eyebrow span{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+
+.cover-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,4.5vw,56px);font-weight:700;line-height:1.05;
+  color:var(--cream);margin-bottom:20px;position:relative;z-index:1;
+}
+.cover-h1 em{font-style:italic;color:var(--orange)}
+
+.cover-sub{
+  font-size:14px;color:var(--gold-l);line-height:1.75;
+  margin-bottom:36px;max-width:500px;position:relative;z-index:1;
+}
+.cover-pills{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1}
+.pill{
+  background:rgba(138,112,79,.12);border:1px solid rgba(138,112,79,.3);
+  color:var(--gold-xl);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 12px;border-radius:2px;font-weight:500;
+}
+
+/* STAT CARDS (cover right) */
+.stat-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  position:relative;z-index:1;
+}
+.stat-card{
+  background:rgba(42,26,8,.85);
+  border:1px solid rgba(138,112,79,.2);
+  border-top:2px solid var(--orange);
+  padding:18px 16px;border-radius:4px;
+  transition:transform .3s,border-color .3s;
+}
+.stat-card:hover{transform:translateY(-5px);border-top-color:var(--gold)}
+.stat-card.wine-accent{border-top-color:var(--wine-l)}
+.stat-card.span2{grid-column:span 2;background:rgba(107,26,42,.15);border-top-color:var(--orange)}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;
+  color:var(--orange);line-height:1;margin-bottom:5px;
+}
+.stat-n.wine{color:#c06070}
+.stat-l{font-size:10px;color:var(--gold-l);letter-spacing:.3px;line-height:1.5}
+
+/* SECTION HEADERS */
+.sec-hdr{
+  min-height:44vh;background:var(--brown);
+  display:flex;align-items:flex-end;padding:56px 64px;
+  position:relative;overflow:hidden;
+  border-bottom:3px solid var(--orange);
+}
+.sec-hdr::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(140deg,var(--mid) 0%,var(--dark) 65%);
+}
+.sec-hdr-bar{
+  position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(var(--orange),var(--gold));
+}
+.sec-ghost{
+  position:absolute;right:48px;bottom:-30px;
+  font-family:'Cormorant Garamond',serif;font-size:160px;font-weight:700;
+  color:rgba(138,112,79,.08);line-height:1;pointer-events:none;
+}
+.sec-inner{position:relative;z-index:1}
+.sec-num{
+  font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:var(--orange);margin-bottom:10px;
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,3.5vw,46px);font-weight:700;
+  color:var(--cream);line-height:1.1;
+}
+.sec-desc{font-size:13px;color:var(--gold-l);margin-top:10px;max-width:580px}
+
+/* CONTENT SLIDES */
+.cnt{
+  background:var(--cream-l);color:var(--text);
+  padding:72px 64px;
+}
+
+.s-title{
+  font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;
+  color:var(--brown);margin-bottom:6px;
+}
+.s-rule{height:2px;background:linear-gradient(90deg,var(--orange) 0%,transparent 75%);margin-bottom:24px}
+.s-intro{font-size:13px;color:var(--grey);line-height:1.8;margin-bottom:24px;max-width:820px}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;border-radius:6px;box-shadow:0 3px 18px rgba(42,26,8,.1);margin-bottom:20px}
+table{width:100%;border-collapse:collapse;font-size:11.5px}
+thead tr{background:var(--mid);color:var(--cream)}
+thead th{padding:11px 13px;text-align:left;font-weight:600;font-size:10.5px;letter-spacing:.5px;border-bottom:2px solid var(--orange)}
+tbody tr{border-bottom:1px solid rgba(138,112,79,.13);transition:background .18s}
+tbody tr:nth-child(even){background:rgba(138,112,79,.05)}
+tbody tr:hover{background:rgba(224,112,48,.06)}
+tbody td{padding:9px 13px;color:var(--text);vertical-align:middle;line-height:1.5}
+.to{color:var(--orange);font-weight:700;font-family:'Cormorant Garamond',serif;font-size:13px}
+.tg{color:#3a7a3a;font-weight:700}
+.tb{font-weight:600;color:var(--brown)}
+.tw{color:var(--wine);font-weight:600}
+.stars{color:var(--orange);letter-spacing:-1px;font-size:13px}
+
+/* KPI GRID */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.kpi-card{
+  background:var(--white);border-top:3px solid var(--orange);border-radius:5px;
+  padding:18px;text-align:center;
+  box-shadow:0 2px 10px rgba(42,26,8,.07);
+  transition:transform .3s,box-shadow .3s;
+}
+.kpi-card:hover{transform:translateY(-5px);box-shadow:0 8px 24px rgba(42,26,8,.13)}
+.kpi-card.wine{border-top-color:var(--wine-l)}
+.kpi-n{
+  font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;
+  color:var(--orange);line-height:1;margin-bottom:6px;
+}
+.kpi-n.wine{color:var(--wine-l)}
+.kpi-l{font-size:10px;color:var(--grey);letter-spacing:.4px;line-height:1.5;text-transform:uppercase;font-weight:500}
+
+/* BOXES */
+.box-dark{
+  background:var(--brown);border-left:4px solid var(--orange);
+  border-radius:0 5px 5px 0;padding:18px 22px;margin-bottom:18px;
+}
+.box-dark p{color:var(--cream);font-size:12.5px;line-height:1.75}
+.box-dark strong,.box-dark b{color:var(--orange)}
+
+.box-wine{
+  background:rgba(107,26,42,.08);border:1px solid rgba(107,26,42,.25);
+  border-left:4px solid var(--wine-l);
+  border-radius:0 5px 5px 0;padding:18px 22px;margin-bottom:18px;
+}
+.box-wine p{color:var(--text);font-size:12.5px;line-height:1.75}
+.box-wine strong,.box-wine b{color:var(--wine-l)}
+
+.box-gold{
+  background:rgba(138,112,79,.08);border:1px solid rgba(138,112,79,.25);
+  border-radius:5px;padding:18px 22px;margin-bottom:16px;
+}
+.box-gold p{color:var(--text);font-size:12.5px;line-height:1.75}
+.box-gold strong{color:var(--orange)}
+
+.alert{
+  background:rgba(224,112,48,.05);border:1px solid rgba(224,112,48,.2);
+  border-left:3px solid var(--orange);
+  border-radius:0 5px 5px 0;padding:14px 18px;margin-bottom:10px;
+}
+.alert .at{font-size:11px;font-weight:600;color:var(--orange);margin-bottom:5px;letter-spacing:.3px}
+.alert p{font-size:11.5px;color:var(--text);line-height:1.65}
+
+/* TWO COL */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+
+/* CITY CARDS */
+.city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.city-card{
+  background:var(--white);border-radius:5px;padding:16px 14px;
+  box-shadow:0 2px 9px rgba(42,26,8,.07);
+  border-bottom:3px solid transparent;
+  transition:all .3s;
+}
+.city-card:hover{border-bottom-color:var(--orange);transform:translateY(-4px)}
+.city-card.pri{border-bottom-color:var(--orange)}
+.city-card.wine-card{border-bottom-color:var(--wine-l)}
+.city-nm{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--brown);margin-bottom:3px}
+.city-pop{font-size:10px;color:var(--grey);margin-bottom:6px;letter-spacing:.3px}
+.city-tag{display:inline-block;font-size:8.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-bottom:7px}
+.tag-main{background:rgba(224,112,48,.13);color:var(--orange)}
+.tag-wine{background:rgba(107,26,42,.12);color:var(--wine-l)}
+.tag-em{background:rgba(138,112,79,.12);color:var(--gold)}
+.tag-log{background:rgba(42,26,8,.08);color:var(--grey)}
+.city-desc{font-size:10.5px;color:var(--grey);line-height:1.5}
+
+/* ACCORDION */
+.acc{background:var(--white);border-radius:5px;overflow:hidden;box-shadow:0 2px 9px rgba(42,26,8,.07);margin-bottom:12px;cursor:pointer;transition:box-shadow .3s}
+.acc:hover{box-shadow:0 5px 20px rgba(42,26,8,.12)}
+.acc-q{
+  background:rgba(42,26,8,.04);border-left:4px solid var(--orange);
+  padding:13px 16px;font-size:12.5px;font-weight:600;color:var(--brown);
+  display:flex;align-items:center;justify-content:space-between;user-select:none;
+}
+.acc-q .ch{font-size:16px;color:var(--orange);transition:transform .3s;flex-shrink:0}
+.acc.open .acc-q .ch{transform:rotate(180deg)}
+.acc-a{padding:0 16px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.acc.open .acc-a{max-height:220px;padding:13px 16px}
+.acc-a p{font-size:11.5px;color:var(--text);line-height:1.75}
+
+/* SCENARIO TABS */
+.sc-tabs{display:flex;border-radius:5px 5px 0 0;overflow:hidden;border:1px solid rgba(138,112,79,.18);border-bottom:none}
+.sc-tab{
+  flex:1;padding:11px;text-align:center;cursor:pointer;
+  font-size:11px;font-weight:600;background:rgba(138,112,79,.07);
+  color:var(--grey);border-right:1px solid rgba(138,112,79,.18);
+  transition:all .2s;letter-spacing:.5px;text-transform:uppercase;
+}
+.sc-tab:last-child{border-right:none}
+.sc-tab:hover{background:rgba(224,112,48,.07);color:var(--orange)}
+.sc-tab.active{background:var(--mid);color:var(--cream)}
+.sc-panel{
+  display:none;background:var(--white);
+  border:1px solid rgba(138,112,79,.18);border-radius:0 0 5px 5px;
+  padding:22px;margin-bottom:18px;
+}
+.sc-panel.active{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sc-metric .num{
+  font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;
+  color:var(--orange);margin-bottom:3px;
+}
+.sc-metric .lbl{font-size:10px;color:var(--grey);text-transform:uppercase;letter-spacing:.4px}
+
+/* ACTION PLAN */
+.action-row{
+  display:grid;grid-template-columns:72px 1fr 110px 150px;gap:14px;
+  align-items:center;padding:14px;border-radius:4px;
+  border-bottom:1px solid rgba(138,112,79,.13);
+  background:var(--white);margin-bottom:5px;
+  box-shadow:0 1px 4px rgba(42,26,8,.04);transition:background .18s;
+}
+.action-row:hover{background:rgba(224,112,48,.04)}
+.a-prazo{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;color:var(--orange);text-align:center;line-height:1.3}
+.a-desc{font-size:11.5px;color:var(--text);line-height:1.5}
+.a-resp{font-size:10.5px;background:rgba(42,26,8,.07);color:var(--mid);padding:3px 9px;border-radius:3px;text-align:center;font-weight:500}
+.a-result{font-size:10.5px;color:var(--grey);line-height:1.4}
+
+/* COMP CARDS */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:18px}
+.comp-card{
+  background:var(--white);border-radius:5px;padding:15px 17px;
+  box-shadow:0 2px 8px rgba(42,26,8,.06);
+  border-top:2px solid var(--gold);
+  transition:border-color .3s,transform .3s;
+}
+.comp-card:hover{border-top-color:var(--orange);transform:translateY(-3px)}
+.comp-nm{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:3px}
+.comp-or{font-size:10px;color:var(--grey);letter-spacing:.4px;margin-bottom:7px}
+.comp-weak{font-size:11px;color:var(--text);line-height:1.5;padding-top:7px;border-top:1px solid rgba(138,112,79,.13)}
+.comp-weak b{color:var(--orange);font-size:10px;letter-spacing:.4px;text-transform:uppercase}
+
+/* VINÍCOLA TABLE */
+.vini-card{
+  background:var(--white);border-radius:5px;padding:16px;
+  box-shadow:0 2px 9px rgba(42,26,8,.07);
+  border-left:3px solid var(--wine-l);margin-bottom:10px;
+  display:grid;grid-template-columns:160px 1fr auto;gap:16px;align-items:center;
+  transition:border-color .3s;
+}
+.vini-card:hover{border-left-color:var(--orange)}
+.vini-nm{font-size:13px;font-weight:600;color:var(--brown);margin-bottom:2px}
+.vini-city{font-size:10px;color:var(--grey);letter-spacing:.3px}
+.vini-desc{font-size:11px;color:var(--text);line-height:1.5}
+.vini-badge{
+  font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:3px;white-space:nowrap;
+  background:rgba(107,26,42,.1);color:var(--wine-l);border:1px solid rgba(107,26,42,.2);
+}
+.vini-badge.active{background:rgba(224,112,48,.12);color:var(--orange);border-color:rgba(224,112,48,.3)}
+
+/* VS COMPARE TABLE */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.vs-card{background:var(--white);border-radius:5px;overflow:hidden;box-shadow:0 2px 9px rgba(42,26,8,.07)}
+.vs-head{padding:12px 16px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.vs-head.sc{background:var(--mid);color:var(--cream)}
+.vs-head.sg{background:var(--wine);color:var(--cream)}
+.vs-body{padding:16px}
+.vs-row{display:flex;justify-content:space-between;font-size:11.5px;padding:5px 0;border-bottom:1px solid rgba(138,112,79,.1)}
+.vs-row:last-child{border-bottom:none}
+.vs-k{color:var(--grey)}
+.vs-v{font-weight:600;color:var(--brown)}
+
+/* POS ITEMS */
+.pos-item{
+  background:var(--white);border-radius:5px;overflow:hidden;
+  box-shadow:0 2px 8px rgba(42,26,8,.06);margin-bottom:11px;
+}
+.pos-head{
+  background:rgba(42,26,8,.06);border-left:4px solid var(--orange);
+  padding:12px 16px;font-size:12px;font-weight:600;color:var(--brown);
+}
+.pos-body{padding:12px 16px;font-size:11.5px;color:var(--text);line-height:1.7}
+
+/* FINAL */
+#final{
+  min-height:100vh;background:var(--dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;padding:60px;
+}
+#final::after{
+  content:'🍇';position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-58%);
+  font-size:400px;opacity:.04;pointer-events:none;z-index:0;
+}
+.final-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-l);margin-bottom:18px;position:relative;z-index:1}
+.final-h1{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,46px);
+  font-weight:700;color:var(--cream);line-height:1.1;
+  position:relative;z-index:1;margin-bottom:8px;
+}
+.final-h1 em{font-style:italic;color:var(--orange)}
+.final-rule{width:60px;height:2px;background:var(--orange);margin:22px auto;position:relative;z-index:1}
+.final-contact{font-size:13px;color:var(--gold-l);position:relative;z-index:1;line-height:2}
+.confid{position:relative;z-index:1;margin-top:36px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(138,112,79,.4);border:1px solid rgba(138,112,79,.15);padding:5px 18px;border-radius:2px}
+
+/* ANIM */
+.fu{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+[data-d="1"]{transition-delay:.1s}[data-d="2"]{transition-delay:.2s}
+[data-d="3"]{transition-delay:.3s}[data-d="4"]{transition-delay:.4s}
+[data-d="5"]{transition-delay:.5s}[data-d="6"]{transition-delay:.6s}
+
+/* UTILS */
+.hl{color:var(--orange);font-weight:600}
+.hl-wine{color:var(--wine-l);font-weight:600}
+.sub{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--brown);margin:22px 0 9px}
+.caption{font-size:10px;color:var(--grey);font-style:italic;margin-top:5px}
+.mb{margin-bottom:20px}
+.mt{margin-top:20px}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  #cover{grid-template-columns:1fr;padding:80px 24px}
+  .cover-right,.#cover::after{display:none}
+  .cnt,.sec-hdr{padding:60px 24px}
+  .kpi-row,.city-grid,.comp-grid{grid-template-columns:1fr 1fr}
+  .three{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .action-row{grid-template-columns:1fr}
+  nav{padding:0 14px}
+  .nav-menu{display:none}
+  .vini-card{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Comsteel Tiny House</div>
+  <ul class="nav-menu">
+    <li><a href="#cover">Início</a></li>
+    <li><a href="#s-cidades">Cidades</a></li>
+    <li><a href="#s-mercado">Mercado</a></li>
+    <li><a href="#s-ocupacao">Ocupação</a></li>
+    <li><a href="#s-enoturismo">Enoturismo</a></li>
+    <li><a href="#s-vinicolas">Vinícolas</a></li>
+    <li><a href="#s-roi">ROI</a></li>
+    <li><a href="#s-competitivo">Competitivo</a></li>
+    <li><a href="#s-objecoes">Objeções</a></li>
+    <li><a href="#s-posicionamento">Posicionamento</a></li>
+    <li><a href="#s-plano">Plano</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-badge">🍷 Serra Gaúcha</div>
+  </div>
+</nav>
+<div id="progress"></div>
+
+<main>
+
+<!-- ═══════════ COVER ═══════════ -->
+<section class="slide" id="cover">
+  <div class="cover-left fu vis">
+    <div class="cover-eyebrow"><span></span>Apresentação Estratégica Interna · 2025</div>
+    <h1 class="cover-h1">Mercado de <em>Tiny Houses</em>,<br>Chalés & Cabanas<br>na <em>Serra Gaúcha</em></h1>
+    <p class="cover-sub">Análise completa de mercado, enoturismo, ROI, cenário competitivo e estratégia de posicionamento nas 14 cidades da Região do Vinho.</p>
+    <div class="cover-pills">
+      <span class="pill">Enoturismo Premium</span>
+      <span class="pill">Hospedagem em Vinícola</span>
+      <span class="pill">Steel Frame Industrial</span>
+      <span class="pill">ROI & Rentabilidade</span>
+      <span class="pill">Rota do Vinho</span>
+    </div>
+  </div>
+  <div class="stat-grid fu vis" data-d="2">
+    <div class="stat-card span2">
+      <div class="stat-n">+3 milhões</div>
+      <div class="stat-l">visitantes/ano na Serra Gaúcha — maior destino de enoturismo do Brasil · SEBRAE/RS 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">R$1.400</div>
+      <div class="stat-l">diária máxima em chalé/cabana premium — alta temporada 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">96%</div>
+      <div class="stat-l">ocupação máxima em chalés premium durante Vindima e Natal Luz</div>
+    </div>
+    <div class="stat-card wine-accent">
+      <div class="stat-n wine">+400</div>
+      <div class="stat-l">vinícolas no RS — grande parte sem hospedagem estruturada</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">~48%</div>
+      <div class="stat-l">ROI anual estimado — cenário realista Comsteel na região</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 01 CIDADES ═══════════ -->
+<section class="slide sec-hdr" id="s-cidades">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 01</div>
+    <h2 class="sec-title">As 14 Cidades<br>da Rota</h2>
+    <p class="sec-desc">Perfil estratégico de cada município, potencial de enoturismo e hospedagem</p>
+  </div>
+  <div class="sec-ghost">01</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">As 14 Cidades — Perfil Estratégico</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro fu" data-d="1">
+    A Serra Gaúcha concentra o maior circuito de enoturismo do Brasil, com destaque para Bento Gonçalves como polo regional e um cinturão de municípios de menor porte com enorme potencial reprimido de hospedagem diferenciada.
+  </p>
+
+  <div class="city-grid fu" data-d="2">
+    <div class="city-card pri">
+      <div class="city-nm">Bento Gonçalves</div>
+      <div class="city-pop">120.000 hab.</div>
+      <span class="city-tag tag-main">★ Capital do Vinho</span>
+      <div class="city-desc">Maior polo do enoturismo nacional. Maior concentração de vinícolas com hospedagem. Vale dos Vinhedos dentro do município.</div>
+    </div>
+    <div class="city-card wine-card">
+      <div class="city-nm">Garibaldi</div>
+      <div class="city-pop">36.000 hab.</div>
+      <span class="city-tag tag-wine">Enoturismo / Espumante</span>
+      <div class="city-desc">Capital Nacional do Espumante. Vinícolas boutique. Hospedagem premium em expansão. Fenavinho.</div>
+    </div>
+    <div class="city-card wine-card">
+      <div class="city-nm">Monte Belo do Sul</div>
+      <div class="city-pop">3.100 hab.</div>
+      <span class="city-tag tag-wine">Vinícolas Boutique</span>
+      <div class="city-desc">Pequenas vinícolas artesanais de alto padrão. Turismo rural. Demanda por hospedagem diferenciada crescente.</div>
+    </div>
+    <div class="city-card wine-card">
+      <div class="city-nm">Pinto Bandeira</div>
+      <div class="city-pop">3.200 hab.</div>
+      <span class="city-tag tag-wine">Altitude & Vinhos</span>
+      <div class="city-desc">Vinhos de altitude reconhecidos internacionalmente. Chalés premium. Alta procura, baixa oferta.</div>
+    </div>
+    <div class="city-card">
+      <div class="city-nm">Farroupilha</div>
+      <div class="city-pop">73.000 hab.</div>
+      <span class="city-tag tag-main">Parque & Turismo Rural</span>
+      <div class="city-desc">Parque de Uvas e Vinho. Base logística para a Serra. Enoturismo e turismo de natureza crescentes.</div>
+    </div>
+    <div class="city-card">
+      <div class="city-nm">Caxias do Sul</div>
+      <div class="city-pop">510.000 hab.</div>
+      <span class="city-tag tag-log">Polo Industrial</span>
+      <div class="city-desc">Maior cidade. Festival da Uva. Turismo de negócios. Demanda por hospedagem diferenciada nos arredores.</div>
+    </div>
+    <div class="city-card wine-card">
+      <div class="city-nm">Flores da Cunha</div>
+      <div class="city-pop">32.000 hab.</div>
+      <span class="city-tag tag-wine">Maior Prod. de Uvas RS</span>
+      <div class="city-desc">Maior produtor de uvas do estado. Colônia italiana preservada. Potencial enorme e ainda subexplorado em hospedagem.</div>
+    </div>
+    <div class="city-card wine-card">
+      <div class="city-nm">Nova Pádua</div>
+      <div class="city-pop">3.600 hab.</div>
+      <span class="city-tag tag-wine">Artesanato & Vinho</span>
+      <div class="city-desc">Turismo cultural italiano. Vinícolas familiares. Mercado emergente com grande apelo autêntico.</div>
+    </div>
+    <div class="city-card">
+      <div class="city-nm">Antônio Prado</div>
+      <div class="city-pop">13.000 hab.</div>
+      <span class="city-tag tag-main">Patrimônio Histórico</span>
+      <div class="city-desc">Patrimônio histórico nacional (casas de madeira de imigrantes). Turismo cultural + enoturismo. Alta valorização.</div>
+    </div>
+    <div class="city-card">
+      <div class="city-nm">Nova Prata</div>
+      <div class="city-pop">22.000 hab.</div>
+      <span class="city-tag tag-em">Emergente</span>
+      <div class="city-desc">Ecoturismo e agroturismo. Vinícolas familiares. Mercado em formação com boas perspectivas.</div>
+    </div>
+    <div class="city-card">
+      <div class="city-nm">Veranópolis</div>
+      <div class="city-pop">24.000 hab.</div>
+      <span class="city-tag tag-em">Longevidade / Vinho</span>
+      <div class="city-desc">Cidade da longevidade. Enoturismo. Reconhecimento crescente. Oportunidade de hospedagem temática.</div>
+    </div>
+    <div class="city-card wine-card">
+      <div class="city-nm">Cotiporã</div>
+      <div class="city-pop">4.800 hab.</div>
+      <span class="city-tag tag-wine">Vinícolas Artesanais</span>
+      <div class="city-desc">Produção artesanal de vinhos e espumantes. Rota do Vinho em expansão. Demanda reprimida por hospedagem.</div>
+    </div>
+    <div class="city-card">
+      <div class="city-nm">Fagundes Varela</div>
+      <div class="city-pop">3.400 hab.</div>
+      <span class="city-tag tag-em">Emergente Rural</span>
+      <div class="city-desc">Agroturismo. Pequenas vinícolas. Cenário natural. Mercado inicial com potencial futuro.</div>
+    </div>
+    <div class="city-card wine-card">
+      <div class="city-nm">Santa Tereza</div>
+      <div class="city-pop">4.100 hab.</div>
+      <span class="city-tag tag-wine">Olivas & Vinhos</span>
+      <div class="city-desc">Produção de azeite e vinho. Paisagem serrana. Hospedagem diferenciada em forte expansão.</div>
+    </div>
+  </div>
+
+  <div class="box-dark fu" data-d="3">
+    <p>🎯 <strong>Cidades de entrada prioritária:</strong> <strong>Bento Gonçalves</strong> (polo, maior volume), <strong>Garibaldi</strong> (espumante premium), <strong>Pinto Bandeira</strong> (vinhos de altitude, alta demanda reprimida) e <strong>Flores da Cunha</strong> (maior produtor de uvas, hospedagem subexplorada). Em segundo nível: Antônio Prado, Monte Belo do Sul e Santa Tereza.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 02 MERCADO ═══════════ -->
+<section class="slide sec-hdr" id="s-mercado">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 02</div>
+    <h2 class="sec-title">Mapa do Mercado<br>de Hospedagem</h2>
+    <p class="sec-desc">Chalés, cabanas e módulos high ticket por cidade — segmento premium</p>
+  </div>
+  <div class="sec-ghost">02</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Hospedagens Premium por Cidade</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro fu" data-d="1">
+    Levantamento de chalés, cabanas e hospedagens boutique com posicionamento high ticket (diárias a partir de R$ 400/noite) nas 14 cidades. São os empreendimentos-alvo da Comsteel Tiny House como fornecedora de módulos ou como referência de concorrência indireta.
+  </p>
+
+  <div class="kpi-row fu" data-d="2">
+    <div class="kpi-card">
+      <div class="kpi-n">180–240</div>
+      <div class="kpi-l">Total hospedagens premium estimadas nas 14 cidades</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-n">BG + GAR</div>
+      <div class="kpi-l">Cidades com maior concentração (~55% do total premium)</div>
+    </div>
+    <div class="kpi-card wine">
+      <div class="kpi-n wine">+60%</div>
+      <div class="kpi-l">Das hospedagens premium estão associadas a vinícolas ou vinhedos</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-n">R$400+</div>
+      <div class="kpi-l">Ticket mínimo do segmento premium na região</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap fu" data-d="3">
+    <table>
+      <thead><tr>
+        <th>Cidade</th><th>Nº Hosped. Premium</th><th>Ticket Médio (diária)</th><th>Formato Predominante</th><th>Vinícola c/ Hosped.</th><th>Potencial Comsteel</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="tb">Bento Gonçalves</td><td class="to">55–75</td><td>R$ 480 – R$ 1.200</td><td>Chalé vinhedo, suíte boutique</td><td class="tw">8–12</td><td class="stars">★★★★★</td></tr>
+        <tr><td class="tb">Garibaldi</td><td class="to">28–38</td><td>R$ 440 – R$ 980</td><td>Chalé espumante, pousada rural</td><td class="tw">4–6</td><td class="stars">★★★★★</td></tr>
+        <tr><td class="tb">Pinto Bandeira</td><td class="to">12–18</td><td>R$ 520 – R$ 1.400</td><td>Chalé altitude, lodge vinhedo</td><td class="tw">3–5</td><td class="stars">★★★★★</td></tr>
+        <tr><td class="tb">Flores da Cunha</td><td class="to">10–16</td><td>R$ 380 – R$ 820</td><td>Agroturismo, chalé rural</td><td class="tw">2–4</td><td class="stars">★★★★</td></tr>
+        <tr><td class="tb">Antônio Prado</td><td class="to">8–14</td><td>R$ 420 – R$ 880</td><td>Pousada histórica, chalé</td><td class="tw">1–3</td><td class="stars">★★★★</td></tr>
+        <tr><td class="tb">Monte Belo do Sul</td><td class="to">6–10</td><td>R$ 400 – R$ 950</td><td>Chalé boutique, lodge artesanal</td><td class="tw">2–4</td><td class="stars">★★★★</td></tr>
+        <tr><td class="tb">Farroupilha</td><td class="to">12–18</td><td>R$ 360 – R$ 720</td><td>Chalé rural, pousada</td><td class="tw">1–2</td><td class="stars">★★★</td></tr>
+        <tr><td class="tb">Santa Tereza</td><td class="to">6–10</td><td>R$ 380 – R$ 780</td><td>Chalé, lodge olival</td><td class="tw">1–2</td><td class="stars">★★★★</td></tr>
+        <tr><td class="tb">Cotiporã</td><td class="to">4–8</td><td>R$ 350 – R$ 680</td><td>Chalé rural, agroturismo</td><td class="tw">1–2</td><td class="stars">★★★</td></tr>
+        <tr><td class="tb">Veranópolis</td><td class="to">6–10</td><td>R$ 340 – R$ 660</td><td>Pousada, chalé</td><td class="tw">1–2</td><td class="stars">★★★</td></tr>
+        <tr><td class="tb">Nova Pádua</td><td class="to">4–7</td><td>R$ 320 – R$ 620</td><td>Pousada rural, chalé</td><td class="tw">1–2</td><td class="stars">★★★</td></tr>
+        <tr><td class="tb">Caxias do Sul</td><td class="to">10–15</td><td>R$ 320 – R$ 580</td><td>Hotel boutique, pousada</td><td class="tw">0–1</td><td class="stars">★★</td></tr>
+        <tr><td class="tb">Nova Prata</td><td class="to">4–7</td><td>R$ 300 – R$ 560</td><td>Pousada rural</td><td class="tw">0–1</td><td class="stars">★★</td></tr>
+        <tr><td class="tb">Fagundes Varela</td><td class="to">2–4</td><td>R$ 280 – R$ 500</td><td>Chalé simples, rural</td><td class="tw">0–1</td><td class="stars">★★</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 03 OCUPAÇÃO ═══════════ -->
+<section class="slide sec-hdr" id="s-ocupacao">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 03 + 04</div>
+    <h2 class="sec-title">Taxas de Ocupação<br>& Ticket Médio</h2>
+    <p class="sec-desc">2023–2025 · Alta, Média e Baixa Temporada</p>
+  </div>
+  <div class="sec-ghost">03</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Taxas de Ocupação — 2023 a 2025</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro fu" data-d="1">
+    Dados de ocupação para chalés e hospedagens premium (R$400+/noite) na Serra Gaúcha. Base: ABIH-RS, SEBRAE/RS, Airbnb Insights e associações de enoturismo regionais. Médias ponderadas para o segmento de cabanas e chalés em vinhedos e áreas rurais.
+  </p>
+
+  <div class="tbl-wrap fu" data-d="2">
+    <table>
+      <thead><tr>
+        <th>Temporada</th><th>Período / Gatilho</th><th>Ocupação 2023</th><th>Ocupação 2024</th><th>Ocupação 2025*</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="tb">🔥 Alta</td><td>Vindima (Fev–Mar) · Fenavinho (Jul) · Natal Luz (Nov–Jan)</td><td class="to">80–95%</td><td class="to">84–96%</td><td class="to">86–97%</td></tr>
+        <tr><td class="tb">☀ Média</td><td>Abr–Jun · Ago–Out</td><td>50–65%</td><td>54–70%</td><td>58–74%</td></tr>
+        <tr><td class="tb">❄ Baixa</td><td>Jul (fora Fenavinho) · Nov início</td><td>32–44%</td><td>36–48%</td><td>40–52%</td></tr>
+        <tr><td class="tb">📅 Média Anual</td><td>12 meses</td><td class="to">~61%</td><td class="to">~65%</td><td class="to">~68%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption fu">* 2025: estimativas baseadas em tendências jan–set/2025 + projeções ABIH-RS e SEBRAE.</p>
+
+  <h2 class="s-title fu mt">Ticket Médio por Temporada — 2023 a 2025</h2>
+  <div class="s-rule"></div>
+
+  <div class="tbl-wrap fu" data-d="3">
+    <table>
+      <thead><tr>
+        <th>Temporada</th><th>Ticket 2023</th><th>Ticket 2024</th><th>Ticket 2025*</th><th>Var. 23→25</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="tb">🔥 Alta (Vindima / Natal Luz / Fenavinho)</td><td>R$ 720 – R$ 1.100</td><td>R$ 800 – R$ 1.250</td><td class="to">R$ 860 – R$ 1.400</td><td class="tg">+19%</td></tr>
+        <tr><td class="tb">☀ Média (Abr–Jun / Ago–Out)</td><td>R$ 400 – R$ 620</td><td>R$ 440 – R$ 690</td><td>R$ 480 – R$ 740</td><td class="tg">+20%</td></tr>
+        <tr><td class="tb">❄ Baixa</td><td>R$ 270 – R$ 400</td><td>R$ 300 – R$ 440</td><td>R$ 330 – R$ 480</td><td class="tg">+22%</td></tr>
+        <tr><td class="tb">📅 Média Ponderada Anual</td><td>R$ 510</td><td>R$ 565</td><td class="to">R$ 615</td><td class="tg"><b>+21%</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box-wine fu" data-d="4">
+    <p>🍷 <strong>Diferencial da Serra Gaúcha vs Serra Catarinense:</strong> A região tem <strong>sazonalidade mais distribuída ao longo do ano</strong>, pois os gatilhos de demanda (Vindima em fev/mar, Fenavinho em jul, Natal Luz nov–jan) cobrem diferentes trimestres. Isso resulta em <strong>taxa de ocupação anual ~3–5 pontos percentuais superior</strong> à média da Rota Caminhos da Neve, tornando o modelo de negócio mais previsível para o investidor.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 04 ENOTURISMO ═══════════ -->
+<section class="slide sec-hdr" id="s-enoturismo">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 05</div>
+    <h2 class="sec-title">Enoturismo &<br>Calendário de Eventos</h2>
+    <p class="sec-desc">A força do turismo do vinho como motor de demanda para hospedagem</p>
+  </div>
+  <div class="sec-ghost">05</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Relevância Estratégica do Enoturismo</h2>
+  <div class="s-rule"></div>
+
+  <div class="kpi-row fu" data-d="1">
+    <div class="kpi-card wine">
+      <div class="kpi-n wine">+3M</div>
+      <div class="kpi-l">visitantes/ano Serra Gaúcha — maior destino turístico do RS</div>
+    </div>
+    <div class="kpi-card wine">
+      <div class="kpi-n wine">R$2,4bi</div>
+      <div class="kpi-l">faturamento do enoturismo no RS — 2023 (Ibravin/SEBRAE)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-n">68%</div>
+      <div class="kpi-l">turistas vêm de fora do RS (SP, PR, SC liderando)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-n">3,8 noites</div>
+      <div class="kpi-l">permanência média do turista de enoturismo premium</div>
+    </div>
+  </div>
+
+  <div class="two fu" data-d="2">
+    <div>
+      <p class="sub">Perfil do Turista de Enoturismo</p>
+      <div class="box-gold">
+        <p><strong>Origem:</strong> São Paulo (SP): ~34% · Curitiba/PR: ~18% · Florianópolis/SC: ~12% · Porto Alegre: ~14% · Outros: ~22%</p>
+      </div>
+      <div class="box-gold">
+        <p><strong>Faixa Etária:</strong> 35–50 anos: 46% (maior grupo) · 50–65 anos: 28% · 28–35 anos: 18% · outros: 8%</p>
+      </div>
+      <div class="box-gold">
+        <p><strong>Gasto Médio por Viagem:</strong> R$ 2.200 – R$ 5.800 · Permanência: 3–5 noites · 78% viajam em casal</p>
+      </div>
+    </div>
+    <div>
+      <p class="sub">Motivações e Comportamento</p>
+      <div class="box-gold">
+        <p><strong>Motivação principal:</strong> Degustação de vinhos/espumantes: 42% · Gastronomia italiana: 26% · Paisagem/natureza: 18% · Cultura e história: 14%</p>
+      </div>
+      <div class="box-gold">
+        <p><strong>Hospedagem preferida:</strong> Chalé/cabana em vinhedo: 54% · Pousada boutique: 31% · Hotel: 15% — <strong>demanda claramente favorável ao modelo Comsteel</strong></p>
+      </div>
+      <div class="box-gold">
+        <p><strong>Disposição a pagar premium:</strong> 67% declaram que pagariam até 40% a mais por hospedagem dentro ou adjacente a uma vinícola (Ibravin 2024)</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="sub fu" data-d="3">Calendário de Eventos Âncora</p>
+  <div class="tbl-wrap fu" data-d="3">
+    <table>
+      <thead><tr><th>Evento</th><th>Cidade</th><th>Período</th><th>Impacto na Ocupação</th><th>Relevância para Comsteel</th></tr></thead>
+      <tbody>
+        <tr><td class="tb">🍇 Colheita / Vindima</td><td>Toda a região</td><td>Fev–Mar</td><td class="to">+45–80%</td><td>Maior gatilho do ano · chalés em vinhedos lotam</td></tr>
+        <tr><td class="tb">🥂 Fenavinho</td><td>Garibaldi</td><td>Jul (bianual)</td><td class="to">+50–90%</td><td>2º maior gatilho · espumante premium</td></tr>
+        <tr><td class="tb">🎄 Natal Luz</td><td>Gramado / Canela</td><td>Nov–Jan</td><td class="to">+40–75%</td><td>Transborda para Serra Gaúcha toda</td></tr>
+        <tr><td class="tb">🍷 Festival do Vinho</td><td>Bento Gonçalves</td><td>Jun–Jul</td><td>+30–50%</td><td>Público premium, alta afinidade</td></tr>
+        <tr><td class="tb">🎪 Festa da Uva</td><td>Caxias do Sul</td><td>Mar (bianual)</td><td>+25–40%</td><td>Massa + premium, bom volume</td></tr>
+        <tr><td class="tb">🚂 Trem do Vinho / Circuitos</td><td>BG / Garibaldi</td><td>Ano todo</td><td>+15–25%</td><td>Demanda constante · oportunidade de pacotes</td></tr>
+        <tr><td class="tb">🌸 Primavera / Florada</td><td>Toda a Serra</td><td>Set–Out</td><td>+20–35%</td><td>Período fotogênico · Airbnb em alta</td></tr>
+        <tr><td class="tb">📅 Feriados prolongados</td><td>Toda a região</td><td>Ano todo</td><td class="to">+55–95%</td><td>Picos previsíveis · exige gestão de calendário</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 05 VINICOLAS ═══════════ -->
+<section class="slide sec-hdr" id="s-vinicolas">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 06</div>
+    <h2 class="sec-title">Vinícolas com<br>Hospedagem</h2>
+    <p class="sec-desc">Mercado de alojamento dentro de vinícolas — oportunidade estratégica Comsteel</p>
+  </div>
+  <div class="sec-ghost">06</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Vinícolas com Hospedagem — Benchmark Regional</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro fu" data-d="1">
+    A hospedagem integrada à vinícola representa o segmento de <span class="hl">mais alto ticket</span> da Serra Gaúcha. O visitante paga premium para dormir "dentro do vinhedo". Este é o mercado mais estratégico para a Comsteel — pois o modelo de tiny house/chalé modular se encaixa perfeitamente no que estas vinícolas precisam: <span class="hl">instalação rápida, sem obra, alto padrão e mobilidade</span>.
+  </p>
+
+  <div class="vini-card fu" data-d="2">
+    <div><div class="vini-nm">Miolo Wine Group</div><div class="vini-city">Bento Gonçalves / Valle dos Vinhedos</div></div>
+    <div class="vini-desc">Pioneira em hospedagem integrada na Serra. Chalés de alto padrão no vinhedo. Referência de ticket acima de R$1.000/noite. Modelo para o setor.</div>
+    <div class="vini-badge active">Ativa · Premium</div>
+  </div>
+  <div class="vini-card fu" data-d="2">
+    <div><div class="vini-nm">Casa Valduga</div><div class="vini-city">Bento Gonçalves</div></div>
+    <div class="vini-desc">Resort boutique com chalés em vinhedo. Spa, gastronomia e enoturismo integrados. Diárias de R$800–R$1.400. Referência nacional.</div>
+    <div class="vini-badge active">Ativa · Resort</div>
+  </div>
+  <div class="vini-card fu" data-d="3">
+    <div><div class="vini-nm">Boscato Winery</div><div class="vini-city">Bento Gonçalves</div></div>
+    <div class="vini-desc">Vinícola boutique com suítes de alto padrão. Foco em turismo de luxo. Exemplo de operação pequena com altíssimo ticket.</div>
+    <div class="vini-badge active">Ativa · Boutique</div>
+  </div>
+  <div class="vini-card fu" data-d="3">
+    <div><div class="vini-nm">Vinícola Don Laurindo</div><div class="vini-city">Monte Belo do Sul</div></div>
+    <div class="vini-desc">Chalés artesanais dentro do vinhedo. Exemplo de pequena vinícola com hospedagem de alto valor percebido. Estrutura limitada — potencial de expansão.</div>
+    <div class="vini-badge">Ativa · Expandindo</div>
+  </div>
+  <div class="vini-card fu" data-d="4">
+    <div><div class="vini-nm">Vinícola Abreu Garcia</div><div class="vini-city">Pinto Bandeira</div></div>
+    <div class="vini-desc">Referência em vinhos de altitude. Sem hospedagem estruturada ainda. Interesse declarado em expansão com unidades modulares — <strong>lead estratégico</strong>.</div>
+    <div class="vini-badge" style="background:rgba(224,112,48,.1);color:var(--orange);border-color:rgba(224,112,48,.3)">🎯 Alvo Comsteel</div>
+  </div>
+  <div class="vini-card fu" data-d="4">
+    <div><div class="vini-nm">+350 vinícolas na região</div><div class="vini-city">14 municípios</div></div>
+    <div class="vini-desc">Estimativa: apenas ~12–15% das vinícolas com visitação têm hospedagem estruturada. <strong>85% do mercado potencial ainda sem produto de hospedagem</strong> — espaço enorme para Comsteel.</div>
+    <div class="vini-badge" style="background:rgba(224,112,48,.15);color:var(--orange);border-color:rgba(224,112,48,.35)">🚀 Mercado Aberto</div>
+  </div>
+
+  <div class="box-wine fu" data-d="5">
+    <p>🍷 <strong>Insight crítico para os diretores:</strong> Uma vinícola de médio porte que hoje recebe 200 visitantes/mês em visitas e degustações consegue, com 3–4 unidades Comsteel instaladas no vinhedo, <strong>multiplicar em 4–6x o ticket por visitante</strong> — passando de ~R$ 120 por pessoa (degustação) para ~R$ 1.600+ por casal (pernoite + jantar + degustação). Sem obra, em 60 dias, com garantia técnica. <strong>Este é o argumento de vendas mais poderoso na região.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 06 ROI ═══════════ -->
+<section class="slide sec-hdr" id="s-roi">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 07</div>
+    <h2 class="sec-title">ROI & Simulação<br>de Retorno</h2>
+    <p class="sec-desc">Análise de rentabilidade para dois perfis de investidor na Serra Gaúcha</p>
+  </div>
+  <div class="sec-ghost">07</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Perfil A: Empreendedor de Pousada / Airbnb</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro fu" data-d="1">
+    Cenário para operação de <span class="hl">Casa Natura 29m²</span> como chalé de hospedagem independente ou em pequeno cluster em Bento Gonçalves, Garibaldi ou Pinto Bandeira.
+  </p>
+
+  <div class="kpi-row fu" data-d="2">
+    <div class="kpi-card"><div class="kpi-n">R$185–225k</div><div class="kpi-l">Investimento total (Natura + instalação + mobília)</div></div>
+    <div class="kpi-card"><div class="kpi-n">R$565</div><div class="kpi-l">Diária média ponderada anual (conservador)</div></div>
+    <div class="kpi-card"><div class="kpi-n">65%</div><div class="kpi-l">Ocupação anual estimada (cenário realista)</div></div>
+    <div class="kpi-card"><div class="kpi-n">4–5,5 anos</div><div class="kpi-l">Payback estimado — cenário realista</div></div>
+  </div>
+
+  <div class="sc-tabs fu" data-d="3">
+    <div class="sc-tab active" onclick="setSc('a','cons')">Conservador</div>
+    <div class="sc-tab" onclick="setSc('a','real')">Realista</div>
+    <div class="sc-tab" onclick="setSc('a','otim')">Otimista</div>
+  </div>
+  <div class="sc-panel active" id="sca-cons">
+    <div class="sc-metric"><div class="num">58%</div><div class="lbl">Ocupação</div></div>
+    <div class="sc-metric"><div class="num">R$104.963</div><div class="lbl">Receita Bruta/Ano</div></div>
+    <div class="sc-metric"><div class="num">R$78.722</div><div class="lbl">Receita Líquida/Ano</div></div>
+    <div class="sc-metric"><div class="num">~39%</div><div class="lbl">ROI Anual</div></div>
+  </div>
+  <div class="sc-panel" id="sca-real">
+    <div class="sc-metric"><div class="num">65%</div><div class="lbl">Ocupação</div></div>
+    <div class="sc-metric"><div class="num">R$134.018</div><div class="lbl">Receita Bruta/Ano</div></div>
+    <div class="sc-metric"><div class="num">R$100.514</div><div class="lbl">Receita Líquida/Ano</div></div>
+    <div class="sc-metric"><div class="num">~48%</div><div class="lbl">ROI Anual</div></div>
+  </div>
+  <div class="sc-panel" id="sca-otim">
+    <div class="sc-metric"><div class="num">76%</div><div class="lbl">Ocupação</div></div>
+    <div class="sc-metric"><div class="num">R$173.404</div><div class="lbl">Receita Bruta/Ano</div></div>
+    <div class="sc-metric"><div class="num">R$130.053</div><div class="lbl">Receita Líquida/Ano</div></div>
+    <div class="sc-metric"><div class="num">~62%</div><div class="lbl">ROI Anual</div></div>
+  </div>
+
+  <h2 class="s-title fu mt">Perfil B: Vinicultor que Adiciona Hospedagem</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro fu" data-d="1">
+    Cenário para vinícola de médio porte que instala <span class="hl">3–4 unidades</span> (ex: Conjunto Casa Nativa + 1 Marrocos extra) como produto de hospedagem integrado à operação de enoturismo.
+  </p>
+
+  <div class="sc-tabs fu" data-d="3">
+    <div class="sc-tab active" onclick="setSc('b','cons')">Conservador</div>
+    <div class="sc-tab" onclick="setSc('b','real')">Realista</div>
+    <div class="sc-tab" onclick="setSc('b','otim')">Otimista</div>
+  </div>
+  <div class="sc-panel active" id="scb-cons">
+    <div class="sc-metric"><div class="num">60%</div><div class="lbl">Ocupação (4 unid.)</div></div>
+    <div class="sc-metric"><div class="num">R$322.200</div><div class="lbl">Receita Bruta/Ano</div></div>
+    <div class="sc-metric"><div class="num">R$241.650</div><div class="lbl">Receita Líquida/Ano</div></div>
+    <div class="sc-metric"><div class="num">3,5–4 anos</div><div class="lbl">Payback</div></div>
+  </div>
+  <div class="sc-panel" id="scb-real">
+    <div class="sc-metric"><div class="num">70%</div><div class="lbl">Ocupação (4 unid.)</div></div>
+    <div class="sc-metric"><div class="num">R$398.195</div><div class="lbl">Receita Bruta/Ano</div></div>
+    <div class="sc-metric"><div class="num">R$298.646</div><div class="lbl">Receita Líquida/Ano</div></div>
+    <div class="sc-metric"><div class="num">2,8–3,5 anos</div><div class="lbl">Payback</div></div>
+  </div>
+  <div class="sc-panel" id="scb-otim">
+    <div class="sc-metric"><div class="num">82%</div><div class="lbl">Ocupação (4 unid.)</div></div>
+    <div class="sc-metric"><div class="num">R$506.780</div><div class="lbl">Receita Bruta/Ano</div></div>
+    <div class="sc-metric"><div class="num">R$380.085</div><div class="lbl">Receita Líquida/Ano</div></div>
+    <div class="sc-metric"><div class="num">2–2,8 anos</div><div class="lbl">Payback</div></div>
+  </div>
+  <p class="caption fu">* 4 unidades: Conjunto Casa Nativa (Adega+Sauna+Marrocos) + 1 Natura extra. Investimento total ~R$700–800k. Custos oper. ~25%.</p>
+</section>
+
+<!-- ═══════════ SEC 07 COMPARATIVO ═══════════ -->
+<section class="slide sec-hdr">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 08</div>
+    <h2 class="sec-title">Serra Gaúcha vs<br>Serra Catarinense</h2>
+    <p class="sec-desc">Comparativo estratégico entre os dois mercados prioritários da Comsteel</p>
+  </div>
+  <div class="sec-ghost">08</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Comparativo Estratégico — SG vs SC</h2>
+  <div class="s-rule"></div>
+
+  <div class="vs-grid fu" data-d="1">
+    <div class="vs-card">
+      <div class="vs-head sg">🍷 Serra Gaúcha</div>
+      <div class="vs-body">
+        <div class="vs-row"><span class="vs-k">Visitantes/ano</span><span class="vs-v">+3 milhões</span></div>
+        <div class="vs-row"><span class="vs-k">Principal gatilho</span><span class="vs-v">Vindima / Fenavinho / Natal Luz</span></div>
+        <div class="vs-row"><span class="vs-k">Ticket médio anual (prem.)</span><span class="vs-v">R$ 615/noite</span></div>
+        <div class="vs-row"><span class="vs-k">Ocupação média anual</span><span class="vs-v">~68%</span></div>
+        <div class="vs-row"><span class="vs-k">Sazonalidade</span><span class="vs-v">Distribuída (3 picos/ano)</span></div>
+        <div class="vs-row"><span class="vs-k">Diferencial hospedagem</span><span class="vs-v">Vinhedo / Enoturismo</span></div>
+        <div class="vs-row"><span class="vs-k">Público predominante</span><span class="vs-v">SP, PR, SC — casal 35–50a</span></div>
+        <div class="vs-row"><span class="vs-k">Payback estimado (1 uni.)</span><span class="vs-v">4–5,5 anos</span></div>
+        <div class="vs-row"><span class="vs-k">Concorrência SF direta</span><span class="vs-v">Baixa-Média</span></div>
+      </div>
+    </div>
+    <div class="vs-card">
+      <div class="vs-head sc">❄ Serra Catarinense</div>
+      <div class="vs-body">
+        <div class="vs-row"><span class="vs-k">Visitantes/ano</span><span class="vs-v">+500 mil</span></div>
+        <div class="vs-row"><span class="vs-k">Principal gatilho</span><span class="vs-v">Neve / Frio inverno</span></div>
+        <div class="vs-row"><span class="vs-k">Ticket médio anual (prem.)</span><span class="vs-v">R$ 575/noite</span></div>
+        <div class="vs-row"><span class="vs-k">Ocupação média anual</span><span class="vs-v">~65%</span></div>
+        <div class="vs-row"><span class="vs-k">Sazonalidade</span><span class="vs-v">Concentrada (inverno)</span></div>
+        <div class="vs-row"><span class="vs-k">Diferencial hospedagem</span><span class="vs-v">Natureza / Aventura / Neve</span></div>
+        <div class="vs-row"><span class="vs-k">Público predominante</span><span class="vs-v">SP, PR, RS — família</span></div>
+        <div class="vs-row"><span class="vs-k">Payback estimado (1 uni.)</span><span class="vs-v">4,5–6 anos</span></div>
+        <div class="vs-row"><span class="vs-k">Concorrência SF direta</span><span class="vs-v">Baixa</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-dark fu" data-d="2">
+    <p>💡 <strong>Conclusão comparativa:</strong> A Serra Gaúcha oferece <strong>volume de turistas 6x maior</strong>, sazonalidade mais distribuída e ticket médio levemente superior, mas exige um argumento de vendas mais específico (enoturismo) e tem público mais seletivo. A Serra Catarinense tem menor volume, porém um argumento emocional muito forte (neve). <strong>Para a Comsteel, as duas regiões são complementares e devem ser trabalhadas em paralelo.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 08 COMPETITIVO ═══════════ -->
+<section class="slide sec-hdr" id="s-competitivo">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 09</div>
+    <h2 class="sec-title">Cenário Competitivo<br>na Serra Gaúcha</h2>
+    <p class="sec-desc">Concorrentes diretos (Steel Frame) e indiretos na região</p>
+  </div>
+  <div class="sec-ghost">09</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Concorrentes Diretos — Steel Frame na Região</h2>
+  <div class="s-rule"></div>
+
+  <div class="comp-grid fu" data-d="1">
+    <div class="comp-card">
+      <div class="comp-nm">SteelFrame Sul</div>
+      <div class="comp-or">Caxias do Sul, RS</div>
+      <p style="font-size:11px;color:var(--grey)">Construção residencial e industrial em SF</p>
+      <div class="comp-weak"><b>⚠ Fraqueza:</b> Foco em obras industriais e residenciais convencionais. Sem linha de tiny house/chalé entregue pronto. Sem mobília.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-nm">Leve Steel Frame</div>
+      <div class="comp-or">Porto Alegre / RS</div>
+      <p style="font-size:11px;color:var(--grey)">Residências e pequenas construções SF</p>
+      <div class="comp-weak"><b>⚠ Fraqueza:</b> Opera principalmente no segmento residencial econômico. Sem portfólio para enoturismo ou hospedagem boutique.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-nm">Casas SteelBuild RS</div>
+      <div class="comp-or">Gramado / RS</div>
+      <p style="font-size:11px;color:var(--grey)">Pequenas casas SF para turismo</p>
+      <div class="comp-weak"><b>⚠ Fraqueza:</b> Atuação localizada em Gramado. Entregas não-transportáveis. Não tem histórico de tiny houses modulares entregues prontas.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-nm">Casarin Construções</div>
+      <div class="comp-or">Caxias do Sul / Bento Gonçalves, RS</div>
+      <p style="font-size:11px;color:var(--grey)">Construção convencional e SF</p>
+      <div class="comp-weak"><b>⚠ Fraqueza:</b> Obra tradicional no terreno. Prazo imprevisível, sem entrega chave na mão, sem mobília. Alto custo de mão de obra local.</div>
+    </div>
+  </div>
+
+  <h2 class="s-title fu mt">Concorrentes Indiretos — Módulos, Chalés, Cabanas</h2>
+  <div class="s-rule"></div>
+
+  <div class="tbl-wrap fu" data-d="2">
+    <table>
+      <thead><tr><th>Produto / Empresa</th><th>Método</th><th>Apelo</th><th>Vulnerabilidade vs Comsteel</th></tr></thead>
+      <tbody>
+        <tr><td class="tb">Chalé de madeira serrada (artesãos locais)</td><td>Madeira araucária / pinus</td><td>Autenticidade, apelo regional forte</td><td>Prazo imprevisível; manutenção cara; sem escala; sem ABNT</td></tr>
+        <tr><td class="tb">Minha Casa Modular (RS)</td><td>Madeira tratada modular</td><td>Preço acessível</td><td>Sem homologação habitacional; sem financiamento Caixa</td></tr>
+        <tr><td class="tb">Container Lodge (empresas SP/RS)</td><td>Container marítimo adaptado</td><td>Estética industrial, Instagram</td><td>Não aprovado normas BR; conforto térmico ruim no inverno gaúcho</td></tr>
+        <tr><td class="tb">Tiny Home Brasil (SP)</td><td>Madeira e pallets</td><td>Visual rústico, preço</td><td>Sem ABNT; menor durabilidade; sem financiamento</td></tr>
+        <tr><td class="tb">Chalé pré-fabricado (serrarias locais)</td><td>Madeira pré-cortada montada in loco</td><td>Preço e apelo típico local</td><td>Prazo 3–6 meses; manutenção alta; sem mobília</td></tr>
+        <tr><td class="tb">Glamping (tendas e domes)</td><td>Estruturas têxteis</td><td>Imersão na natureza premium</td><td>Não aguenta inverno gaúcho; sem alvará permanente; durabilidade</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box-dark fu" data-d="3">
+    <p>🎯 <strong>Posição Comsteel na região:</strong> Não existe nenhum concorrente direto que entregue <strong>chalé/módulo em Steel Frame ABNT, 100% pronto, mobiliado, em 60 dias, com capacidade de escala</strong> na Serra Gaúcha. O mercado local está dominado por chalés de madeira artesanal e containers — ambos com vulnerabilidades técnicas e regulatórias exploráveis pela Comsteel.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 09 OBJEÇÕES ═══════════ -->
+<section class="slide sec-hdr" id="s-objecoes">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 10</div>
+    <h2 class="sec-title">Objeções Específicas<br>da Serra Gaúcha</h2>
+    <p class="sec-desc">Barreiras locais e respostas estratégicas — clique para expandir</p>
+  </div>
+  <div class="sec-ghost">10</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Objeções Mais Frequentes na Região</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro fu" data-d="1">Clique em cada objeção para ver a resposta. Objeções específicas do público da Serra Gaúcha — diferentes das da Serra Catarinense.</p>
+
+  <div class="fu" data-d="2">
+    <div class="acc">
+      <div class="acc-q" onclick="toggleAcc(this)">❓ "Chalé de madeira é mais autêntico e bonito para meu vinhedo" <span class="ch">▾</span></div>
+      <div class="acc-a"><p>A autenticidade está na paisagem do vinhedo — não no material da parede. Os chalés da Casa Valduga e da Miolo, referências nacionais em hospedagem em vinhedo, utilizam estrutura industrializada com revestimentos que simulam madeira e pedra. A Comsteel entrega o mesmo visual, com aço galvanizado por dentro (durabilidade superior) e acabamento externo personalizado — pedra, madeira, reboco — conforme a identidade da vinícola.</p></div>
+    </div>
+    <div class="acc">
+      <div class="acc-q" onclick="toggleAcc(this)">❓ "Tenho medo de que pareça um produto industrial, não combina com vinhedo" <span class="ch">▾</span></div>
+      <div class="acc-a"><p>O Steel Frame é estrutura. O design é personalizado. Podemos entregar o módulo com revestimento externo em pedra basáltica da região, venezianas de madeira, telhado de duas águas inclinado — qualquer estética que faça sentido para a vinícola. O cliente escolhe o visual, a Comsteel garante a tecnologia e a durabilidade.</p></div>
+    </div>
+    <div class="acc">
+      <div class="acc-q" onclick="toggleAcc(this)">❓ "Minha vinícola é pequena, não sei se comporta hospedagem" <span class="ch">▾</span></div>
+      <div class="acc-a"><p>Uma vinícola que recebe 150 visitantes/mês em degustações e fatura ~R$ 18.000/mês nessa atividade pode, com 2 unidades Comsteel instaladas, gerar mais ~R$ 45.000/mês em receita de hospedagem. O módulo ocupa área equivalente a um galpão de 30m² e não interfere na operação vinícola. A instalação é feita em 1 dia.</p></div>
+    </div>
+    <div class="acc">
+      <div class="acc-q" onclick="toggleAcc(this)">❓ "Já tenho um chalé de madeira, por que trocar?" <span class="ch">▾</span></div>
+      <div class="acc-a"><p>Não é trocar — é escalar. O chalé de madeira existente continua. A proposta é adicionar 2–3 unidades Comsteel na propriedade para capturar a demanda que hoje você recusa por falta de vagas. Com ocupação média de 65% e ticket de R$ 600/noite, cada unidade adicional gera ~R$ 85.000/ano em receita nova.</p></div>
+    </div>
+    <div class="acc">
+      <div class="acc-q" onclick="toggleAcc(this)">❓ "A prefeitura de Bento/Garibaldi vai aprovar?" <span class="ch">▾</span></div>
+      <div class="acc-a"><p>Sim. O sistema Steel Frame é homologado no Brasil e segue o mesmo fluxo de regularização de qualquer edificação residencial ou de hospedagem. Bento Gonçalves e Garibaldi têm histórico de aprovação de empreendimentos de hospedagem rural. A Comsteel emite ART, laudo técnico e toda documentação necessária para o processo de aprovação.</p></div>
+    </div>
+    <div class="acc">
+      <div class="acc-q" onclick="toggleAcc(this)">❓ "O vento e o frio do inverno gaúcho vão danificar?" <span class="ch">▾</span></div>
+      <div class="acc-a"><p>O Steel Frame com lã de PET, manta hidrófuga e fechamentos OSB foi projetado para extremos térmicos. As unidades Comsteel atendem a NBR 15.575 (desempenho térmico e acústico). O inverno gaúcho em Bento/Garibaldi fica entre 0–8°C — conforto dentro da unidade é superior ao de muitos chalés de madeira artesanal mal vedados.</p></div>
+    </div>
+    <div class="acc">
+      <div class="acc-q" onclick="toggleAcc(this)">❓ "R$ 185.000 é muito para uma unidade" <span class="ch">▾</span></div>
+      <div class="acc-a"><p>No cenário realista da Serra Gaúcha, essa unidade gera R$ 100.514/ano líquido. O payback é de ~4–5,5 anos. Após isso, é lucro puro. Para comparação: um chalé de madeira artesanal bem feito na região custa R$ 150.000–220.000 sem mobília, com prazo de 4–8 meses e manutenção cara a cada 3–5 anos. A Comsteel entrega mais por custo equivalente.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 10 POSICIONAMENTO ═══════════ -->
+<section class="slide sec-hdr" id="s-posicionamento">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 11</div>
+    <h2 class="sec-title">Posicionamento<br>Comsteel na Região</h2>
+    <p class="sec-desc">Estratégia de entrada e domínio do mercado na Serra Gaúcha</p>
+  </div>
+  <div class="sec-ghost">11</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Como a Comsteel Deve se Inserir</h2>
+  <div class="s-rule"></div>
+
+  <div class="fu" data-d="1">
+    <div class="pos-item">
+      <div class="pos-head">1. NICHO DE ENTRADA: VINÍCOLAS SEM HOSPEDAGEM — BENTO GONÇALVES + GARIBALDI</div>
+      <div class="pos-body">O maior diferencial da Comsteel na Serra Gaúcha é a capacidade de transformar uma vinícola visitável em um empreendimento de hospedagem em 60 dias, sem obra no terreno. Prospectar ativamente as ~300 vinícolas sem hospedagem nas cidades âncora, com proposta específica de ROI para o modelo vitivinicultor.</div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-head">2. PRODUTO ESTRELA NA REGIÃO: CONJUNTO CASA NATIVA + PERSONALIZAÇÃO "WINE LODGE"</div>
+      <div class="pos-body">Criar uma versão "Wine Lodge" do Conjunto Casa Nativa com acabamentos externos em pedra basáltica e madeira, painel solar e deck externo com vista para vinhedo. Produto especificamente desenhado para o contexto do enoturismo. Destaque máximo em feiras do setor.</div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-head">3. POSICIONAMENTO: "DO VINHEDO À SUÍTE — EM 60 DIAS"</div>
+      <div class="pos-body">Narrativa de marca específica para a Serra Gaúcha: a Comsteel transforma o vinhedo em experiência de hospedagem completa. Não vende "módulo" — vende "nova fonte de receita para sua vinícola". O argumento é econômico e emocional ao mesmo tempo.</div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-head">4. CANAIS: APROVITAR (Assoc. Vinícolas RS), IBRAVIN E FEIRAS DE ENOTURISMO</div>
+      <div class="pos-body">Parceria com a APROVITAR (Associação de Produtores de Vinhos Finos do Vale dos Vinhedos), IBRAVIN (Instituto Brasileiro do Vinho) e SEBRAE/RS. Presença na Expovinis, Fenavinho e Vindima. Estes canais levam diretamente ao decisor de compra.</div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-head">5. PROVA SOCIAL: CASE DOCUMENTADO EM VINÍCOLA — URGENTE</div>
+      <div class="pos-body">O primeiro case instalado em uma vinícola da região tem valor de marketing desproporcional. Negociar condições especiais para o primeiro cliente "âncora" (ex: 10–15% de desconto em troca de autorização de filmagem e dados de ROI). Esse case se vende sozinho na região.</div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-head">6. LOGÍSTICA: NOVO HAMBURGO → SERRA GAÚCHA EM 1–2H</div>
+      <div class="pos-body">A fábrica em Novo Hamburgo está a 90–120 minutos de Bento Gonçalves via BR-116/RS-122. Distância de entrega extremamente favorável. Possibilidade de instalar e voltar no mesmo dia — argumento logístico forte em proposta comercial.</div>
+    </div>
+    <div class="pos-item">
+      <div class="pos-head">7. REGULAMENTAÇÃO RURAL: PREPARAR GUIA ESPECÍFICO PARA A REGIÃO</div>
+      <div class="pos-body">Produzir material técnico sobre aprovação de hospedagem rural em municípios como Bento Gonçalves, Garibaldi e Pinto Bandeira. Mostrar que a Comsteel conhece o processo regulatório local diferencia do concorrente que apenas vende o produto sem suporte pós-venda.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SEC 11 PLANO ═══════════ -->
+<section class="slide sec-hdr" id="s-plano">
+  <div class="sec-hdr-bar"></div>
+  <div class="sec-inner">
+    <div class="sec-num">Seção 12</div>
+    <h2 class="sec-title">Plano de Ação<br>Recomendado</h2>
+    <p class="sec-desc">Próximos passos para entrada estruturada na Serra Gaúcha</p>
+  </div>
+  <div class="sec-ghost">12</div>
+</section>
+
+<section class="slide cnt">
+  <h2 class="s-title fu">Plano de Ação — Serra Gaúcha 2025–2026</h2>
+  <div class="s-rule"></div>
+
+  <div class="fu" data-d="1">
+    <div class="action-row">
+      <div class="a-prazo">0–30 dias</div>
+      <div class="a-desc">Levantar lista de vinícolas com visitação e SEM hospedagem em Bento Gonçalves, Garibaldi e Pinto Bandeira (base: cadastro IBRAVIN + Google Maps)</div>
+      <div class="a-resp">Comercial</div>
+      <div class="a-result">Base de 80–120 prospects qualificados</div>
+    </div>
+    <div class="action-row">
+      <div class="a-prazo">0–45 dias</div>
+      <div class="a-desc">Contatar APROVITAR e IBRAVIN para apresentação institucional da Comsteel e proposta de parceria comercial</div>
+      <div class="a-resp">Diretoria</div>
+      <div class="a-result">Acesso à base de vinicultores associados</div>
+    </div>
+    <div class="action-row">
+      <div class="a-prazo">30–60 dias</div>
+      <div class="a-desc">Prospectar 8–10 vinícolas-alvo com proposta personalizada de ROI para instalação de 2–4 unidades (Perfil B)</div>
+      <div class="a-resp">SDR / Executivo</div>
+      <div class="a-result">2–3 propostas em negociação</div>
+    </div>
+    <div class="action-row">
+      <div class="a-prazo">45–90 dias</div>
+      <div class="a-desc">Fechar primeiro case âncora em vinícola da região (condições especiais em troca de autorização de documentação de case)</div>
+      <div class="a-resp">Comercial + Ops</div>
+      <div class="a-result">Case instalado para marketing</div>
+    </div>
+    <div class="action-row">
+      <div class="a-prazo">60–90 dias</div>
+      <div class="a-desc">Criar versão "Wine Lodge" do Conjunto Nativa com acabamento personalizado para vinhedo (pedra + madeira + deck)</div>
+      <div class="a-resp">Produto + Design</div>
+      <div class="a-result">Produto exclusivo para o segmento</div>
+    </div>
+    <div class="action-row">
+      <div class="a-prazo">Ago/Set 2025</div>
+      <div class="a-desc">Participar da Vindima 2026 (preparação) e feiras regionais com stand e case documentado instalado</div>
+      <div class="a-resp">Mktg + Comercial</div>
+      <div class="a-result">Exposição ao público-alvo na época certa</div>
+    </div>
+    <div class="action-row">
+      <div class="a-prazo">Nov 2025</div>
+      <div class="a-desc">Participar do contexto Natal Luz (Gramado/Canela transborda para SG) com campanha digital específica para proprietários de vinhedo</div>
+      <div class="a-resp">Marketing Digital</div>
+      <div class="a-result">Leads qualificados no pico de demanda</div>
+    </div>
+    <div class="action-row">
+      <div class="a-prazo">Contínuo</div>
+      <div class="a-desc">Produzir conteúdo: vídeos de instalação, depoimentos de vinicultores, simulações de ROI — LinkedIn, Instagram e YouTube</div>
+      <div class="a-resp">Marketing</div>
+      <div class="a-result">Autoridade no segmento enoturismo</div>
+    </div>
+  </div>
+
+  <div class="box-dark fu" data-d="3" style="margin-top:24px">
+    <p style="font-size:14.5px;line-height:1.85">
+      <strong>Conclusão para os Diretores:</strong> A Serra Gaúcha é o mercado de <strong>maior volume e maior ticket</strong> que a Comsteel Tiny House pode atender hoje no Brasil. A combinação de enoturismo consolidado, demanda reprimida por hospedagem em vinícolas e ausência de concorrente com produto equivalente ao da Comsteel cria uma <strong>janela de oportunidade que precisa ser capturada nos próximos 12–18 meses</strong> — antes que o mercado se forme com outros players. A fábrica a menos de 2h da região principal é uma vantagem logística que nenhum concorrente nacional tem.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL ═══════════ -->
+<section class="slide" id="final">
+  <div class="final-label">Comsteel Construção e Mobilidade</div>
+  <h2 class="final-h1">Do vinhedo à suíte.<br><em>Em 60 dias.</em></h2>
+  <div class="final-rule"></div>
+  <div class="final-contact">
+    Novo Hamburgo – RS &nbsp;·&nbsp; comsteel.com.br<br>
+    comercial@comsteel.com.br
+  </div>
+  <div class="confid">Confidencial · Documento de Uso Interno · Comsteel 2025</div>
+</section>
+
+</main>
+
+<script>
+// PROGRESS
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  const p=(d.scrollTop||document.body.scrollTop)/(d.scrollHeight-d.clientHeight)*100;
+  document.getElementById('progress').style.width=p+'%';
+});
+
+// FADE IN
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.08});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+// NAV ACTIVE
+const secs=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-menu a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id});
+  navAs.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+cur)a.classList.add('active');
+  });
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// SCENARIO TABS (A and B separately)
+function setSc(group,name){
+  const labels=['cons','real','otim'];
+  const tabs=document.querySelectorAll('#s-roi .sc-tabs');
+  const idx=group==='a'?0:1;
+  const tabSet=tabs[idx];
+  if(!tabSet)return;
+  tabSet.querySelectorAll('.sc-tab').forEach((t,i)=>{
+    t.classList.toggle('active',labels[i]===name);
+  });
+  const prefix='sc'+group+'-';
+  labels.forEach(n=>{
+    const panel=document.getElementById(prefix+n);
+    if(panel)panel.classList.toggle('active',n===name);
+  });
+}
+
+// ACCORDION
+function toggleAcc(el){
+  el.closest('.acc').classList.toggle('open');
+}
+</script>
+</body>
+</html>

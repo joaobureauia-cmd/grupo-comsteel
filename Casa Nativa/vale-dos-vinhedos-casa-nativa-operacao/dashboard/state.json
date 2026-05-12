@@ -1,0 +1,82 @@
+{
+  "projeto": "Vale dos Vinhedos — Casa Nativa Operação",
+  "ultima_atualizacao": "2026-04-09T12:00:00",
+  "fase_atual": "Fase 5 — Operação",
+  "fases": [
+    {"id": 0, "nome": "Setup", "status": "concluida", "entregavel": "Estrutura do projeto criada"},
+    {"id": 1, "nome": "Inteligência", "status": "concluida", "entregavel": "Relatório competitivo + Plano estratégico"},
+    {"id": 2, "nome": "Instagram", "status": "concluida", "entregavel": "Perfil + 9 posts + calendário 30 dias"},
+    {"id": 3, "nome": "Plataformas", "status": "concluida", "entregavel": "Landing page + Listing Airbnb"},
+    {"id": 4, "nome": "Tráfego Pago", "status": "concluida", "entregavel": "Campanhas Meta Ads documentadas — ativação pendente João"},
+    {"id": 5, "nome": "Operação", "status": "em_andamento", "entregavel": "Rotina contínua"}
+  ],
+  "tarefa_atual": {
+    "fase": "Fase 5 — Operação",
+    "numero": 1,
+    "total": null,
+    "descricao": "Aguardando instrução de João para próxima tarefa operacional",
+    "agente": "orchestrator"
+  },
+  "agentes": [
+    {"nome": "brand-guardian", "status": "idle", "ultima_tarefa": "Validação de copies Meta Ads Fase 4", "output": "outputs/campaigns/2026-04-09_ad-copies-meta.md"},
+    {"nome": "research-analyst", "status": "completed", "ultima_tarefa": "Pesquisa competitiva Airbnb e Instagram", "output": "outputs/research/2026-04-08_pesquisa-airbnb.md, outputs/research/2026-04-08_pesquisa-instagram.md"},
+    {"nome": "strategy-planner", "status": "completed", "ultima_tarefa": "Posicionamento, pitches, calendário, hashtags", "output": "outputs/reports/2026-04-08_posicionamento.md, outputs/reports/2026-04-08_pitches-de-venda.md, outputs/reports/2026-04-08_calendario-editorial-abril-maio.md, outputs/reports/2026-04-08_hashtags.md"},
+    {"nome": "copywriter", "status": "completed", "ultima_tarefa": "Copies de anúncios Meta Ads — 3 campanhas", "output": "outputs/campaigns/2026-04-09_ad-copies-meta.md"},
+    {"nome": "content-brief-generator", "status": "completed", "ultima_tarefa": "Briefs criativos — 6 peças para Meta Ads", "output": "outputs/briefs/2026-04-09_ad-creative-briefs.md"},
+    {"nome": "social-media-manager", "status": "completed", "ultima_tarefa": "Documento mestre de setup Instagram", "output": "outputs/reports/2026-04-08_instagram-setup-master.md"},
+    {"nome": "ads-manager", "status": "completed", "ultima_tarefa": "Estrutura técnica das 3 campanhas Meta Ads", "output": "outputs/campaigns/2026-04-09_meta-ads-campaign-plan.md"},
+    {"nome": "landing-page-builder", "status": "completed", "ultima_tarefa": "HTML funcional da Landing Page", "output": "outputs/landing-page/index.html"},
+    {"nome": "report-generator", "status": "completed", "ultima_tarefa": "Relatório consolidado Fase 4 — Tráfego Pago", "output": "outputs/reports/2026-04-09_relatorio-fase4-trafego-pago.md"}
+  ],
+  "fase_1_entregaveis": {
+    "pesquisa_airbnb": "outputs/research/2026-04-08_pesquisa-airbnb.md",
+    "pesquisa_instagram": "outputs/research/2026-04-08_pesquisa-instagram.md",
+    "posicionamento": "outputs/reports/2026-04-08_posicionamento.md",
+    "pitches_de_venda": "outputs/reports/2026-04-08_pitches-de-venda.md",
+    "calendario_editorial": "outputs/reports/2026-04-08_calendario-editorial-abril-maio.md",
+    "hashtags": "outputs/reports/2026-04-08_hashtags.md"
+  },
+  "fase_2_entregaveis": {
+    "captions_posts_10_22": "outputs/campaigns/2026-04-08_posts-10-22-captions.md",
+    "briefs_visuais_lancamento": "outputs/briefs/2026-04-08_visual-briefs-launch.md",
+    "master_setup_instagram": "outputs/reports/2026-04-08_instagram-setup-master.md"
+  },
+  "fase_3_entregaveis": {
+    "listing_oficial_airbnb": "outputs/platforms/2026-04-08_airbnb-listing.md",
+    "wireframe_landing_page": "outputs/platforms/2026-04-08_landing-page-wireframe.md",
+    "landing_page_html": "outputs/landing-page/index.html"
+  },
+  "fase_4_entregaveis": {
+    "ad_copies": "outputs/campaigns/2026-04-09_ad-copies-meta.md",
+    "creative_briefs": "outputs/briefs/2026-04-09_ad-creative-briefs.md",
+    "campaign_plan": "outputs/campaigns/2026-04-09_meta-ads-campaign-plan.md",
+    "relatorio_fase4": "outputs/reports/2026-04-09_relatorio-fase4-trafego-pago.md"
+  },
+  "log": [
+    {"timestamp": "2026-04-09T00:00:00", "agente": "orchestrator", "acao": "FASE 3 iniciada. Copywriter estruturando Airbnb Listing."},
+    {"timestamp": "2026-04-09T00:00:00", "agente": "copywriter", "acao": "Tarefa 1 concluída — Listing Airbnb em outputs/platforms/"},
+    {"timestamp": "2026-04-09T00:00:00", "agente": "landing-page-builder", "acao": "Tarefa 2 concluída — Wireframe landing page em outputs/platforms/"},
+    {"timestamp": "2026-04-09T00:00:00", "agente": "orchestrator", "acao": "FASE 3 CONCLUÍDA — Plataformas completas."},
+    {"timestamp": "2026-04-09T10:00:00", "agente": "orchestrator", "acao": "FASE 4 iniciada. Copywriter + brand-guardian criando copies para campanhas Meta Ads."},
+    {"timestamp": "2026-04-09T10:30:00", "agente": "copywriter", "acao": "Tarefa 1 concluída — Copies Meta Ads (3 campanhas) em outputs/campaigns/2026-04-09_ad-copies-meta.md"},
+    {"timestamp": "2026-04-09T10:30:00", "agente": "brand-guardian", "acao": "Validação concluída — todas as copies aprovadas conforme diretrizes de marca."},
+    {"timestamp": "2026-04-09T11:00:00", "agente": "content-brief-generator", "acao": "Tarefa 2 concluída — 6 briefs criativos em outputs/briefs/2026-04-09_ad-creative-briefs.md"},
+    {"timestamp": "2026-04-09T11:30:00", "agente": "ads-manager", "acao": "Tarefa 3 concluída — Plano técnico de 3 campanhas em outputs/campaigns/2026-04-09_meta-ads-campaign-plan.md"},
+    {"timestamp": "2026-04-09T12:00:00", "agente": "report-generator", "acao": "Tarefa 4 concluída — Relatório executivo Fase 4 em outputs/reports/2026-04-09_relatorio-fase4-trafego-pago.md"},
+    {"timestamp": "2026-04-09T12:00:00", "agente": "orchestrator", "acao": "FASE 4 CONCLUÍDA — Tráfego Pago documentado. 4 entregáveis gerados. Ativação aguarda João. FASE 5 iniciada."}
+  ],
+  "pendencias": [
+    "Preço por noite (temporada alta e baixa)",
+    "Lista completa de comodidades",
+    "WhatsApp do anfitrião",
+    "Email do anfitrião",
+    "Logo Casa Nativa (PNG/SVG) → salvar em context/assets/",
+    "Logo Comsteel Tiny House → salvar em context/assets/",
+    "Logo Alinea Hospedagem → salvar em context/assets/",
+    "FASE 4 — Criativos finalizados pelo designer (6 peças)",
+    "FASE 4 — Pixel Meta instalado na landing page",
+    "FASE 4 — Domínio verificado no Meta Business Suite",
+    "FASE 4 — Orçamento aprovado por João (R$ 2.250,00 para 45 dias)",
+    "FASE 4 — Conta Meta Ads autenticada com pagamento ativo"
+  ]
+}

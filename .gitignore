@@ -1,0 +1,67 @@
+# ─── Imagens ───────────────────────────────────
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.png
+*.PNG
+*.webp
+*.heic
+*.HEIC
+*.tiff
+*.tif
+*.bmp
+*.gif
+
+# ─── Vídeos ────────────────────────────────────
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.MOV
+*.MP4
+
+# ─── PDFs e documentos binários ────────────────
+*.pdf
+*.PDF
+
+# ─── Arquivos de design ─────────────────────────
+*.psd
+*.ai
+*.eps
+*.indd
+
+# ─── Arquivos CAD/BIM ───────────────────────────
+*.rvt
+*.rfa
+*.rte
+*.skp
+*.dwg
+*.dxf
+*.ifc
+*.nwd
+*.3dm
+
+# ─── Office binários ────────────────────────────
+*.xlsx
+*.xls
+*.docx
+*.doc
+*.pptx
+*.ppt
+
+# ─── Sistema ────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.tmp
+
+# ─── Pastas de assets pesados ───────────────────
+Design System/01_Logos/
+Design System/02_Renders_Tiny_House/
+Design System/03_Portfolio_Construcao/
+
+# ─── Arquivos grandes específicos ───────────────
+03 Licenciados/zitnOrke
+zitnOrke
+**/zitnOrke

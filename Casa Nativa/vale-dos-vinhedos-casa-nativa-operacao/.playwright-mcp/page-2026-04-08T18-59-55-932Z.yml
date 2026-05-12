@@ -1,0 +1,124 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "Casa Nativa — Painel de Operação" [level=1] [ref=e4]
+      - generic [ref=e5]: Vale dos Vinhedos · Bento Gonçalves · RS
+    - generic [ref=e6]:
+      - text: Atualiza a cada 3s ·
+      - generic [ref=e8]: 08/04/2026 00:00
+  - generic [ref=e9]:
+    - generic [ref=e10]: ⚡ Executando agora
+    - generic [ref=e11]: Pesquisa Airbnb — Garibaldi e Vale dos Vinhedos
+    - generic [ref=e13]: research-analyst
+    - generic [ref=e15]: Progresso geral do projeto — 17% (1 de 6 fases)
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: 📍 Fases do Projeto
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]: "0"
+            - generic [ref=e25]:
+              - generic [ref=e26]: Setup
+              - generic [ref=e27]: Estrutura do projeto criada
+              - text: Concluída
+          - generic [ref=e28]:
+            - generic [ref=e29]: "1"
+            - generic [ref=e30]:
+              - generic [ref=e31]: Inteligência
+              - generic [ref=e32]: Relatório competitivo + Plano estratégico
+              - text: Em andamento
+          - generic [ref=e33]:
+            - generic [ref=e34]: "2"
+            - generic [ref=e35]:
+              - generic [ref=e36]: Instagram
+              - generic [ref=e37]: Perfil + 9 posts + calendário 30 dias
+              - text: Pendente
+          - generic [ref=e38]:
+            - generic [ref=e39]: "3"
+            - generic [ref=e40]:
+              - generic [ref=e41]: Plataformas
+              - generic [ref=e42]: Landing page + Listing Airbnb
+              - text: Pendente
+          - generic [ref=e43]:
+            - generic [ref=e44]: "4"
+            - generic [ref=e45]:
+              - generic [ref=e46]: Tráfego Pago
+              - generic [ref=e47]: Campanhas Meta Ads ativas
+              - text: Pendente
+          - generic [ref=e48]:
+            - generic [ref=e49]: "5"
+            - generic [ref=e50]:
+              - generic [ref=e51]: Operação
+              - generic [ref=e52]: Rotina contínua
+              - text: Pendente
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]: 🤖 Agentes
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - generic [ref=e59]: brand-guardian
+              - generic [ref=e61]: Aguardando
+              - generic [ref=e62]: Idle
+            - generic [ref=e63]:
+              - generic [ref=e65]: research-analyst
+              - generic [ref=e67]: Pesquisa Airbnb — Garibaldi e Vale dos Vinhedos
+              - generic [ref=e68]: Rodando
+            - generic [ref=e69]:
+              - generic [ref=e71]: strategy-planner
+              - generic [ref=e73]: Aguardando relatórios de pesquisa
+              - generic [ref=e74]: Idle
+            - generic [ref=e75]:
+              - generic [ref=e77]: copywriter
+              - generic [ref=e79]: Aguardando
+              - generic [ref=e80]: Idle
+            - generic [ref=e81]:
+              - generic [ref=e83]: content-brief-generator
+              - generic [ref=e85]: Aguardando
+              - generic [ref=e86]: Idle
+            - generic [ref=e87]:
+              - generic [ref=e89]: social-media-manager
+              - generic [ref=e91]: Aguardando
+              - generic [ref=e92]: Idle
+            - generic [ref=e93]:
+              - generic [ref=e95]: ads-manager
+              - generic [ref=e97]: Aguardando
+              - generic [ref=e98]: Idle
+            - generic [ref=e99]:
+              - generic [ref=e101]: landing-page-builder
+              - generic [ref=e103]: Aguardando
+              - generic [ref=e104]: Idle
+            - generic [ref=e105]:
+              - generic [ref=e107]: report-generator
+              - generic [ref=e109]: Aguardando
+              - generic [ref=e110]: Idle
+        - generic [ref=e111]:
+          - generic [ref=e112]: 📋 Log de Execução
+          - generic [ref=e113]:
+            - generic [ref=e114]: 08/04/2026 00:00[orchestrator]Fase 1 iniciada — Inteligência competitiva
+            - generic [ref=e115]: 08/04/2026 00:00[orchestrator]Projeto iniciado — estrutura completa criada
+      - generic [ref=e116]:
+        - generic [ref=e117]: ⏳ Pendências
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - generic [ref=e120]: ○
+            - text: Preço por noite (temporada alta e baixa)
+          - generic [ref=e121]:
+            - generic [ref=e122]: ○
+            - text: Lista completa de comodidades
+          - generic [ref=e123]:
+            - generic [ref=e124]: ○
+            - text: WhatsApp do anfitrião
+          - generic [ref=e125]:
+            - generic [ref=e126]: ○
+            - text: Email do anfitrião
+          - generic [ref=e127]:
+            - generic [ref=e128]: ○
+            - text: Logo Casa Nativa (PNG/SVG) → salvar em context/assets/
+          - generic [ref=e129]:
+            - generic [ref=e130]: ○
+            - text: Logo Comsteel Tiny House → salvar em context/assets/
+          - generic [ref=e131]:
+            - generic [ref=e132]: ○
+            - text: Logo Alinea Hospedagem → salvar em context/assets/
+    - generic [ref=e133]: "Projeto: Vale dos Vinhedos — Casa Nativa Operação · joao@comsteel.com.br"

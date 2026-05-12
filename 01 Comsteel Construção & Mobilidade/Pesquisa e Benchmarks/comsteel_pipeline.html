@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comsteel — Pipeline de Projetos</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #080808;
+  --surface:   #111111;
+  --surface2:  #181818;
+  --border:    #252218;
+  --border2:   #332e20;
+  --orange:    #f97316;
+  --orange2:   #ea6000;
+  --orange-lo: rgba(249,115,22,0.12);
+  --orange-mid:rgba(249,115,22,0.25);
+  --text:      #f0ebe2;
+  --text2:     #a09080;
+  --text3:     #5a5040;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* HEADER */
+header {
+  position: relative;
+  padding: 0 3rem;
+  border-bottom: 1px solid var(--border2);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.header-left {
+  padding: 2.5rem 3rem 2rem 0;
+  border-right: 1px solid var(--border2);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.brand-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  color: var(--orange);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.brand-desc {
+  font-size: 0.72rem;
+  color: var(--text3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 2rem 0 2rem 3rem;
+  gap: 1rem;
+}
+
+.hdr-stat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 0.2rem;
+  text-align: right;
+}
+
+.hdr-stat-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.9rem;
+  color: var(--orange);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: right;
+}
+
+.header-stripe {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--orange), var(--orange2));
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  padding: 0 3rem;
+  border-bottom: 1px solid var(--border2);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 1rem 1.4rem 0.85rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-btn:hover { color: var(--text2); }
+.tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
+
+.tab-count {
+  font-size: 0.62rem;
+  background: var(--border2);
+  color: var(--text3);
+  padding: 0.1rem 0.45rem;
+  border-radius: 20px;
+}
+
+.tab-btn.active .tab-count {
+  background: var(--orange);
+  color: #080808;
+  font-weight: 700;
+}
+
+/* MAIN */
+main { padding: 2.5rem 3rem; max-width: 1440px; }
+
+.section { display: none; }
+.section.active { display: block; }
+
+/* SUMMARY BAR */
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border: 1px solid var(--border2);
+  margin-bottom: 2.5rem;
+  background: var(--border2);
+  gap: 1px;
+}
+
+.s-cell {
+  background: var(--surface);
+  padding: 1.2rem 1.5rem;
+  position: relative;
+}
+
+.s-cell.hl { background: var(--surface2); }
+
+.s-cell.hl::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 25%; bottom: 25%;
+  width: 2px;
+  background: var(--orange);
+}
+
+.s-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 0.45rem;
+}
+
+.s-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--orange);
+  line-height: 1;
+}
+
+.s-sub { font-size: 0.62rem; color: var(--text3); margin-top: 0.2rem; }
+
+/* SECTION HEADER */
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--orange);
+  white-space: nowrap;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--orange-mid);
+  background: var(--orange-lo);
+}
+
+.sec-line { flex: 1; height: 1px; background: var(--border2); }
+
+/* GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--border2);
+  border: 1px solid var(--border2);
+  margin-bottom: 3rem;
+}
+
+/* CARD */
+.card {
+  background: var(--surface);
+  padding: 1.6rem 1.75rem;
+  position: relative;
+  transition: background 0.18s;
+  animation: fadeUp 0.4s ease both;
+}
+
+.card:hover { background: var(--surface2); }
+
+.card:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--orange), transparent 60%);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.card-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.card-loc {
+  font-size: 0.65rem;
+  color: var(--orange2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+.card-loc::before { content: '▸ '; color: var(--orange); font-size: 0.5rem; }
+
+.badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-obra  { background: rgba(249,115,22,0.15); color: #f97316; border: 1px solid rgba(249,115,22,0.35); }
+.badge-tiny  { background: rgba(234,96,0,0.12);   color: #fb923c; border: 1px solid rgba(234,96,0,0.3); }
+.badge-mcmv  { background: rgba(249,115,22,0.22); color: #fdba74; border: 1px solid rgba(249,115,22,0.5); }
+.badge-steel { background: rgba(180,80,10,0.15);  color: #f0894a; border: 1px solid rgba(180,80,10,0.35); }
+.badge-vila  { background: rgba(200,90,10,0.18);  color: #f0a060; border: 1px solid rgba(200,90,10,0.4); }
+.badge-gem   { background: rgba(249,115,22,0.1);  color: #fda060; border: 1px solid rgba(249,115,22,0.25); }
+
+.card-divider { height: 1px; background: var(--border2); margin: 1.1rem 0; }
+
+.card-ctx {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.card-ctx strong { color: var(--text); font-weight: 500; }
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.75rem;
+}
+
+.st-enviado    { background: rgba(74,160,90,0.15);  color: #6ad48a; border: 1px solid rgba(74,160,90,0.35); }
+.st-aguardando { background: rgba(249,115,22,0.15); color: #fdba74; border: 1px solid rgba(249,115,22,0.4); }
+.st-negociacao { background: rgba(180,80,10,0.18);  color: #f0894a; border: 1px solid rgba(180,80,10,0.4); }
+.st-avaliacao  { background: rgba(160,80,30,0.18);  color: #e0905a; border: 1px solid rgba(160,80,30,0.4); }
+.st-standby    { background: rgba(80,80,80,0.18);   color: #aaa;    border: 1px solid rgba(80,80,80,0.35); }
+.st-transporte { background: rgba(200,50,50,0.18);  color: #e07070; border: 1px solid rgba(200,50,50,0.4); }
+.st-reunioes   { background: rgba(200,130,20,0.18); color: #e0b060; border: 1px solid rgba(200,130,20,0.4); }
+.st-estudando  { background: rgba(60,120,160,0.15); color: #70b0d8; border: 1px solid rgba(60,120,160,0.35); }
+.st-pendente   { background: rgba(60,60,60,0.18);   color: #888;    border: 1px solid rgba(60,60,60,0.35); }
+
+.card-value { text-align: right; }
+
+.val-label {
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 0.15rem;
+}
+
+.val-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--orange);
+}
+
+.val-none { font-size: 0.72rem; color: var(--text3); font-style: italic; }
+
+.all-wrap { display: flex; flex-direction: column; }
+
+@media (max-width: 720px) {
+  header, .tabs, main { padding-left: 1.2rem; padding-right: 1.2rem; }
+  header { grid-template-columns: 1fr; }
+  .header-left { border-right: none; padding-right: 0; }
+  .header-right { align-items: flex-start; padding-left: 0; border-top: 1px solid var(--border2); padding-top: 1.5rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .tab-btn { padding: 0.9rem 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-stripe"></div>
+  <div class="header-left">
+    <div class="brand">
+      <span class="brand-name">Comsteel</span>
+      <span class="brand-sub">Construção Modular</span>
+    </div>
+    <div class="brand-desc">Pipeline de projetos &amp; orçamentos · 2025</div>
+  </div>
+  <div class="header-right">
+    <div>
+      <div class="hdr-stat-label">Volume total estimado</div>
+      <div class="hdr-stat-val">R$ 15.297.583</div>
+    </div>
+    <div>
+      <div class="hdr-stat-label">Projetos em pipeline</div>
+      <div class="hdr-stat-val" style="font-size:1.4rem">11 projetos</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="showTab('todos',this)">
+    Todos <span class="tab-count">11</span>
+  </button>
+  <button class="tab-btn" onclick="showTab('obras',this)">
+    Construção Civil <span class="tab-count">6</span>
+  </button>
+  <button class="tab-btn" onclick="showTab('tiny',this)">
+    Tiny Houses <span class="tab-count">5</span>
+  </button>
+</nav>
+
+<main>
+
+  <!-- TODOS -->
+  <section class="section active" id="sec-todos">
+    <div class="summary-bar">
+      <div class="s-cell hl">
+        <div class="s-label">Total projetos</div>
+        <div class="s-val">11</div>
+        <div class="s-sub">em pipeline</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Construção Civil</div>
+        <div class="s-val">6</div>
+        <div class="s-sub">obras e modular</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Tiny Houses</div>
+        <div class="s-val">5</div>
+        <div class="s-sub">módulos residenciais</div>
+      </div>
+      <div class="s-cell hl">
+        <div class="s-label">Volume total</div>
+        <div class="s-val" style="font-size:1.4rem">R$ 15,3M</div>
+        <div class="s-sub">estimado em orçamentos</div>
+      </div>
+    </div>
+    <div class="all-wrap">
+      <div class="sec-header">
+        <span class="sec-title">Construção Civil &amp; Modular</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="cards-grid" id="obras-todos"></div>
+      <div class="sec-header">
+        <span class="sec-title">Tiny Houses</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="cards-grid" id="tiny-todos"></div>
+    </div>
+  </section>
+
+  <!-- OBRAS -->
+  <section class="section" id="sec-obras">
+    <div class="summary-bar">
+      <div class="s-cell hl">
+        <div class="s-label">Projetos</div>
+        <div class="s-val">6</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Volume estimado</div>
+        <div class="s-val" style="font-size:1.3rem">R$ 12,87M</div>
+        <div class="s-sub">incl. estimativas</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Proposta enviada</div>
+        <div class="s-val">1</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Em negociação</div>
+        <div class="s-val">2</div>
+      </div>
+    </div>
+    <div class="sec-header">
+      <span class="sec-title">Construção Civil &amp; Modular</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="cards-grid" id="obras-main"></div>
+  </section>
+
+  <!-- TINY -->
+  <section class="section" id="sec-tiny">
+    <div class="summary-bar">
+      <div class="s-cell hl">
+        <div class="s-label">Projetos</div>
+        <div class="s-val">5</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Volume estimado</div>
+        <div class="s-val" style="font-size:1.3rem">R$ 2,40M</div>
+        <div class="s-sub">orçamentos emitidos</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Aguard. sinal</div>
+        <div class="s-val">1</div>
+      </div>
+      <div class="s-cell">
+        <div class="s-label">Transporte agendado</div>
+        <div class="s-val">1</div>
+        <div class="s-sub">quarta 18/03</div>
+      </div>
+    </div>
+    <div class="sec-header">
+      <span class="sec-title">Tiny Houses</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="cards-grid" id="tiny-main"></div>
+  </section>
+
+</main>
+
+<script>
+const obras = [
+  {
+    name: "Fabiano — Loja Acervo POA",
+    loc: "Porto Alegre, RS",
+    ctx: "Reforma <strong>retrofit na fachada</strong> da loja.",
+    status: "Orçamento pendente",
+    stClass: "st-pendente",
+    value: null,
+    badge: "Construção",
+    badgeClass: "badge-obra"
+  },
+  {
+    name: "Daniela Engel",
+    loc: "Osório, RS",
+    ctx: "Quiosque de <strong>49 m²</strong> em Steel Frame. Orçamento apenas da parte cinza.",
+    status: "Proposta enviada",
+    stClass: "st-enviado",
+    value: "R$ 141.103",
+    badge: "Steel Frame",
+    badgeClass: "badge-steel"
+  },
+  {
+    name: "Roberto Magalhães",
+    loc: "São Francisco de Paula, RS",
+    ctx: "Sem projeto definido ainda. Área em torno de <strong>170 m²</strong> para investimento. Estimativa: R$ 900.000.",
+    status: "Em avaliação",
+    stClass: "st-avaliacao",
+    value: "~R$ 900.000",
+    badge: "Construção",
+    badgeClass: "badge-obra"
+  },
+  {
+    name: "João Alberto Pizolatti",
+    loc: "Santa Catarina, SC",
+    ctx: "<strong>30 unidades MCMV</strong> de 33 m² cada.",
+    status: "Em negociação",
+    stClass: "st-negociacao",
+    value: "R$ 8.600.000",
+    badge: "MCMV",
+    badgeClass: "badge-mcmv"
+  },
+  {
+    name: "Guadalupe",
+    loc: "Gravataí, RS",
+    ctx: "Obra de aproximadamente <strong>150 m²</strong>. Visita à fábrica agendada para <strong>26/03</strong>.",
+    status: "Estudando",
+    stClass: "st-estudando",
+    value: null,
+    badge: "Construção",
+    badgeClass: "badge-obra"
+  },
+  {
+    name: "Oliver",
+    loc: "Alpes Verdes — Canela, RS",
+    ctx: "<strong>Geminados</strong> com total de <strong>370 m²</strong>.",
+    status: "Em negociação",
+    stClass: "st-negociacao",
+    value: "R$ 1.833.480",
+    badge: "Geminados",
+    badgeClass: "badge-gem"
+  }
+];
+
+const tiny = [
+  {
+    name: "Vanessa",
+    loc: "Florianópolis, SC",
+    ctx: "Casa Standard com <strong>1 suíte</strong>. Sem frete e sem infraestrutura.",
+    status: "Sem status definido",
+    stClass: "st-pendente",
+    value: "R$ 220.000",
+    badge: "Tiny House",
+    badgeClass: "badge-tiny"
+  },
+  {
+    name: "Cristina Kawall",
+    loc: "Jundiaí, SP",
+    ctx: "<strong>Módulo gourmet.</strong> Termo de compromisso enviado. Aguardando sinal para início da produção.",
+    status: "Aguardando sinal",
+    stClass: "st-aguardando",
+    value: "R$ 166.000",
+    badge: "Tiny House",
+    badgeClass: "badge-tiny"
+  },
+  {
+    name: "Leandro Basttini",
+    loc: "São Bernardo do Campo, SP",
+    ctx: "<strong>8 módulos</strong> para vila modular a R$ 149k cada (preço do aço atual). 3 reuniões realizadas, briefing em estudo.",
+    status: "Reuniões realizadas",
+    stClass: "st-reunioes",
+    value: "R$ 1.192.000",
+    badge: "Vila Modular",
+    badgeClass: "badge-vila"
+  },
+  {
+    name: "Samir",
+    loc: "Torres, RS",
+    ctx: "<strong>2 tiny houses:</strong> Natura 29 m² + anexo.",
+    status: "Em negociação",
+    stClass: "st-negociacao",
+    value: "R$ 266.000",
+    badge: "Tiny House",
+    badgeClass: "badge-tiny"
+  },
+  {
+    name: "Fabrício",
+    loc: "Livramento, RS",
+    ctx: "Já com <strong>R$ 149.000 de entrada</strong> (Tiguan). Projeto em estudo. Entrega prevista para <strong>julho</strong>.",
+    status: "Stand by",
+    stClass: "st-standby",
+    value: "R$ 300.000",
+    badge: "Tiny House",
+    badgeClass: "badge-tiny"
+  },
+  {
+    name: "José e Cheila",
+    loc: "Bento Gonçalves, RS",
+    ctx: "Locação Airbnb — <strong>Casa Nativa</strong> como parte do pagamento nos primeiros 12 meses; após: parcelas fixas. Transporte agendado para <strong>quarta-feira, 18/03</strong>.",
+    status: "Transporte em 18/03",
+    stClass: "st-transporte",
+    value: "R$ 480.000",
+    badge: "Tiny House",
+    badgeClass: "badge-tiny"
+  }
+];
+
+function card(p, i) {
+  return `
+  <div class="card" style="animation-delay:${i*0.05}s">
+    <div class="card-header">
+      <div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-loc">${p.loc}</div>
+      </div>
+      <span class="badge ${p.badgeClass}">${p.badge}</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-ctx">${p.ctx}</div>
+    <div class="card-footer">
+      <span class="pill ${p.stClass}">${p.status}</span>
+      <div class="card-value">
+        <div class="val-label">Orçamento</div>
+        ${p.value ? `<div class="val-num">${p.value}</div>` : `<div class="val-none">a enviar</div>`}
+      </div>
+    </div>
+  </div>`;
+}
+
+function fill(id, data) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = data.map((p,i) => card(p,i)).join('');
+}
+
+fill('obras-todos', obras);
+fill('obras-main',  obras);
+fill('tiny-todos',  tiny);
+fill('tiny-main',   tiny);
+
+function showTab(tab, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

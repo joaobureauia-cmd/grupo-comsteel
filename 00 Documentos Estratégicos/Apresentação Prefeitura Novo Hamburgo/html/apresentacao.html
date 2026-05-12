@@ -1,0 +1,1261 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Comsteel · Apresentação Prefeitura de Novo Hamburgo</title>
+  <meta name="viewport" content="width=1920" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+  <script src="deck-stage.js"></script>
+  <style>
+    :root{
+      --black: #0a0a0a;
+      --ink:   #111111;
+      --copper:#D86B28;
+      --copper-bright:#F07F08;
+      --paper: #FFFFFF;
+      --gray:  #949494;
+      --tabaco:#3a240d;
+      --bege:  #c9b692;
+      --bege-2:#e9dec7;
+      --cobre-tiny:rgb(135,108,77);
+      --cream: #f4eee0;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:#000;color:#fff;font-family:'Archivo',sans-serif;font-feature-settings:"ss01","ss02"}
+
+    deck-stage section{
+      width:1920px;height:1080px;overflow:hidden;position:relative;
+      font-family:'Archivo',sans-serif;color:var(--paper);background:var(--paper);
+    }
+
+    .cs-bg-black{background:var(--black);color:#fff}
+    .cs-bg-paper{background:var(--paper);color:var(--ink)}
+    .cs-bg-ink{background:var(--ink);color:#fff}
+
+    .cs-h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:96px;line-height:.95;letter-spacing:-.025em;text-transform:uppercase}
+    .cs-eyebrow{font-family:'Archivo',sans-serif;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;color:var(--copper-bright)}
+    .cs-eyebrow-muted{color:var(--gray)}
+    .cs-body{font-size:30px;line-height:1.45;font-weight:400;color:#d8d8d8}
+
+    .cs-page-num{position:absolute;left:100px;bottom:64px;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:500}
+    .cs-page-num.dark{color:rgba(0,0,0,.4)}
+    .cs-page-tag{position:absolute;right:100px;bottom:64px;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:500}
+    .cs-page-tag.dark{color:rgba(0,0,0,.4)}
+
+    /* Header band */
+    .cs-topbar{position:absolute;top:50px;left:100px;right:100px;display:flex;align-items:center;justify-content:space-between}
+    .cs-topbar .brand-text{font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+    .cs-topbar.dark .brand-text{color:rgba(0,0,0,.55)}
+
+    /* Real logo image */
+    .logo-img{display:block;height:64px;width:auto}
+    .logo-img.sm{height:54px}
+    .logo-img.lg{height:108px}
+
+    /* Tiny House */
+    .th-bg-tabaco{background:var(--tabaco);color:var(--cream)}
+    .th-bg-bege{background:var(--bege-2);color:var(--tabaco)}
+    .th-bg-cream{background:var(--cream);color:var(--tabaco)}
+    .th-h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:120px;line-height:.95;letter-spacing:-.035em}
+    .th-h2{font-family:'Manrope',sans-serif;font-weight:800;font-size:80px;line-height:1;letter-spacing:-.025em}
+    .th-it{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400}
+    .th-body{font-family:'Manrope',sans-serif;font-weight:300;font-size:28px;line-height:1.55;letter-spacing:.005em}
+
+    .row{display:flex} .col{display:flex;flex-direction:column}
+    img{display:block;max-width:100%}
+    .img-fill{width:100%;height:100%;object-fit:cover;display:block}
+    .img-fit{width:100%;height:100%;object-fit:contain;display:block}
+
+    .cs-cmp-row{display:grid;grid-template-columns:1.4fr 1fr 1.1fr;border-bottom:1px solid rgba(255,255,255,.12)}
+    .cs-cmp-row > div{padding:18px 24px;font-size:23px;line-height:1.3;color:#d8d8d8;font-weight:400}
+    .cs-cmp-row > div:nth-child(1){color:rgba(255,255,255,.7);font-weight:500}
+    .cs-cmp-row > div:nth-child(3){background:rgba(240,127,8,.06);color:#fff;font-weight:500}
+    .cs-cmp-row > div:nth-child(3) strong{color:#F07F08;font-weight:700}
+
+    .cs-step{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:flex-start;border-top:1px solid rgba(255,255,255,.16);padding:24px 0}
+    .cs-step .num{font-family:'Archivo',sans-serif;font-weight:900;font-size:54px;letter-spacing:-.04em;color:#fff;line-height:1}
+    .cs-step .t{font-weight:800;font-size:28px;letter-spacing:-.005em;text-transform:uppercase;color:#fff;line-height:1.1}
+    .cs-step p{margin-top:8px;font-size:20px;color:rgba(255,255,255,.65);line-height:1.45;max-width:560px}
+  </style>
+</head>
+<body>
+  <script type="application/json" id="speaker-notes">[]</script>
+
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+      <rect width="400" height="300" fill="#0a0a0a"/>
+      <g transform="translate(120 95)">
+        <path d="M2 38 L2 18 L18 4 L34 18 L34 38 M10 38 L10 24 L18 16 L26 24 L26 38 M14 38 L14 28 L18 24 L22 28 L22 38" stroke="#F07F08" stroke-width="3" fill="none" transform="scale(2.6)"/>
+        <path d="M34 20 L42 12 L54 22 L54 38 L42 38" stroke="#F07F08" stroke-width="3" fill="none" transform="scale(2.6)"/>
+      </g>
+      <text x="200" y="248" fill="#fff" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="22" letter-spacing="4" text-anchor="middle">COMSTEEL</text>
+    </svg>
+  </template>
+
+  <deck-stage width="1920" height="1080">
+
+  <!-- ============================================================
+       SLIDE 1 — CAPA
+       ============================================================ -->
+  <section data-label="01 Capa">
+    <img src="assets/obra-canela-predio.jpg" class="img-fill" style="position:absolute;inset:0;filter:brightness(.45) saturate(.9)" alt="Obra Steel Frame em montagem" />
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.25) 50%, rgba(0,0,0,.85) 100%)"></div>
+
+    <div style="position:absolute;top:60px;left:100px">
+      <img src="assets/logo-construcao-dark.png" class="logo-img lg" style="height:120px" alt="Comsteel · Construção &amp; Mobilidade" />
+    </div>
+    <div style="position:absolute;top:90px;right:100px;font-family:'Archivo',sans-serif;font-weight:500;font-size:18px;letter-spacing:.4em;color:rgba(255,255,255,.7);text-transform:uppercase">
+      APRESENTAÇÃO INSTITUCIONAL · 2026
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:160px">
+      <div class="cs-eyebrow" style="margin-bottom:48px">REUNIÃO INSTITUCIONAL · NOVO HAMBURGO/RS</div>
+      <h1 class="cs-h1" style="font-size:140px;line-height:.92;color:#fff;max-width:1700px">
+        A NOVA REALIDADE<br/>
+        DA CONSTRUÇÃO<br/>
+        CHEGOU EM <span style="color:#F07F08">NOVO HAMBURGO</span>.
+      </h1>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:64px;display:flex;justify-content:space-between;align-items:flex-end">
+      <div style="font-size:20px;letter-spacing:.18em;color:rgba(255,255,255,.78);line-height:1.6;text-transform:uppercase;font-weight:500">
+        Apresentação institucional Comsteel · MCMV<br/>
+        Reunião com o Prefeito Gustavo Finck · Novo Hamburgo/RS · 2026
+      </div>
+      <div style="font-size:18px;letter-spacing:.4em;color:rgba(255,255,255,.5);text-transform:uppercase;font-weight:500">01 / 26</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 2 — QUEM SOMOS
+       ============================================================ -->
+  <section data-label="02 Quem somos" class="cs-bg-black">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.5)">02 · QUEM SOMOS</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:240px">
+      <div class="cs-eyebrow" style="margin-bottom:64px">QUEM SOMOS, EM UMA FRASE</div>
+      <p style="font-family:'Archivo',sans-serif;font-weight:600;font-size:74px;line-height:1.1;letter-spacing:-.018em;color:#fff;max-width:1660px">
+        Construímos casas industrializadas em <span style="color:#F07F08">Steel Frame</span>,
+        com fábrica em <span style="color:#F07F08">Novo Hamburgo</span>, e queremos colocar
+        o município no <span style="color:#F07F08">mapa nacional do MCMV moderno</span>.
+      </p>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;border-top:1px solid rgba(255,255,255,.14);padding-top:44px">
+      <div>
+        <div class="cs-eyebrow cs-eyebrow-muted" style="font-size:14px;margin-bottom:12px">UNIDADE 01</div>
+        <div style="font-weight:700;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Construção &amp; Mobilidade</div>
+      </div>
+      <div>
+        <div class="cs-eyebrow cs-eyebrow-muted" style="font-size:14px;margin-bottom:12px">UNIDADE 02</div>
+        <div style="font-weight:700;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Comsteel Tiny House</div>
+      </div>
+      <div>
+        <div class="cs-eyebrow cs-eyebrow-muted" style="font-size:14px;margin-bottom:12px">FÁBRICA</div>
+        <div style="font-weight:700;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Novo Hamburgo / RS</div>
+      </div>
+      <div>
+        <div class="cs-eyebrow cs-eyebrow-muted" style="font-size:14px;margin-bottom:12px">LEGADO</div>
+        <div style="font-weight:700;font-size:24px;letter-spacing:.04em;text-transform:uppercase">20 anos de know-how</div>
+      </div>
+    </div>
+
+    <div class="cs-page-num">02 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 3 — ORIGEM E LEGADO
+       ============================================================ -->
+  <section data-label="03 Origem e legado" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">03 · ORIGEM &amp; LEGADO</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:200px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Linha do tempo</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:108px;max-width:1500px">
+        20 ANOS DE KNOW-HOW,<br/>
+        AGORA SOB UMA MARCA<br/>
+        PREPARADA PARA <span style="color:#D86B28">ESCALAR</span>.
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:140px">
+      <div style="height:2px;background:#1a1a1a;position:relative;margin:0 80px">
+        <span style="position:absolute;left:0;top:-9px;width:18px;height:18px;border-radius:50%;background:#1a1a1a"></span>
+        <span style="position:absolute;left:33%;top:-9px;width:18px;height:18px;border-radius:50%;background:#1a1a1a"></span>
+        <span style="position:absolute;left:66%;top:-9px;width:18px;height:18px;border-radius:50%;background:#1a1a1a"></span>
+        <span style="position:absolute;right:0;top:-13px;width:26px;height:26px;border-radius:50%;background:#D86B28;box-shadow:0 0 0 6px rgba(216,107,40,.2)"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:42px">
+        <div>
+          <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#0a0a0a">2004</div>
+          <div style="font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.06em;color:#0a0a0a;margin-top:8px">Encaixetec</div>
+          <p style="color:#555;font-size:21px;line-height:1.45;margin-top:14px;max-width:380px">Fundação da operação histórica em construção industrializada — origem técnica e operacional do grupo.</p>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#0a0a0a">2024</div>
+          <div style="font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.06em;color:#0a0a0a;margin-top:8px">Reformulação societária</div>
+          <p style="color:#555;font-size:21px;line-height:1.45;margin-top:14px;max-width:380px">Ramão entra como diretor comercial e de marketing. Felipe segue como diretor de engenharia.</p>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#0a0a0a">2025</div>
+          <div style="font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.06em;color:#0a0a0a;margin-top:8px">Estreia da Comsteel</div>
+          <p style="color:#555;font-size:21px;line-height:1.45;margin-top:14px;max-width:380px">Nova marca, plataforma técnica unificada e estruturação das unidades de negócio.</p>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#D86B28">2026</div>
+          <div style="font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.06em;color:#D86B28;margin-top:8px">Expansão nacional</div>
+          <p style="color:#333;font-size:21px;line-height:1.45;margin-top:14px;max-width:380px">Licenciamento, parcerias B2B e escala em MCMV — ano da virada operacional.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-num dark">03 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 4 — A FÁBRICA EM NOVO HAMBURGO (mosaico 4 fotos)
+       ============================================================ -->
+  <section data-label="04 Fabrica em Novo Hamburgo" class="cs-bg-black">
+    <div style="position:absolute;left:0;top:0;width:55%;height:100%">
+      <img src="assets/mosaico-fabrica.png" class="img-fill" alt="Fábrica Comsteel — painelização, transporte, montagem, entrega" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 75%, rgba(10,10,10,1) 100%)"></div>
+    </div>
+
+    <div style="position:absolute;left:55%;right:0;top:0;bottom:0;padding:100px 100px 100px 80px;display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <img src="assets/logo-construcao-dark.png" class="logo-img sm" alt="Comsteel" style="margin-bottom:32px" />
+        <div class="cs-eyebrow">04 · NOSSA CASA</div>
+        <h2 class="cs-h1" style="margin-top:24px;font-size:104px">
+          AQUI É <span style="color:#F07F08">NOSSA<br/>CASA.</span>
+        </h2>
+        <p class="cs-body" style="margin-top:30px;max-width:680px;font-size:32px">
+          Toda casa Comsteel sai daqui. Nossa fábrica em <strong style="color:#fff">Novo Hamburgo/RS</strong>
+          paineliza, transporta e entrega — do projeto ao acabamento.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 56px;border-top:1px solid rgba(255,255,255,.14);padding-top:40px">
+        <div>
+          <div style="color:#F07F08;font-weight:900;font-size:32px;letter-spacing:-.02em">01</div>
+          <div style="font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em;margin-top:8px">Painelização em fábrica</div>
+        </div>
+        <div>
+          <div style="color:#F07F08;font-weight:900;font-size:32px;letter-spacing:-.02em">02</div>
+          <div style="font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em;margin-top:8px">Transporte por caminhão</div>
+        </div>
+        <div>
+          <div style="color:#F07F08;font-weight:900;font-size:32px;letter-spacing:-.02em">03</div>
+          <div style="font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em;margin-top:8px">Montagem rápida no terreno</div>
+        </div>
+        <div>
+          <div style="color:#F07F08;font-weight:900;font-size:32px;letter-spacing:-.02em">04</div>
+          <div style="font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em;margin-top:8px">Acabamento no local</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-tag">04 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 5 — O QUE É STEEL FRAME
+       ============================================================ -->
+  <section data-label="05 O que é Steel Frame" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">05 · MÉTODO CONSTRUTIVO</div>
+    </div>
+
+    <div style="position:absolute;left:100px;top:200px;width:880px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Em uma frase</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:96px">
+        O QUE É<br/>
+        <span style="color:#D86B28">STEEL FRAME</span>.
+      </h2>
+      <p style="color:#222;font-size:30px;line-height:1.5;font-weight:400;margin-top:36px;max-width:780px">
+        Sistema construtivo industrializado em <strong>perfis leves de aço galvanizado</strong>,
+        projetado e fabricado previamente em fábrica — com fechamentos termoacústicos de alta performance.
+      </p>
+
+      <div style="margin-top:56px;border-top:1px solid rgba(0,0,0,.18);padding-top:32px">
+        <div style="font-weight:700;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:#0a0a0a;margin-bottom:18px">Conformidade técnica</div>
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <span style="border:1.5px solid #0a0a0a;padding:14px 22px;font-weight:700;font-size:22px;letter-spacing:.05em">NBR 15.575</span>
+          <span style="border:1.5px solid #0a0a0a;padding:14px 22px;font-weight:700;font-size:22px;letter-spacing:.05em">NBR 16.285</span>
+          <span style="border:1.5px solid #0a0a0a;padding:14px 22px;font-weight:700;font-size:22px;letter-spacing:.05em">NBR 8.802</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;right:100px;top:200px;width:840px;height:760px;background:#0a0a0a;overflow:hidden">
+      <img src="assets/obra-canela-predio.jpg" class="img-fill" alt="Estrutura Steel Frame em montagem" />
+    </div>
+
+    <div class="cs-page-num dark">05 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 6 — STEEL FRAME VS ALVENARIA
+       ============================================================ -->
+  <section data-label="06 Comparativo Steel Frame x Alvenaria" class="cs-bg-black">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.5)">06 · COMPARATIVO</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:180px">
+      <div class="cs-eyebrow" style="margin-bottom:24px">STEEL FRAME × ALVENARIA</div>
+      <h2 class="cs-h1" style="font-size:108px">
+        MAIS RÁPIDO. MAIS LIMPO.<br/>
+        <span style="color:#F07F08">MAIS PREVISÍVEL.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:560px;bottom:100px">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1.1fr;border-top:1px solid rgba(255,255,255,.18)">
+        <div style="padding:20px 24px;font-weight:700;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5)">Critério</div>
+        <div style="padding:20px 24px;font-weight:700;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5)">Alvenaria convencional</div>
+        <div style="padding:20px 24px;font-weight:700;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:#F07F08;background:rgba(240,127,8,.06)">Steel Frame Comsteel</div>
+      </div>
+      <div class="cs-cmp-row"><div>Tempo de obra</div><div>Padrão</div><div><strong>Até 50% mais rápido</strong></div></div>
+      <div class="cs-cmp-row"><div>Resíduos no canteiro</div><div>Padrão</div><div><strong>Até 90% menos resíduos</strong></div></div>
+      <div class="cs-cmp-row"><div>Previsibilidade de custo</div><div>Baixa</div><div><strong>Alta</strong></div></div>
+      <div class="cs-cmp-row"><div>Mão de obra no canteiro</div><div>Grande</div><div><strong>Equipe enxuta e qualificada</strong></div></div>
+      <div class="cs-cmp-row"><div>Patologias (trincas, infiltrações)</div><div>Comuns</div><div><strong>Praticamente ausentes</strong></div></div>
+      <div class="cs-cmp-row"><div>Conforto térmico/acústico</div><div>Variável</div><div><strong>NBR 15.575 atendida</strong></div></div>
+    </div>
+
+    <div class="cs-page-num">06 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 7 — VANTAGENS PARA O PODER PÚBLICO
+       ============================================================ -->
+  <section data-label="07 Por que importa ao poder publico" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">07 · VALOR PARA O MUNICÍPIO</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:180px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px">O que isso significa para a Prefeitura</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:96px;max-width:1700px">
+        QUATRO VANTAGENS DIRETAS<br/>
+        PARA O <span style="color:#D86B28">PODER PÚBLICO</span>.
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:120px;display:grid;grid-template-columns:repeat(4,1fr);gap:36px">
+      <div style="border-top:3px solid #0a0a0a;padding-top:32px">
+        <div style="font-weight:900;font-size:54px;letter-spacing:-.03em;color:#D86B28;margin-bottom:18px">01</div>
+        <div style="font-weight:800;font-size:26px;line-height:1.15;text-transform:uppercase;color:#0a0a0a;letter-spacing:-.005em">Entrega mais rápida</div>
+        <p style="margin-top:14px;color:#555;font-size:20px;line-height:1.5">Famílias na casa em meses, não anos. Cronograma de obra previsível e auditável.</p>
+      </div>
+      <div style="border-top:3px solid #0a0a0a;padding-top:32px">
+        <div style="font-weight:900;font-size:54px;letter-spacing:-.03em;color:#D86B28;margin-bottom:18px">02</div>
+        <div style="font-weight:800;font-size:26px;line-height:1.15;text-transform:uppercase;color:#0a0a0a;letter-spacing:-.005em">Custo previsível</div>
+        <p style="margin-top:14px;color:#555;font-size:20px;line-height:1.5">Menos aditivos, menos surpresas. Mais segurança orçamentária para o convênio.</p>
+      </div>
+      <div style="border-top:3px solid #0a0a0a;padding-top:32px">
+        <div style="font-weight:900;font-size:54px;letter-spacing:-.03em;color:#D86B28;margin-bottom:18px">03</div>
+        <div style="font-weight:800;font-size:26px;line-height:1.15;text-transform:uppercase;color:#0a0a0a;letter-spacing:-.005em">Obra limpa e segura</div>
+        <p style="margin-top:14px;color:#555;font-size:20px;line-height:1.5">Painéis pré-fabricados reduzem passivo socioambiental e trabalhista.</p>
+      </div>
+      <div style="border-top:3px solid #0a0a0a;padding-top:32px">
+        <div style="font-weight:900;font-size:54px;letter-spacing:-.03em;color:#D86B28;margin-bottom:18px">04</div>
+        <div style="font-weight:800;font-size:26px;line-height:1.15;text-transform:uppercase;color:#0a0a0a;letter-spacing:-.005em">Padrão nacional</div>
+        <p style="margin-top:14px;color:#555;font-size:20px;line-height:1.5">Conformidade NBR 15.575 / 16.285 / 8.802 e durabilidade superior à média do mercado.</p>
+      </div>
+    </div>
+
+    <div class="cs-page-num dark">07 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 8 — QUEM CONFIA NA COMSTEEL
+       ============================================================ -->
+  <section data-label="08 Quem confia na Comsteel" class="cs-bg-black">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.5)">08 · TRAÇÃO REAL</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:180px">
+      <div class="cs-eyebrow">PARCERIAS B2B · MCMV EM ESCALA</div>
+      <h2 class="cs-h1" style="font-size:108px;margin-top:24px;max-width:1700px">
+        JÁ ESTAMOS FAZENDO<br/>
+        <span style="color:#F07F08">MCMV EM ESCALA — AGORA.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:580px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px">
+      <div style="border:1px solid rgba(255,255,255,.18);padding:48px;background:rgba(255,255,255,.02);position:relative">
+        <div style="font-weight:700;font-size:18px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08">PARCEIRO 01</div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.025em;text-transform:uppercase;margin-top:18px">Steel Corp</div>
+        <div style="display:flex;gap:48px;margin-top:36px;border-top:1px solid rgba(255,255,255,.14);padding-top:28px">
+          <div>
+            <div style="font-weight:900;font-size:72px;letter-spacing:-.04em;color:#F07F08;line-height:1">50</div>
+            <div style="font-weight:600;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px">Casas MCMV<br/>em Muçum</div>
+          </div>
+          <div>
+            <div style="font-weight:900;font-size:72px;letter-spacing:-.04em;color:#F07F08;line-height:1">75</div>
+            <div style="font-weight:600;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px">Casas MCMV<br/>em Bom Retiro do Sul</div>
+          </div>
+          <div>
+            <div style="font-weight:900;font-size:72px;letter-spacing:-.04em;color:#F07F08;line-height:1">125</div>
+            <div style="font-weight:600;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px">Famílias atendidas<br/>com Comsteel</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,.18);padding:48px;background:rgba(255,255,255,.02);position:relative">
+        <div style="font-weight:700;font-size:18px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08">PARCEIRO 02</div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.025em;text-transform:uppercase;margin-top:18px">Espaço Smart</div>
+        <div style="margin-top:36px;border-top:1px solid rgba(255,255,255,.14);padding-top:28px">
+          <div style="font-weight:900;font-size:72px;letter-spacing:-.04em;color:#F07F08;line-height:1">04</div>
+          <div style="font-weight:600;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px">Casas MCMV em Cruzeiro do Sul</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-tag">08 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — ECOSSISTEMA
+       ============================================================ -->
+  <section data-label="09 Ecossistema de parceiros" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">09 · ECOSSISTEMA</div>
+    </div>
+
+    <div style="position:absolute;left:100px;top:200px;width:880px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Ecossistema de parceiros estratégicos</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:104px">
+        NÃO VENDEMOS<br/>
+        CASAS —<br/>
+        <span style="color:#D86B28">CONSTRUÍMOS REDE.</span>
+      </h2>
+      <p style="font-size:26px;color:#444;line-height:1.5;margin-top:36px;max-width:760px">
+        A Comsteel articula uma rede ativa de parceiros técnicos, comerciais e financeiros — pronta para
+        viabilizar empreendimentos em qualquer escala em Novo Hamburgo.
+      </p>
+    </div>
+
+    <div style="position:absolute;right:100px;top:200px;width:840px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="background:#0a0a0a;color:#fff;padding:36px 32px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08">PROJETO</div>
+        <div style="font-weight:800;font-size:32px;line-height:1.1;text-transform:uppercase">Arquitetos sócios construtivos</div>
+        <div style="font-size:18px;color:rgba(255,255,255,.6);letter-spacing:.04em">Luis Maldaner · Entreponto · outros</div>
+      </div>
+      <div style="background:#fff;color:#0a0a0a;border:2px solid #0a0a0a;padding:36px 32px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#D86B28">TERRENO</div>
+        <div style="font-weight:800;font-size:32px;line-height:1.1;text-transform:uppercase">Loteadores</div>
+        <div style="font-size:18px;color:#666;letter-spacing:.04em">Originação de áreas para empreendimento</div>
+      </div>
+      <div style="background:#fff;color:#0a0a0a;border:2px solid #0a0a0a;padding:36px 32px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#D86B28">EXECUÇÃO</div>
+        <div style="font-weight:800;font-size:32px;line-height:1.1;text-transform:uppercase">Construtoras parceiras</div>
+        <div style="font-size:18px;color:#666;letter-spacing:.04em">Steel Corp · Espaço Smart · novos</div>
+      </div>
+      <div style="background:#0a0a0a;color:#fff;padding:36px 32px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08">CAPITAL</div>
+        <div style="font-weight:800;font-size:32px;line-height:1.1;text-transform:uppercase">Investidores &amp; imobiliárias</div>
+        <div style="font-size:18px;color:rgba(255,255,255,.6);letter-spacing:.04em">Funding e absorção de unidades</div>
+      </div>
+    </div>
+
+    <div class="cs-page-num dark">09 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 10 — PORTFÓLIO MOSAICO
+       ============================================================ -->
+  <section data-label="10 Portfolio mosaico" class="cs-bg-black">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.5)">10 · PORTFÓLIO</div>
+    </div>
+
+    <div style="position:absolute;left:100px;top:160px;width:560px">
+      <div class="cs-eyebrow">OBRAS REALIZADAS</div>
+      <h2 class="cs-h1" style="font-size:88px;margin-top:24px">
+        PORTFÓLIO<br/>
+        QUE FALA<br/>
+        <span style="color:#F07F08">POR SI.</span>
+      </h2>
+      <p class="cs-body" style="margin-top:30px;font-size:24px;max-width:480px">
+        Doze empreendimentos entregues e em execução — residenciais, multifamiliares e construções de alto padrão.
+      </p>
+      <div style="margin-top:36px;border-top:1px solid rgba(255,255,255,.18);padding-top:24px;font-size:18px;letter-spacing:.04em;color:rgba(255,255,255,.55);line-height:1.7">
+        Casa Viana · Casa SL G17 · Casa SL G23 · Casa Bosque<br/>
+        Terras Altas · Vivendas da Serra · Luminoteca Maldaner<br/>
+        Loteamento Canela · Obra Alpes Verdes · Nova Petrópolis 2<br/>
+        Obra Campeche · Residencial Dona Nena
+      </div>
+    </div>
+
+    <div style="position:absolute;right:100px;top:160px;bottom:120px;width:1100px;display:grid;grid-template-columns:repeat(3, 1fr);grid-template-rows:repeat(3, 1fr);gap:8px">
+      <div style="overflow:hidden"><img src="assets/obra-viana.jpg" class="img-fill" alt="Casa Viana" /></div>
+      <div style="overflow:hidden"><img src="assets/obra-g17.jpg" class="img-fill" alt="Casa SL G17" /></div>
+      <div style="overflow:hidden"><img src="assets/obra-terras-altas.jpg" class="img-fill" alt="Terras Altas" /></div>
+      <div style="overflow:hidden"><img src="assets/obra-bosque.jpg" class="img-fill" alt="Casa Bosque" /></div>
+      <div style="overflow:hidden"><img src="assets/obra-luminoteca.jpg" class="img-fill" alt="Luminoteca Maldaner" /></div>
+      <div style="overflow:hidden"><img src="assets/obra-vivendas.jpg" class="img-fill" alt="Vivendas da Serra" /></div>
+      <div style="overflow:hidden"><img src="assets/obra-g23.jpg" class="img-fill" alt="Casa SL G23" /></div>
+      <div style="overflow:hidden"><img src="assets/obra-canela-predio.jpg" class="img-fill" alt="Obra Canela" /></div>
+      <div style="overflow:hidden;background:#F07F08;display:flex;align-items:center;justify-content:center;color:#0a0a0a;text-align:center;padding:18px">
+        <div>
+          <div style="font-weight:900;font-size:48px;letter-spacing:-.03em;line-height:1">+12</div>
+          <div style="font-weight:700;font-size:16px;letter-spacing:.18em;text-transform:uppercase;margin-top:6px">empreendimentos</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-num">10 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 11 — MUÇUM (50 famílias) — drone aérea
+       ============================================================ -->
+  <section data-label="11 Casas MCMV Mucum" class="cs-bg-black">
+    <div style="position:absolute;inset:0">
+      <img src="assets/aerea-mucum.jpg" class="img-fill" style="filter:brightness(.55)" alt="Casas MCMV Muçum — vista aérea" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.85) 100%)"></div>
+    </div>
+
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.7)">11 · CASO MCMV — MUÇUM</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:300px">
+      <div class="cs-eyebrow">CASO REAL · MUÇUM/RS · 2025</div>
+      <h2 class="cs-h1" style="font-size:128px;margin-top:32px;max-width:1500px">
+        50 FAMÍLIAS.<br/>
+        <span style="color:#F07F08">UMA OBRA.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(4,1fr);gap:36px;border-top:1px solid rgba(255,255,255,.22);padding-top:36px">
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">50</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Famílias atendidas</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">B2B</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Parceria Steel Corp</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">LSF</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Light Steel Frame · NBR 15.575</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">↑</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Padrão Comsteel<br/>de qualidade</div>
+      </div>
+    </div>
+    <div class="cs-page-tag">11 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 12 — BOM RETIRO DO SUL (75 famílias) — NOVO
+       ============================================================ -->
+  <section data-label="12 Casas MCMV Bom Retiro do Sul" class="cs-bg-black">
+    <div style="position:absolute;inset:0">
+      <img src="assets/aerea-bom-retiro.jpg" class="img-fill" style="filter:brightness(.55)" alt="Casas MCMV Bom Retiro do Sul — vista aérea" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.85) 100%)"></div>
+    </div>
+
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.7)">12 · CASO MCMV — BOM RETIRO DO SUL</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:300px">
+      <div class="cs-eyebrow">CASO REAL · BOM RETIRO DO SUL/RS · 2025</div>
+      <h2 class="cs-h1" style="font-size:128px;margin-top:32px;max-width:1500px">
+        75 FAMÍLIAS.<br/>
+        <span style="color:#F07F08">UMA OBRA.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(4,1fr);gap:36px;border-top:1px solid rgba(255,255,255,.22);padding-top:36px">
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">75</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Famílias atendidas</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">B2B</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Parceria Steel Corp</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">LSF</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Light Steel Frame · NBR 15.575</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">↑</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Padrão Comsteel<br/>de qualidade</div>
+      </div>
+    </div>
+    <div class="cs-page-tag">12 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 13 — CRUZEIRO DO SUL (4 famílias) — NOVO
+       ============================================================ -->
+  <section data-label="13 Casas MCMV Cruzeiro do Sul" class="cs-bg-black">
+    <div style="position:absolute;inset:0">
+      <img src="assets/casas-cruzeiro.jpg" class="img-fill" style="filter:brightness(.55)" alt="Casas MCMV Cruzeiro do Sul" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.85) 100%)"></div>
+    </div>
+
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.7)">13 · CASO MCMV — CRUZEIRO DO SUL</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:300px">
+      <div class="cs-eyebrow">CASO REAL · CRUZEIRO DO SUL/RS · 2025</div>
+      <h2 class="cs-h1" style="font-size:128px;margin-top:32px;max-width:1500px">
+        4 FAMÍLIAS.<br/>
+        <span style="color:#F07F08">UMA OBRA.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(4,1fr);gap:36px;border-top:1px solid rgba(255,255,255,.22);padding-top:36px">
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">04</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Famílias atendidas</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">B2B</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Parceria Espaço Smart</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">LSF</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Light Steel Frame · NBR 15.575</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:64px;letter-spacing:-.03em;color:#F07F08;line-height:1">↑</div>
+        <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;font-weight:600">Padrão Comsteel<br/>de qualidade</div>
+      </div>
+    </div>
+    <div class="cs-page-tag">13 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 14 — LINHA DE PROJETOS
+       ============================================================ -->
+  <section data-label="14 Linha de projetos" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">14 · LINHA DE PROJETOS</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:170px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px">Projetos padronizados Comsteel</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:96px">
+        TRÊS PROJETOS.<br/>
+        CHAVE NA PORTA EM <span style="color:#D86B28">90 DIAS.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <div style="border:1.5px solid #0a0a0a">
+        <div style="aspect-ratio:4/3;overflow:hidden;background:#eee"><img src="assets/casa-a-2.png" class="img-fill" alt="Casa MCMV"/></div>
+        <div style="padding:32px 28px">
+          <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#D86B28">PROJETO 01 · MCMV</div>
+          <div style="font-weight:900;font-size:46px;letter-spacing:-.025em;text-transform:uppercase;margin-top:10px">Casa MCMV</div>
+          <div style="display:flex;gap:24px;margin-top:14px;color:#444;font-size:20px;font-weight:600">
+            <span>48 m²</span><span>·</span><span>2 versões (A/B)</span>
+          </div>
+          <p style="margin-top:18px;color:#555;font-size:20px;line-height:1.45;border-top:1px solid rgba(0,0,0,.14);padding-top:18px">MCMV bonito, moderno, sem cara de casa popular.</p>
+        </div>
+      </div>
+
+      <div style="border:1.5px solid #0a0a0a;background:#0a0a0a;color:#fff">
+        <div style="aspect-ratio:4/3;overflow:hidden;background:#000"><img src="assets/casa-standard-1.png" class="img-fill" alt="Casa Standard"/></div>
+        <div style="padding:32px 28px">
+          <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08">PROJETO 02 · STANDARD</div>
+          <div style="font-weight:900;font-size:46px;letter-spacing:-.025em;text-transform:uppercase;margin-top:10px">Casa Standard</div>
+          <div style="display:flex;gap:24px;margin-top:14px;color:rgba(255,255,255,.7);font-size:20px;font-weight:600">
+            <span>48 m²</span><span>·</span><span>3 versões</span>
+          </div>
+          <p style="margin-top:18px;color:rgba(255,255,255,.7);font-size:20px;line-height:1.45;border-top:1px solid rgba(255,255,255,.18);padding-top:18px">Mesma planta da MCMV, com acabamentos externos sofisticados.</p>
+        </div>
+      </div>
+
+      <div style="border:1.5px solid #0a0a0a">
+        <div style="aspect-ratio:4/3;overflow:hidden;background:#eee"><img src="assets/ibiza-fachada.png" class="img-fill" alt="Casa Ibiza"/></div>
+        <div style="padding:32px 28px">
+          <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#D86B28">PROJETO 03 · IBIZA</div>
+          <div style="font-weight:900;font-size:46px;letter-spacing:-.025em;text-transform:uppercase;margin-top:10px">Casa Ibiza</div>
+          <div style="display:flex;gap:24px;margin-top:14px;color:#444;font-size:20px;font-weight:600">
+            <span>68 m²</span><span>·</span><span>premium</span>
+          </div>
+          <p style="margin-top:18px;color:#555;font-size:20px;line-height:1.45;border-top:1px solid rgba(0,0,0,.14);padding-top:18px">Para famílias que querem mais espaço e mais história.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-num dark">14 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 15 — MCMV em destaque
+       ============================================================ -->
+  <section data-label="15 MCMV em destaque" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">15 · CASA A &amp; CASA B · MCMV</div>
+    </div>
+
+    <div style="position:absolute;left:100px;top:180px;width:560px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Foco da reunião</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:80px;line-height:.96">
+        MCMV COM<br/>
+        ARQUITETURA<br/>
+        QUE <span style="color:#D86B28">EMOCIONA.</span>
+      </h2>
+
+      <div style="margin-top:48px;border-top:2px solid #0a0a0a;padding-top:24px">
+        <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#0a0a0a;margin-bottom:14px">Programa</div>
+        <ul style="list-style:none;font-size:21px;line-height:1.7;color:#222;font-weight:500">
+          <li>· 2 quartos · 1 banheiro</li>
+          <li>· Sala / cozinha integrada</li>
+          <li>· Lavanderia · 2 varandas</li>
+          <li>· 48 m² · planta PNE disponível</li>
+          <li>· 2 versões arquitetônicas (A e B)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="position:absolute;right:100px;top:180px;width:1100px;height:780px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="overflow:hidden"><img src="assets/casa-a-1.png" class="img-fill" alt="Casa A imagem 1"/></div>
+      <div style="overflow:hidden"><img src="assets/casa-a-2.png" class="img-fill" alt="Casa A imagem 2"/></div>
+      <div style="overflow:hidden"><img src="assets/casa-b-1.png" class="img-fill" alt="Casa B imagem 1"/></div>
+      <div style="overflow:hidden"><img src="assets/casa-b-2.png" class="img-fill" alt="Casa B imagem 2"/></div>
+    </div>
+
+    <div class="cs-page-num dark">15 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 16 — PLANTAS A e B
+       ============================================================ -->
+  <section data-label="16 Plantas Casa A e B" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">16 · PLANTAS</div>
+    </div>
+
+    <div style="position:absolute;left:100px;top:180px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px">Plantas Casa A &amp; Casa B</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:80px">
+        PRONTAS PARA <span style="color:#D86B28">LICITAÇÃO</span><br/>
+        E <span style="color:#D86B28">PRODUÇÃO EM ESCALA.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:480px;bottom:120px;display:grid;grid-template-columns:1fr 1fr;gap:48px">
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #0a0a0a;padding-bottom:12px;margin-bottom:24px">
+          <div style="font-weight:900;font-size:38px;letter-spacing:-.02em;text-transform:uppercase">Casa A · Planta padrão</div>
+          <div style="font-weight:600;font-size:18px;letter-spacing:.2em;color:#666;text-transform:uppercase">48 m² · 2 quartos</div>
+        </div>
+        <div style="flex:1;background:#fff;border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img src="assets/casa-a-planta.jpg" class="img-fit" alt="Casa A planta"/>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #D86B28;padding-bottom:12px;margin-bottom:24px">
+          <div style="font-weight:900;font-size:38px;letter-spacing:-.02em;text-transform:uppercase">Casa B · Acessibilidade <span style="color:#D86B28">PNE</span></div>
+          <div style="font-weight:600;font-size:18px;letter-spacing:.2em;color:#666;text-transform:uppercase">48 m² · banho PNE</div>
+        </div>
+        <div style="flex:1;background:#fff;border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img src="assets/casa-b-planta-pne.jpg" class="img-fit" alt="Casa B planta PNE"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-num dark">16 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 17 — CASA STANDARD
+       ============================================================ -->
+  <section data-label="17 Casa Standard" class="cs-bg-black">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.5)">17 · CASA STANDARD</div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <div style="position:absolute;left:100px;right:100px;top:130px;display:flex;align-items:flex-end;justify-content:space-between;gap:60px">
+      <div style="flex:1 1 auto;max-width:1100px">
+        <div class="cs-eyebrow">UPGRADE DA MCMV</div>
+        <h2 class="cs-h1" style="font-size:88px;margin-top:14px;line-height:.92">
+          CASA <span style="color:#F07F08">STANDARD.</span>
+        </h2>
+      </div>
+      <div style="flex:0 0 560px;text-align:right;padding-bottom:14px">
+        <p class="cs-body" style="font-size:20px;line-height:1.5;color:rgba(255,255,255,.78);margin:0">
+          A mesma planta da MCMV, vestida para subir de classe. Acabamentos externos sofisticados — três versões arquitetônicas a partir do mesmo módulo industrial.
+        </p>
+      </div>
+    </div>
+
+    <!-- Collage 3 fachadas -->
+    <div style="position:absolute;left:90px;right:90px;top:380px;height:500px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px">
+      <!-- Versão 1: Ripado -->
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column">
+        <div style="flex:1 1 auto;overflow:hidden;position:relative;background:#000">
+          <img src="assets/casa-standard-ripado.jpg" class="img-fill" alt="Versão Ripado"/>
+        </div>
+        <div style="flex:0 0 auto;padding:18px 26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div style="font-weight:600;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:4px">Versão 01</div>
+            <div style="font-weight:900;font-size:28px;letter-spacing:-.02em;color:#fff;line-height:1">RIPADO</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;letter-spacing:.04em">madeira horizontal · acolhedor</div>
+          </div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:46px;color:rgba(240,127,8,.18);letter-spacing:-.05em;line-height:.9">01</div>
+        </div>
+      </div>
+
+      <!-- Versão 2: Brises -->
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column">
+        <div style="flex:1 1 auto;overflow:hidden;position:relative;background:#000">
+          <img src="assets/casa-standard-brises.jpg" class="img-fill" alt="Versão Brises"/>
+        </div>
+        <div style="flex:0 0 auto;padding:18px 26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div style="font-weight:600;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:4px">Versão 02</div>
+            <div style="font-weight:900;font-size:28px;letter-spacing:-.02em;color:#fff;line-height:1">BRISES</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;letter-spacing:.04em">vertical · contemporâneo</div>
+          </div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:46px;color:rgba(240,127,8,.18);letter-spacing:-.05em;line-height:.9">02</div>
+        </div>
+      </div>
+
+      <!-- Versão 3: Painel -->
+      <div style="background:#111;border:1px solid rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column">
+        <div style="flex:1 1 auto;overflow:hidden;position:relative;background:#000">
+          <img src="assets/casa-standard-painel.jpg" class="img-fill" alt="Versão Painel"/>
+        </div>
+        <div style="flex:0 0 auto;padding:18px 26px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div style="font-weight:600;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:4px">Versão 03</div>
+            <div style="font-weight:900;font-size:28px;letter-spacing:-.02em;color:#fff;line-height:1">PAINEL</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;letter-spacing:.04em">liso · clean industrial</div>
+          </div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:46px;color:rgba(240,127,8,.18);letter-spacing:-.05em;line-height:.9">03</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé com métricas -->
+    <div style="position:absolute;left:100px;right:100px;top:920px;display:flex;align-items:center;justify-content:space-between;gap:48px;border-top:1px solid rgba(255,255,255,.18);padding-top:20px">
+      <div style="display:flex;gap:56px;align-items:flex-end">
+        <div>
+          <div style="font-weight:900;font-size:38px;letter-spacing:-.03em;color:#F07F08;line-height:1">48 m²</div>
+          <div style="font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px">Mesma planta MCMV</div>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:38px;letter-spacing:-.03em;color:#F07F08;line-height:1">3 versões</div>
+          <div style="font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px">Arquitetônicas</div>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:38px;letter-spacing:-.03em;color:#F07F08;line-height:1">1 fábrica</div>
+          <div style="font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px">Em Novo Hamburgo</div>
+        </div>
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:22px;color:rgba(255,255,255,.55);max-width:520px;text-align:right;line-height:1.35">
+        Mesmo módulo industrial.<br/>Três caras diferentes para o mesmo bairro.
+      </div>
+    </div>
+
+    <div class="cs-page-tag">17 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 18 — CASA IBIZA (fachada única em destaque)
+       ============================================================ -->
+  <section data-label="18 Casa Ibiza" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">18 · CASA IBIZA · LINHA PREMIUM</div>
+    </div>
+
+    <div style="position:absolute;left:100px;top:170px;width:580px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px">Linha premium</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:96px">
+        CASA<br/>
+        <span style="color:#D86B28">IBIZA.</span>
+      </h2>
+      <p style="font-size:24px;color:#444;line-height:1.5;margin-top:32px;max-width:520px">
+        Para famílias que querem mais espaço e mais história. Linha premium, com suíte e espaço gourmet externo.
+      </p>
+
+      <div style="margin-top:48px;border-top:2px solid #0a0a0a;padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px 36px">
+        <div>
+          <div style="font-weight:900;font-size:44px;letter-spacing:-.03em;color:#0a0a0a;line-height:1">68 m²</div>
+          <div style="font-weight:600;font-size:16px;letter-spacing:.18em;text-transform:uppercase;color:#666;margin-top:6px">Área útil</div>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:44px;letter-spacing:-.03em;color:#0a0a0a;line-height:1">2 dorm.</div>
+          <div style="font-weight:600;font-size:16px;letter-spacing:.18em;text-transform:uppercase;color:#666;margin-top:6px">Sendo 1 suíte</div>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:44px;letter-spacing:-.03em;color:#D86B28;line-height:1">Gourmet</div>
+          <div style="font-weight:600;font-size:16px;letter-spacing:.18em;text-transform:uppercase;color:#666;margin-top:6px">Espaço externo</div>
+        </div>
+        <div>
+          <div style="font-weight:900;font-size:44px;letter-spacing:-.03em;color:#D86B28;line-height:1">Premium</div>
+          <div style="font-weight:600;font-size:16px;letter-spacing:.18em;text-transform:uppercase;color:#666;margin-top:6px">Acabamentos</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;right:100px;top:170px;width:1080px;height:790px;overflow:hidden">
+      <img src="assets/ibiza-fachada-render.png" class="img-fill" alt="Render fachada Ibiza"/>
+    </div>
+
+    <div class="cs-page-num dark">18 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       BLOCO TINY HOUSE
+       ============================================================ -->
+
+  <!-- SLIDE 19 — DIVISOR TINY HOUSE -->
+  <section data-label="19 Divisor Tiny House" class="th-bg-tabaco">
+    <div style="position:absolute;top:50px;left:100px">
+      <img src="assets/logo-tiny-dark.png" class="logo-img" alt="Comsteel Tiny House" />
+    </div>
+    <div style="position:absolute;top:90px;right:100px;font-family:'Manrope',sans-serif;font-weight:500;font-size:14px;letter-spacing:.45em;text-transform:uppercase;color:rgba(244,238,224,.45)">
+      SEGUNDA UNIDADE — GRUPO COMSTEEL
+    </div>
+
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column">
+      <div style="font-family:'Manrope',sans-serif;font-weight:300;font-size:18px;letter-spacing:.6em;text-transform:uppercase;color:rgba(244,238,224,.45);margin-bottom:60px">— BLOCO 02 —</div>
+      <div style="text-align:center;color:#fff;line-height:.95">
+        <div class="th-it" style="font-size:168px;color:var(--bege-2);font-weight:300;line-height:.95;letter-spacing:-.01em">é usufruir,</div>
+        <div class="th-h1" style="font-size:168px;font-weight:800;margin-top:16px;letter-spacing:-.04em">não construir.</div>
+      </div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;letter-spacing:.4em;text-transform:uppercase;color:rgba(244,238,224,.55);margin-top:80px">refúgios prontos · light steel frame · Novo Hamburgo / RS</div>
+    </div>
+
+    <div style="position:absolute;left:100px;bottom:64px;font-family:'Manrope',sans-serif;font-weight:500;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:rgba(244,238,224,.4)">19 / 26</div>
+  </section>
+
+  <!-- SLIDE 20 — CATÁLOGO TINY HOUSE -->
+  <section data-label="20 Catalogo Tiny House" class="th-bg-cream">
+    <div style="position:absolute;top:50px;left:100px">
+      <img src="assets/logo-tiny-light.png" class="logo-img" alt="Comsteel Tiny House" />
+    </div>
+    <div style="position:absolute;top:90px;right:100px;font-family:'Manrope',sans-serif;font-weight:400;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:rgba(58,36,13,.5)">20 · CATÁLOGO</div>
+
+    <div style="position:absolute;left:100px;top:200px;width:780px">
+      <div style="font-family:'Manrope',sans-serif;font-weight:500;font-size:16px;letter-spacing:.45em;text-transform:uppercase;color:#876c4d;margin-bottom:32px">Catálogo</div>
+      <h2 class="th-h2" style="color:#3a240d;font-size:80px;line-height:1">
+        Refúgios prontos para
+        <span class="th-it" style="color:#876c4d">morar, hospedar</span>
+        e <span class="th-it" style="color:#876c4d">investir.</span>
+      </h2>
+      <p class="th-body" style="margin-top:36px;color:rgba(58,36,13,.75);font-size:24px;max-width:640px">
+        De 7 a 29 m². Steel Frame industrializado. <em class="th-it">Plug and play</em>, entregues prontos
+        e instalados em um dia — para todo o Brasil.
+      </p>
+
+      <div style="margin-top:48px;display:flex;gap:14px;flex-wrap:wrap">
+        <span style="border:1px solid rgba(58,36,13,.4);padding:12px 22px;font-family:'Manrope',sans-serif;font-weight:500;font-size:18px;letter-spacing:.05em;color:#3a240d">Tiny House</span>
+        <span style="border:1px solid rgba(58,36,13,.4);padding:12px 22px;font-family:'Manrope',sans-serif;font-weight:500;font-size:18px;letter-spacing:.05em;color:#3a240d">Office</span>
+        <span style="border:1px solid rgba(58,36,13,.4);padding:12px 22px;font-family:'Manrope',sans-serif;font-weight:500;font-size:18px;letter-spacing:.05em;color:#3a240d">Sauna</span>
+        <span style="border:1px solid rgba(58,36,13,.4);padding:12px 22px;font-family:'Manrope',sans-serif;font-weight:500;font-size:18px;letter-spacing:.05em;color:#3a240d">Adega</span>
+        <span style="border:1px solid rgba(58,36,13,.4);padding:12px 22px;font-family:'Manrope',sans-serif;font-weight:500;font-size:18px;letter-spacing:.05em;color:#3a240d">Espaço Gourmet</span>
+      </div>
+    </div>
+
+    <div style="position:absolute;right:100px;top:200px;bottom:140px;width:920px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:8px">
+      <div style="overflow:hidden;grid-row:1/3;grid-column:1/3"><img src="assets/tiny-fachada.png" class="img-fill" alt="Tiny fachada"/></div>
+      <div style="overflow:hidden"><img src="assets/tiny-hospedagem.png" class="img-fill" alt="Tiny hospedagem"/></div>
+      <div style="overflow:hidden"><img src="assets/tiny-madeirado.png" class="img-fill" alt="Tiny madeirado"/></div>
+      <div style="overflow:hidden"><img src="assets/tiny-adega.png" class="img-fill" alt="Tiny adega"/></div>
+      <div style="overflow:hidden"><img src="assets/tiny-sauna.png" class="img-fill" alt="Tiny sauna"/></div>
+      <div style="overflow:hidden;background:#3a240d;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px">
+        <div>
+          <div class="th-it" style="font-size:28px;color:#e9dec7">um catálogo de</div>
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:38px;letter-spacing:-.02em;line-height:1.1;margin-top:6px">refúgios.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:100px;bottom:64px;font-family:'Manrope',sans-serif;font-weight:500;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:rgba(58,36,13,.4)">20 / 26</div>
+  </section>
+
+  <!-- SLIDE 21 — POR QUE TINY HOUSE IMPORTA AO MUNICÍPIO -->
+  <section data-label="21 Tiny House e o municipio" class="th-bg-tabaco">
+    <div style="position:absolute;top:50px;left:100px">
+      <img src="assets/logo-tiny-dark.png" class="logo-img" alt="Comsteel Tiny House" />
+    </div>
+    <div style="position:absolute;top:90px;right:100px;font-family:'Manrope',sans-serif;font-weight:400;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:rgba(244,238,224,.5)">21 · IMPACTO MUNICIPAL</div>
+
+    <div style="position:absolute;left:100px;top:220px;width:1300px">
+      <div style="font-family:'Manrope',sans-serif;font-weight:500;font-size:16px;letter-spacing:.45em;text-transform:uppercase;color:#876c4d;margin-bottom:36px">Por que isso importa para Novo Hamburgo</div>
+      <h2 class="th-h2" style="color:#fff;font-size:88px;line-height:.98;letter-spacing:-.025em">
+        Toda Tiny House sai da<br/>
+        <span class="th-it" style="color:#e9dec7">nossa fábrica daqui.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px">
+      <div style="border-top:1px solid rgba(244,238,224,.25);padding-top:32px">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:38px;color:#e9dec7;letter-spacing:-.02em">Turismo qualificado</div>
+        <p class="th-body" style="margin-top:16px;color:rgba(244,238,224,.7);font-size:22px;max-width:480px">
+          Pousadas, vinícolas, condomínios — geração de receita local com produto premium feito em casa.
+        </p>
+      </div>
+      <div style="border-top:1px solid rgba(244,238,224,.25);padding-top:32px">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:38px;color:#e9dec7;letter-spacing:-.02em">Soluções institucionais</div>
+        <p class="th-body" style="margin-top:16px;color:rgba(244,238,224,.7);font-size:22px;max-width:480px">
+          Tiny <em class="th-it">Office</em> para plantões, postos avançados de saúde e projetos sociais móveis.
+        </p>
+      </div>
+      <div style="border-top:1px solid rgba(244,238,224,.25);padding-top:32px">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:38px;color:#e9dec7;letter-spacing:-.02em">Marca de Novo Hamburgo</div>
+        <p class="th-body" style="margin-top:16px;color:rgba(244,238,224,.7);font-size:22px;max-width:480px">
+          Cada unidade entregue carrega o nome da cidade — vitrine industrial para todo o Brasil.
+        </p>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:100px;bottom:64px;font-family:'Manrope',sans-serif;font-weight:500;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:rgba(244,238,224,.4)">21 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 22 — A OPORTUNIDADE (refeito)
+       ============================================================ -->
+  <section data-label="22 A oportunidade" class="cs-bg-black">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.5)">22 · A OPORTUNIDADE</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:200px">
+      <div class="cs-eyebrow" style="margin-bottom:32px">CENÁRIO BRASIL · 2026</div>
+      <h2 class="cs-h1" style="font-size:96px;line-height:.96;max-width:1700px">
+        NOVO HAMBURGO TEM A FÁBRICA.<br/>
+        <span style="color:#F07F08">AGORA PODE TER OS BAIRROS.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:600px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px;border-top:1px solid rgba(255,255,255,.18);padding-top:48px">
+      <div>
+        <div style="font-weight:900;font-size:128px;letter-spacing:-.05em;color:#F07F08;line-height:.9">~2%</div>
+        <div style="font-weight:700;font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-top:14px">Penetração atual</div>
+        <div style="font-size:20px;color:rgba(255,255,255,.65);margin-top:8px;line-height:1.45;max-width:360px">do Steel Frame na construção brasileira</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:128px;letter-spacing:-.05em;color:#F07F08;line-height:.9">27%<span style="font-size:48px;letter-spacing:0">a.a.</span></div>
+        <div style="font-weight:700;font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-top:14px">Crescimento do Steel Frame</div>
+        <div style="font-size:20px;color:rgba(255,255,255,.65);margin-top:8px;line-height:1.45;max-width:360px">no Brasil ao ano</div>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:88px;letter-spacing:-.04em;color:#F07F08;line-height:.95">Déficit<br/>+ MCMV</div>
+        <div style="font-weight:700;font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-top:14px">Maior pressão estrutural</div>
+        <div style="font-size:20px;color:rgba(255,255,255,.65);margin-top:8px;line-height:1.45;max-width:360px">por volume e velocidade do país</div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:120px;font-family:'Archivo',sans-serif;font-weight:700;font-size:32px;letter-spacing:-.005em;color:#fff;border-top:1px solid rgba(255,255,255,.18);padding-top:32px">
+      Quem se mover agora, <span style="color:#F07F08">captura a década.</span>
+    </div>
+
+    <div class="cs-page-num">22 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 23 — A PROPOSTA AO MUNICÍPIO
+       ============================================================ -->
+  <section data-label="23 Proposta ao municipio" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">23 · NOSSA PROPOSTA</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:170px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px">O que a Comsteel propõe a Novo Hamburgo</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:88px">
+        QUATRO FRENTES DE<br/>
+        <span style="color:#D86B28">PARCERIA INSTITUCIONAL.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:120px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
+      <div style="background:#0a0a0a;color:#fff;padding:48px 40px;display:flex;gap:36px;align-items:flex-start">
+        <div style="font-weight:900;font-size:80px;letter-spacing:-.04em;color:#F07F08;line-height:.9;min-width:120px">01</div>
+        <div>
+          <div style="font-weight:900;font-size:34px;letter-spacing:-.018em;text-transform:uppercase">MCMV em escala<br/>em Novo Hamburgo</div>
+          <p style="margin-top:14px;font-size:21px;color:rgba(255,255,255,.7);line-height:1.45;max-width:540px">Projetos padronizados Casa A e Casa B prontos para licitação. Cronograma e custo previsíveis.</p>
+        </div>
+      </div>
+      <div style="background:#fff;border:2px solid #0a0a0a;padding:48px 40px;display:flex;gap:36px;align-items:flex-start">
+        <div style="font-weight:900;font-size:80px;letter-spacing:-.04em;color:#D86B28;line-height:.9;min-width:120px">02</div>
+        <div>
+          <div style="font-weight:900;font-size:34px;letter-spacing:-.018em;text-transform:uppercase;color:#0a0a0a">Empregos &amp; fornecedores<br/>locais</div>
+          <p style="margin-top:14px;font-size:21px;color:#555;line-height:1.45;max-width:540px">Fábrica em NH, equipes de montagem locais, cadeia de acabamentos contratada na cidade.</p>
+        </div>
+      </div>
+      <div style="background:#fff;border:2px solid #0a0a0a;padding:48px 40px;display:flex;gap:36px;align-items:flex-start">
+        <div style="font-weight:900;font-size:80px;letter-spacing:-.04em;color:#D86B28;line-height:.9;min-width:120px">03</div>
+        <div>
+          <div style="font-weight:900;font-size:34px;letter-spacing:-.018em;text-transform:uppercase;color:#0a0a0a">Vitrine institucional</div>
+          <p style="margin-top:14px;font-size:21px;color:#555;line-height:1.45;max-width:540px">Uma Tiny House-showroom em ponto estratégico de Novo Hamburgo, símbolo da inovação local.</p>
+        </div>
+      </div>
+      <div style="background:#0a0a0a;color:#fff;padding:48px 40px;display:flex;gap:36px;align-items:flex-start">
+        <div style="font-weight:900;font-size:80px;letter-spacing:-.04em;color:#F07F08;line-height:.9;min-width:120px">04</div>
+        <div>
+          <div style="font-weight:900;font-size:34px;letter-spacing:-.018em;text-transform:uppercase">Programa de capacitação</div>
+          <p style="margin-top:14px;font-size:21px;color:rgba(255,255,255,.7);line-height:1.45;max-width:540px"><em>Steel Select</em> — formação de mão de obra qualificada na cidade, em parceria com o ecossistema educacional.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-num dark">23 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 24 — PRÓXIMOS PASSOS
+       ============================================================ -->
+  <section data-label="24 Proximos passos" class="cs-bg-black">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(255,255,255,.5)">24 · PRÓXIMOS PASSOS</div>
+    </div>
+
+    <div style="position:absolute;left:100px;top:200px;width:900px">
+      <div class="cs-eyebrow">A PARTIR DESTA REUNIÃO</div>
+      <h2 class="cs-h1" style="font-size:124px;margin-top:24px;line-height:.92">
+        VAMOS<br/>
+        CONSTRUIR<br/>
+        NOVO HAMBURGO,<br/>
+        <span style="color:#F07F08">JUNTOS.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;right:100px;top:200px;width:780px">
+      <div style="font-weight:600;font-size:18px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:32px">Quatro próximos passos</div>
+
+      <div class="cs-step">
+        <div class="num">01</div>
+        <div>
+          <div class="t">Apresentação técnica</div>
+          <p>Reunião com a secretaria competente para detalhamento do método construtivo Comsteel.</p>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="num">02</div>
+        <div>
+          <div class="t">Mapeamento de áreas</div>
+          <p>Identificação conjunta de áreas-alvo do município para empreendimentos MCMV.</p>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="num">03</div>
+        <div>
+          <div class="t">Estudo de viabilidade</div>
+          <p>Análise técnica, financeira e cronograma de um empreendimento piloto em Novo Hamburgo.</p>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="num">04</div>
+        <div>
+          <div class="t">Parceria institucional</div>
+          <p>Formalização do convênio Comsteel × Prefeitura de Novo Hamburgo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-page-num">24 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 25 — CONTATOS
+       ============================================================ -->
+  <section data-label="25 Contatos" class="cs-bg-paper">
+    <div class="cs-topbar">
+      <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+      <div class="brand-text" style="font-weight:500;color:rgba(0,0,0,.45)">25 · CONTATOS</div>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;top:200px">
+      <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Grupo Comsteel</div>
+      <h2 class="cs-h1" style="color:#0a0a0a;font-size:104px">
+        DUAS UNIDADES.<br/>
+        <span style="color:#D86B28">UMA FÁBRICA EM NOVO HAMBURGO.</span>
+      </h2>
+    </div>
+
+    <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:1fr 1fr;gap:32px">
+      <div style="background:#0a0a0a;color:#fff;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;min-height:380px">
+        <div>
+          <img src="assets/logo-construcao-dark.png" class="logo-img" style="height:72px;margin-bottom:30px" alt="Comsteel Construção" />
+          <div style="font-weight:800;font-size:38px;letter-spacing:-.018em;text-transform:uppercase;line-height:1.05">Construção<br/>&amp; Mobilidade</div>
+          <p style="margin-top:18px;font-size:21px;color:rgba(255,255,255,.7);line-height:1.5">Steel Frame, do projeto à execução. MCMV, Standard e Ibiza.</p>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,.18);padding-top:24px;font-size:22px;letter-spacing:.06em;font-weight:600">
+          comsteel.com.br
+        </div>
+      </div>
+
+      <div style="background:#3a240d;color:#f4eee0;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;min-height:380px">
+        <div>
+          <img src="assets/logo-tiny-dark.png" class="logo-img" style="height:72px;margin-bottom:30px" alt="Comsteel Tiny House" />
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:38px;letter-spacing:-.025em;line-height:1.05;color:#fff">Refúgios prontos<br/><em class="th-it" style="color:#e9dec7">para usufruir.</em></div>
+          <p style="margin-top:18px;font-size:21px;color:rgba(244,238,224,.75);line-height:1.5;font-family:'Manrope',sans-serif;font-weight:300">Catálogo de módulos plug and play — para todo o Brasil.</p>
+        </div>
+        <div style="border-top:1px solid rgba(244,238,224,.25);padding-top:24px;font-size:22px;letter-spacing:.06em;font-family:'Manrope',sans-serif;font-weight:500">
+          comsteeltinyhouse.com.br
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:100px;bottom:64px;display:flex;gap:48px;font-size:18px;letter-spacing:.18em;color:rgba(0,0,0,.6);font-weight:500;text-transform:uppercase">
+      <div>Fábrica · Novo Hamburgo / RS</div>
+      <div>Contato comercial · João — Comsteel</div>
+    </div>
+    <div class="cs-page-num dark" style="left:auto;right:100px">25 / 26</div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 26 — CONTRACAPA
+       ============================================================ -->
+  <section data-label="26 Contracapa" class="cs-bg-black">
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px">
+      <img src="assets/logo-construcao-dark.png" style="height:180px;width:auto" alt="Comsteel" />
+      <div style="height:2px;width:120px;background:#F07F08"></div>
+      <div class="cs-h1" style="text-align:center;font-size:88px;line-height:1;letter-spacing:-.025em;color:#fff">
+        A NOVA REALIDADE<br/>
+        DA <span style="color:#F07F08">CONSTRUÇÃO.</span>
+      </div>
+      <div style="font-size:18px;letter-spacing:.45em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:500;margin-top:32px">
+        Fábrica em Novo Hamburgo / RS · 2026
+      </div>
+    </div>
+    <div class="cs-page-num">26 / 26</div>
+  </section>
+
+  </deck-stage>
+</body>
+</html>
