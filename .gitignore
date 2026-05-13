@@ -12,6 +12,11 @@
 *.tif
 *.bmp
 *.gif
+# Exceções: logos versionados como source-of-truth de marca
+!Design System/01_Logos/**/*.png
+!Design System/01_Logos/**/*.PNG
+!Design System/01_Logos/**/*.jpg
+!Design System/01_Logos/**/*.JPG
 
 # ─── Vídeos ────────────────────────────────────
 *.mp4
@@ -25,6 +30,11 @@
 # ─── PDFs e documentos binários ────────────────
 *.pdf
 *.PDF
+# Exceções: deliverables estratégicos versionados
+!03 Licenciados/**/*.pdf
+!03 Licenciados/**/*.PDF
+!00 Documentos Estratégicos/**/*.pdf
+!00 Documentos Estratégicos/**/*.PDF
 
 # ─── Arquivos de design ─────────────────────────
 *.psd
@@ -57,7 +67,7 @@ Thumbs.db
 *.tmp
 
 # ─── Pastas de assets pesados ───────────────────
-Design System/01_Logos/
+# Design System/01_Logos/ foi removido daqui — logos são versionados (ver exceção na seção Imagens)
 Design System/02_Renders_Tiny_House/
 Design System/03_Portfolio_Construcao/
 
