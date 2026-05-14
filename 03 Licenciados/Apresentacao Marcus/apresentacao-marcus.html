@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Comsteel · Licenciamento · Apresentação para Marcus</title>
+<meta name="viewport" content="width=1920" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --black:#0a0a0a; --ink:#111111; --copper:#D86B28; --copper-bright:#F07F08;
+  --paper:#FFFFFF; --gray:#949494;
+  --tabaco:#3a240d; --bege:#c9b692; --bege-2:#e9dec7; --cobre-tiny:rgb(135,108,77); --cream:#f4eee0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#1a1a1a;font-family:'Archivo',sans-serif;font-feature-settings:"ss01","ss02"}
+body{padding:24px 0;display:flex;flex-direction:column;align-items:center;gap:24px}
+
+.slide{
+  width:1920px;height:1080px;overflow:hidden;position:relative;
+  font-family:'Archivo',sans-serif;color:#fff;background:#fff;
+  box-shadow:0 8px 40px rgba(0,0,0,.4);
+}
+img{display:block;max-width:100%}
+.img-fill{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.img-fit{width:100%;height:100%;object-fit:contain;display:block}
+.row{display:flex} .col{display:flex;flex-direction:column}
+
+/* Construção & Mobilidade */
+.cs-bg-black{background:var(--black);color:#fff}
+.cs-bg-paper{background:var(--paper);color:var(--ink)}
+.cs-h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:96px;line-height:.95;letter-spacing:-.025em;text-transform:uppercase}
+.cs-h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:64px;line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+.cs-eyebrow{font-family:'Archivo',sans-serif;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;color:var(--copper-bright)}
+.cs-eyebrow.muted{color:var(--gray)}
+.cs-body{font-size:26px;line-height:1.55;font-weight:400;color:#d8d8d8}
+.cs-body.dark{color:#3a3a3a}
+.cs-page-num{position:absolute;left:100px;bottom:60px;font-size:16px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:500}
+.cs-page-num.dark{color:rgba(0,0,0,.4)}
+.cs-page-tag{position:absolute;right:100px;bottom:60px;font-size:16px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:500}
+.cs-page-tag.dark{color:rgba(0,0,0,.4)}
+.cs-topbar{position:absolute;top:50px;left:100px;right:100px;display:flex;align-items:center;justify-content:space-between;z-index:5}
+.cs-topbar .brand-text{font-family:'Archivo',sans-serif;font-weight:600;font-size:16px;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.cs-topbar.dark .brand-text{color:rgba(0,0,0,.5)}
+.logo-img{display:block;height:56px;width:auto}
+.logo-img.lg{height:96px}
+
+/* Tiny House */
+.th-bg-tabaco{background:var(--tabaco);color:var(--cream)}
+.th-bg-bege{background:var(--bege-2);color:var(--tabaco)}
+.th-bg-cream{background:var(--cream);color:var(--tabaco)}
+.th-h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:120px;line-height:.95;letter-spacing:-.035em}
+.th-h2{font-family:'Manrope',sans-serif;font-weight:800;font-size:72px;line-height:1.02;letter-spacing:-.02em}
+.th-it{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400}
+.th-body{font-family:'Manrope',sans-serif;font-weight:300;font-size:26px;line-height:1.6;letter-spacing:.005em}
+.th-eyebrow{font-family:'Manrope',sans-serif;font-weight:600;font-size:18px;letter-spacing:.34em;text-transform:uppercase;color:var(--cobre-tiny)}
+
+/* Bullet rows */
+.cs-line{display:grid;grid-template-columns:80px 1fr;gap:28px;align-items:flex-start;border-top:1px solid rgba(255,255,255,.14);padding:22px 0}
+.cs-line .num{font-family:'Archivo',sans-serif;font-weight:900;font-size:42px;letter-spacing:-.04em;color:var(--copper-bright);line-height:1}
+.cs-line .t{font-weight:800;font-size:24px;letter-spacing:-.005em;text-transform:uppercase;color:#fff;line-height:1.15}
+.cs-line p{margin-top:6px;font-size:19px;color:rgba(255,255,255,.62);line-height:1.45;max-width:760px}
+.cs-line.dark{border-top-color:rgba(0,0,0,.12)}
+.cs-line.dark .num{color:var(--copper)}
+.cs-line.dark .t{color:#0a0a0a}
+.cs-line.dark p{color:#444}
+
+/* Print / PDF */
+@page{size:1920px 1080px;margin:0}
+@media print{
+  html,body{background:#fff;padding:0;margin:0}
+  body{display:block;gap:0}
+  .slide{box-shadow:none;page-break-after:always;break-after:page;margin:0}
+  .slide:last-child{page-break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SLIDE 01 — CAPA
+     ============================================================ -->
+<section class="slide">
+  <img src="assets/obra-canela-predio.jpg" class="img-fill" style="filter:brightness(.42) saturate(.85)" alt="Construção Steel Frame em montagem" />
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.25) 50%, rgba(0,0,0,.92) 100%)"></div>
+
+  <div style="position:absolute;top:60px;left:100px">
+    <img src="assets/logo-construcao-dark.png" class="logo-img lg" style="height:120px" alt="Comsteel · Construção & Mobilidade" />
+  </div>
+  <div style="position:absolute;top:90px;right:100px;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;letter-spacing:.4em;color:rgba(255,255,255,.7);text-transform:uppercase">
+    APRESENTAÇÃO DE LICENCIAMENTO · 2026
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:170px">
+    <div class="cs-eyebrow" style="margin-bottom:42px">CONFIDENCIAL · PREPARADO PARA MARCUS</div>
+    <h1 class="cs-h1" style="font-size:144px;line-height:.92;color:#fff;max-width:1700px">
+      MARCUS,<br/>
+      A NOVA REALIDADE<br/>
+      DA CONSTRUÇÃO<br/>
+      VAI TER <span style="color:#F07F08">SEU NOME</span>.
+    </h1>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:60px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div style="font-size:18px;letter-spacing:.18em;color:rgba(255,255,255,.78);line-height:1.6;text-transform:uppercase;font-weight:500">
+      Programa de Licenciamento Comsteel<br/>
+      Construção Industrializada em Light Steel Frame · 2026
+    </div>
+    <div style="font-size:16px;letter-spacing:.4em;color:rgba(255,255,255,.5);text-transform:uppercase;font-weight:500">01 / 22</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 02 — A PROVOCAÇÃO (R$55M)
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">02 · O PROBLEMA QUE VIRA OPORTUNIDADE</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:240px">
+    <div class="cs-eyebrow" style="margin-bottom:48px">ANTES DE QUALQUER PITCH, UM NÚMERO REAL</div>
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:280px;line-height:.85;letter-spacing:-.04em;color:#F07F08">R$55M</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:32px;letter-spacing:.05em;text-transform:uppercase;color:#fff;margin-top:32px">EM ORÇAMENTOS RECEBIDOS<br/>EM 12 MESES.</div>
+        <div style="font-size:26px;color:rgba(255,255,255,.7);line-height:1.45;margin-top:20px;max-width:760px">
+          10% convertidos. Os outros 90% — perdidos por falta de presença em territórios onde a demanda existe.
+        </div>
+      </div>
+      <div style="border-left:1px solid rgba(255,255,255,.18);padding-left:64px">
+        <div style="font-size:24px;line-height:1.55;color:rgba(255,255,255,.85);font-weight:400;max-width:640px">
+          O Steel Frame não tem problema de produto. Tem 20 anos de histórico técnico no Sul.
+          <br/><br/>
+          Tem problema de <strong style="color:#F07F08">capilaridade</strong>.
+          <br/><br/>
+          É exatamente aí que o seu nome entra.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-page-num">02 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 03 — A CURVA DO MERCADO
+     ============================================================ -->
+<section class="slide cs-bg-paper">
+  <div class="cs-topbar dark">
+    <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">03 · A CURVA ANTES DA INFLEXÃO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:200px">
+    <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Cenário do Steel Frame no Brasil</div>
+    <h2 class="cs-h1" style="color:#0a0a0a;font-size:96px;max-width:1500px">
+      QUEM ENTRA AGORA,<br/>
+      ENTRA <span style="color:#D86B28">ANTES</span> DO MERCADO<br/>
+      SE CONSOLIDAR.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:130px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px">
+    <div style="border-top:3px solid #0a0a0a;padding-top:28px">
+      <div style="font-weight:900;font-size:96px;letter-spacing:-.04em;color:#0a0a0a;line-height:.9">2%</div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#0a0a0a;margin-top:16px">Participação atual</div>
+      <p style="color:#555;font-size:19px;line-height:1.5;margin-top:12px;max-width:420px">É quanto o Steel Frame representa hoje da construção civil brasileira. Espaço aberto pela frente.</p>
+    </div>
+    <div style="border-top:3px solid #D86B28;padding-top:28px">
+      <div style="font-weight:900;font-size:96px;letter-spacing:-.04em;color:#D86B28;line-height:.9">+27%</div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#0a0a0a;margin-top:16px">Crescimento anual</div>
+      <p style="color:#555;font-size:19px;line-height:1.5;margin-top:12px;max-width:420px">Taxa real de expansão do segmento — uma das mais aceleradas da construção civil.</p>
+    </div>
+    <div style="border-top:3px solid #0a0a0a;padding-top:28px">
+      <div style="font-weight:900;font-size:96px;letter-spacing:-.04em;color:#0a0a0a;line-height:.9">125+</div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#0a0a0a;margin-top:16px">Casas entregues B2B</div>
+      <p style="color:#555;font-size:19px;line-height:1.5;margin-top:12px;max-width:420px">Steel Corp + Espaço Smart. Não é projeção — é histórico documentado em obras de pé.</p>
+    </div>
+  </div>
+  <div class="cs-page-num dark">03 / 22</div>
+  <div class="cs-page-tag dark">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 04 — QUEM É A COMSTEEL
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">04 · QUEM É A COMSTEEL</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:230px">
+    <div class="cs-eyebrow" style="margin-bottom:56px">A PLATAFORMA QUE VOCÊ ENTRA SÓCIO</div>
+    <p style="font-family:'Archivo',sans-serif;font-weight:600;font-size:64px;line-height:1.1;letter-spacing:-.018em;color:#fff;max-width:1700px">
+      A <span style="color:#F07F08">Comsteel</span> é a plataforma de
+      construção industrializada em Light Steel Frame com fábrica
+      em <span style="color:#F07F08">Novo Hamburgo/RS</span> e
+      <span style="color:#F07F08">20 anos</span> de know-how técnico
+      acumulado.
+    </p>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;border-top:1px solid rgba(255,255,255,.14);padding-top:42px">
+    <div>
+      <div class="cs-eyebrow muted" style="font-size:13px;margin-bottom:12px">UNIDADE 01</div>
+      <div style="font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase">Construção & Mobilidade</div>
+      <p style="font-size:17px;color:rgba(255,255,255,.55);margin-top:8px;line-height:1.5">Casas em Steel Frame personalizadas, do projeto à entrega em 90 dias.</p>
+    </div>
+    <div>
+      <div class="cs-eyebrow muted" style="font-size:13px;margin-bottom:12px">UNIDADE 02</div>
+      <div style="font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase">Comsteel Tiny House</div>
+      <p style="font-size:17px;color:rgba(255,255,255,.55);margin-top:8px;line-height:1.5">Módulos plug & play de 7 a 29 m², instalados em 1 dia em qualquer terreno.</p>
+    </div>
+    <div>
+      <div class="cs-eyebrow muted" style="font-size:13px;margin-bottom:12px">FÁBRICA</div>
+      <div style="font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase">Novo Hamburgo / RS</div>
+      <p style="font-size:17px;color:rgba(255,255,255,.55);margin-top:8px;line-height:1.5">59% do custo é off-site. Fábrica própria — controle total da entrega.</p>
+    </div>
+    <div>
+      <div class="cs-eyebrow muted" style="font-size:13px;margin-bottom:12px">CONFORMIDADE</div>
+      <div style="font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase">NBR 15.575 · 16.285 · 8.802</div>
+      <p style="font-size:17px;color:rgba(255,255,255,.55);margin-top:8px;line-height:1.5">Sistema construtivo aprovado para financiamento bancário e MCMV.</p>
+    </div>
+  </div>
+  <div class="cs-page-num">04 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 05 — TRAÇÃO REAL
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <img src="assets/aerea-mucum.jpg" class="img-fill" style="filter:brightness(.45) saturate(.9)" alt="Aérea da obra MCMV" />
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.95) 100%)"></div>
+
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">05 · TRAÇÃO REAL · NÃO É PROMESSA, É HISTÓRICO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:200px">
+    <div class="cs-eyebrow" style="margin-bottom:30px">PROVA FECHA · MARKETING ABRE</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:96px;max-width:1500px">
+      125+ CASAS<br/>
+      JÁ DE PÉ.<br/>
+      EM <span style="color:#F07F08">CONTRATO B2B</span>.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;border-top:1px solid rgba(255,255,255,.18);padding-top:32px">
+    <div>
+      <div style="font-weight:900;font-size:56px;color:#F07F08;letter-spacing:-.03em;line-height:1">50</div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:#fff;margin-top:8px">Muçum / RS</div>
+      <p style="color:rgba(255,255,255,.65);font-size:17px;line-height:1.45;margin-top:8px">Steel Corp · MCMV · entregues 2025</p>
+    </div>
+    <div>
+      <div style="font-weight:900;font-size:56px;color:#F07F08;letter-spacing:-.03em;line-height:1">75</div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:#fff;margin-top:8px">Bom Retiro do Sul / RS</div>
+      <p style="color:rgba(255,255,255,.65);font-size:17px;line-height:1.45;margin-top:8px">Steel Corp · MCMV · em execução</p>
+    </div>
+    <div>
+      <div style="font-weight:900;font-size:56px;color:#F07F08;letter-spacing:-.03em;line-height:1">04</div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:#fff;margin-top:8px">Cruzeiro do Sul / RS</div>
+      <p style="color:rgba(255,255,255,.65);font-size:17px;line-height:1.45;margin-top:8px">Espaço Smart · entregues 2025</p>
+    </div>
+  </div>
+  <div class="cs-page-num">05 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 06 — PORTFÓLIO ALTO PADRÃO (mosaic)
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">06 · DO MCMV AO ALTO PADRÃO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;top:200px;width:760px">
+    <div class="cs-eyebrow" style="margin-bottom:24px">PORTFÓLIO COMSTEEL</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:78px;line-height:.95">
+      O MESMO SISTEMA.<br/>
+      DA <span style="color:#F07F08">CASA POPULAR</span><br/>
+      À <span style="color:#F07F08">RESIDÊNCIA<br/>ASSINADA</span>.
+    </h2>
+    <p class="cs-body" style="margin-top:36px;max-width:680px;color:rgba(255,255,255,.72)">
+      Steel Frame não é categoria de produto — é tecnologia construtiva.
+      Você opera os dois extremos do mercado com a mesma fábrica, o mesmo método e a mesma marca.
+    </p>
+  </div>
+
+  <div style="position:absolute;right:100px;top:200px;width:980px;height:780px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px">
+    <img src="assets/obra-viana.jpg" style="width:100%;height:100%;object-fit:cover" alt="Casa Viana"/>
+    <img src="assets/obra-bosque.jpg" style="width:100%;height:100%;object-fit:cover" alt="Casa Bosque"/>
+    <img src="assets/casas-cruzeiro.jpg" style="width:100%;height:100%;object-fit:cover" alt="Casas Cruzeiro do Sul"/>
+    <img src="assets/obra-luminoteca.jpg" style="width:100%;height:100%;object-fit:cover" alt="Luminoteca Maldaner"/>
+  </div>
+  <div class="cs-page-num">06 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 07 — POR QUE LICENCIAMENTO
+     ============================================================ -->
+<section class="slide cs-bg-paper">
+  <div class="cs-topbar dark">
+    <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">07 · POR QUE LICENCIAMENTO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:200px">
+    <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Não é franquia. É parceria de ecossistema.</div>
+    <h2 class="cs-h1" style="color:#0a0a0a;font-size:88px;max-width:1700px">
+      VOCÊ TRAZ <span style="color:#D86B28">TERRITÓRIO</span>.<br/>
+      A COMSTEEL TRAZ <span style="color:#D86B28">PRODUTO,<br/>FÁBRICA, MARCA E SISTEMA</span>.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;gap:80px;border-top:2px solid #0a0a0a;padding-top:36px">
+    <div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#D86B28;margin-bottom:20px">VOCÊ NÃO PRECISA TER</div>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;border-bottom:1px solid rgba(0,0,0,.1);padding:14px 0">Experiência prévia em construção</li>
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;border-bottom:1px solid rgba(0,0,0,.1);padding:14px 0">Fábrica ou estrutura industrial</li>
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;border-bottom:1px solid rgba(0,0,0,.1);padding:14px 0">Capital de giro para iniciar obras</li>
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;padding:14px 0">Equipe técnica de engenharia própria</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#D86B28;margin-bottom:20px">VOCÊ TRAZ PARA A MESA</div>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;border-bottom:1px solid rgba(0,0,0,.1);padding:14px 0">Capacidade de gestão e relacionamento</li>
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;border-bottom:1px solid rgba(0,0,0,.1);padding:14px 0">Conhecimento do território onde vai operar</li>
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;border-bottom:1px solid rgba(0,0,0,.1);padding:14px 0">Reserva financeira para o investimento</li>
+        <li style="font-size:24px;line-height:1.5;color:#0a0a0a;font-weight:500;padding:14px 0">Disciplina de processo e ambição real</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cs-page-num dark">07 / 22</div>
+  <div class="cs-page-tag dark">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 08 — OS DOIS CAMINHOS (GOLD vs PREMIUM)
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">08 · DUAS PORTAS DE ENTRADA</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:170px">
+    <div class="cs-eyebrow" style="margin-bottom:30px">MARCUS, ESCOLHA SEU TERRITÓRIO DE ATUAÇÃO</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:96px">
+      DOIS MODELOS.<br/>
+      UMA <span style="color:#F07F08">DECISÃO ESTRATÉGICA</span>.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:120px;display:grid;grid-template-columns:1fr 1fr;gap:40px;height:560px">
+    <div style="background:#161616;border:1px solid rgba(255,255,255,.12);padding:48px;display:flex;flex-direction:column;justify-content:space-between;position:relative">
+      <div>
+        <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08">MODALIDADE 01</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:96px;letter-spacing:-.04em;line-height:.95;margin-top:24px;color:#fff">GOLD</div>
+        <div style="font-weight:700;font-size:24px;letter-spacing:.04em;text-transform:uppercase;color:#fff;margin-top:8px">Comsteel Construção</div>
+        <p style="font-size:21px;line-height:1.55;color:rgba(255,255,255,.72);margin-top:28px;max-width:560px">
+          Operação completa da unidade de construção em Light Steel Frame.
+          Casas personalizadas. Obra industrializada. Você assume o pós-montagem em "turnkey".
+        </p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:18px;font-size:16px;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5)">Construtora sem precisar construir</div>
+    </div>
+
+    <div style="background:#1f1108;border:1px solid #F07F08;padding:48px;display:flex;flex-direction:column;justify-content:space-between;position:relative">
+      <div style="position:absolute;top:-14px;right:32px;background:#F07F08;color:#0a0a0a;font-weight:800;font-size:14px;letter-spacing:.3em;text-transform:uppercase;padding:8px 18px">RECOMENDADO</div>
+      <div>
+        <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08">MODALIDADE 02</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:96px;letter-spacing:-.04em;line-height:.95;margin-top:24px;color:#F07F08">PREMIUM</div>
+        <div style="font-weight:700;font-size:24px;letter-spacing:.04em;text-transform:uppercase;color:#fff;margin-top:8px">Construção + Tiny House</div>
+        <p style="font-size:21px;line-height:1.55;color:rgba(255,255,255,.85);margin-top:28px;max-width:560px">
+          As duas unidades de negócio. A construtora <em>e</em> a venda de Tiny Houses prontas.
+          Inclui uma Tiny House como showroom — patrimônio físico no seu nome.
+        </p>
+      </div>
+      <div style="border-top:1px solid rgba(240,127,8,.4);padding-top:18px;font-size:16px;text-transform:uppercase;letter-spacing:.16em;color:#F07F08">Você não monta uma loja. Você adquire um ativo.</div>
+    </div>
+  </div>
+  <div class="cs-page-num">08 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 09 — GOLD · CAPÍTULO ABRE
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <img src="assets/obra-viana.jpg" class="img-fill" style="filter:brightness(.4) saturate(.85)" alt="Casa Viana"/>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.15) 100%)"></div>
+
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">09 · MODALIDADE GOLD</div>
+  </div>
+
+  <div style="position:absolute;left:100px;top:240px;width:1100px">
+    <div class="cs-eyebrow" style="margin-bottom:32px">CAPÍTULO 01 · GOLD</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:128px;line-height:.92">
+      UMA<br/>
+      <span style="color:#F07F08">CONSTRUTORA</span><br/>
+      SEM PRECISAR<br/>
+      CONSTRUIR.
+    </h2>
+    <p class="cs-body" style="margin-top:40px;max-width:880px;color:rgba(255,255,255,.78);font-size:24px">
+      Você opera a Comsteel Construção & Mobilidade no seu território com toda a engenharia,
+      o método de vendas, o marketing e a fábrica do grupo. Suas obras saem prontas da nossa indústria.
+    </p>
+  </div>
+  <div class="cs-page-num">09 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 10 — GOLD · COMO FUNCIONA (off-site / on-site)
+     ============================================================ -->
+<section class="slide cs-bg-paper">
+  <div class="cs-topbar dark">
+    <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">10 · GOLD · DIVISÃO DE RESPONSABILIDADES</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:180px">
+    <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px">A engenharia da divisão</div>
+    <h2 class="cs-h2" style="color:#0a0a0a;font-size:72px;max-width:1500px">
+      <span style="color:#D86B28">59%</span> NA FÁBRICA · <span style="color:#D86B28">41%</span> NO CANTEIRO.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:380px;display:grid;grid-template-columns:1fr 1fr;gap:40px">
+    <div style="background:#0a0a0a;color:#fff;padding:48px">
+      <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:18px">OFF-SITE · 59% · COMSTEEL</div>
+      <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:42px;letter-spacing:-.025em;text-transform:uppercase;line-height:1">A FÁBRICA<br/>FAZ A CASA.</h3>
+      <ul style="list-style:none;padding:0;margin:32px 0 0;display:flex;flex-direction:column;gap:14px">
+        <li style="font-size:20px;color:rgba(255,255,255,.85);border-left:2px solid #F07F08;padding-left:14px">Painéis estruturais em Light Steel Frame</li>
+        <li style="font-size:20px;color:rgba(255,255,255,.85);border-left:2px solid #F07F08;padding-left:14px">Tesouras de cobertura industrializadas</li>
+        <li style="font-size:20px;color:rgba(255,255,255,.85);border-left:2px solid #F07F08;padding-left:14px">Engenharia, projeto e compatibilização</li>
+        <li style="font-size:20px;color:rgba(255,255,255,.85);border-left:2px solid #F07F08;padding-left:14px">Logística e montagem on-site</li>
+      </ul>
+    </div>
+    <div style="background:#fff;border:2px solid #0a0a0a;padding:48px">
+      <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#D86B28;margin-bottom:18px">ON-SITE · 41% · LICENCIADO MARCUS</div>
+      <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:42px;letter-spacing:-.025em;text-transform:uppercase;line-height:1;color:#0a0a0a">VOCÊ FAZ<br/>O TURNKEY.</h3>
+      <ul style="list-style:none;padding:0;margin:32px 0 0;display:flex;flex-direction:column;gap:14px">
+        <li style="font-size:20px;color:#222;border-left:2px solid #D86B28;padding-left:14px">Acabamentos: pintura, revestimentos, gesso</li>
+        <li style="font-size:20px;color:#222;border-left:2px solid #D86B28;padding-left:14px">Instalações: elétrica, hidráulica, metais</li>
+        <li style="font-size:20px;color:#222;border-left:2px solid #D86B28;padding-left:14px">Esquadrias, luminária, complementos</li>
+        <li style="font-size:20px;color:#222;border-left:2px solid #D86B28;padding-left:14px">Gestão da equipe local + entrega "chave na porta"</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cs-page-num dark">10 / 22</div>
+  <div class="cs-page-tag dark">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 11 — GOLD · ECOSSISTEMA INCLUSO
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">11 · GOLD · ECOSSISTEMA INCLUSO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;top:160px;width:760px">
+    <div class="cs-eyebrow" style="margin-bottom:24px">VOCÊ NÃO ENTRA SOZINHO</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:84px;line-height:.95">
+      OITO PILARES<br/>
+      QUE VÊM<br/>
+      <span style="color:#F07F08">DENTRO</span><br/>
+      DO CONTRATO.
+    </h2>
+    <p class="cs-body" style="margin-top:32px;max-width:660px;color:rgba(255,255,255,.7);font-size:22px">
+      Tudo que normalmente leva 5 anos para um empreendedor montar — você opera no dia 1 com a marca Comsteel.
+    </p>
+  </div>
+
+  <div style="position:absolute;right:100px;top:160px;width:980px">
+    <div class="cs-line"><div class="num">01</div><div><div class="t">Método de vendas validado</div><p>Sistema growpartner com playbook, scripts, cadências e treinamento contínuo do time comercial local.</p></div></div>
+    <div class="cs-line"><div class="num">02</div><div><div class="t">Marketing 360º — do criativo à gestão</div><p>Identidade visual, redes sociais, site dedicado e ações locais. Você opera; nós produzimos.</p></div></div>
+    <div class="cs-line"><div class="num">03</div><div><div class="t">Engenharia técnica de plantão</div><p>Apoio do time de engenharia em Light Steel Frame — projeto, compatibilização e dúvidas de obra.</p></div></div>
+    <div class="cs-line"><div class="num">04</div><div><div class="t">Gestão financeira e contábil de especialistas</div><p>Equipe especializada por área para garantir que o negócio rode com a mesma eficiência da matriz.</p></div></div>
+    <div class="cs-line"><div class="num">05</div><div><div class="t">Steel Select — formação profissionalizante</div><p>Curso completo no sistema construtivo industrializado, para você e sua equipe local.</p></div></div>
+    <div class="cs-line"><div class="num">06</div><div><div class="t">Cadeia de supply chain com poder de compra</div><p>Vantagens competitivas em fornecedores, prazos e atendimento — escala do grupo a serviço da sua operação.</p></div></div>
+    <div class="cs-line"><div class="num">07</div><div><div class="t">Frota, uniforme e identidade do grupo</div><p>Identidade visual aplicada à frota, vestuário e materiais — confiança imediata na sua região.</p></div></div>
+    <div class="cs-line"><div class="num">08</div><div><div class="t">Cluster de arquitetos parceiros</div><p>Acesso ao Hub de Arquitetos para assinarem projetos exclusivos com a sua operação.</p></div></div>
+  </div>
+  <div class="cs-page-num">11 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 12 — GOLD · EXCLUSIVIDADE TERRITORIAL
+     ============================================================ -->
+<section class="slide cs-bg-paper">
+  <div class="cs-topbar dark">
+    <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">12 · GOLD · EXCLUSIVIDADE TERRITORIAL</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:230px">
+    <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Sua região, sua marca</div>
+    <h2 class="cs-h1" style="color:#0a0a0a;font-size:104px;max-width:1700px;line-height:.95">
+      TERRITÓRIO PROTEGIDO.<br/>
+      <span style="color:#D86B28">SEM CONCORRENTE COMSTEEL</span><br/>
+      DENTRO DA SUA OPERAÇÃO.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;border-top:2px solid #0a0a0a;padding-top:32px">
+    <div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#D86B28;margin-bottom:14px">REGIÃO OU ESTADO</div>
+      <p style="color:#222;font-size:21px;line-height:1.5;max-width:480px">A licença GOLD pode ser contratada para um estado inteiro ou uma região definida — a depender do potencial do território.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#D86B28;margin-bottom:14px">EXCLUSIVIDADE CONTRATUAL</div>
+      <p style="color:#222;font-size:21px;line-height:1.5;max-width:480px">Cláusula formal: enquanto o seu contrato estiver ativo, ninguém mais opera com a marca Comsteel no seu raio definido.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.08em;color:#D86B28;margin-bottom:14px">PRIMEIRO A ENTRAR</div>
+      <p style="color:#222;font-size:21px;line-height:1.5;max-width:480px">Steel Frame ainda é 2% do mercado — quem assume o território primeiro define o padrão da categoria.</p>
+    </div>
+  </div>
+  <div class="cs-page-num dark">12 / 22</div>
+  <div class="cs-page-tag dark">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 13 — PREMIUM · ABERTURA DO CAPÍTULO
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <img src="assets/obra-canela-predio.jpg" class="img-fill" style="filter:brightness(.4) saturate(.85)" alt="Construção em andamento"/>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.15) 100%)"></div>
+
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">13 · MODALIDADE PREMIUM</div>
+  </div>
+
+  <div style="position:absolute;left:100px;top:240px;width:1200px">
+    <div class="cs-eyebrow" style="margin-bottom:32px">CAPÍTULO 02 · PREMIUM · O MODELO MAIS COMPLETO</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:128px;line-height:.92">
+      VOCÊ NÃO ABRE<br/>
+      UM NEGÓCIO.<br/>
+      VOCÊ <span style="color:#F07F08">ENTRA EM DOIS</span><br/>
+      AO MESMO TEMPO.
+    </h2>
+    <p class="cs-body" style="margin-top:40px;max-width:900px;color:rgba(255,255,255,.78);font-size:24px">
+      O Premium reúne as duas unidades de negócio do grupo — Construção & Mobilidade <em>e</em> Tiny House —
+      operando em paralelo, com a mesma marca, no mesmo território.
+    </p>
+  </div>
+  <div class="cs-page-num">13 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 14 — PREMIUM · O QUE VOCÊ ADICIONA AO GOLD
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">14 · PREMIUM · TUDO DO GOLD + A SEGUNDA UNIDADE</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:200px">
+    <div class="cs-eyebrow" style="margin-bottom:30px">A EQUAÇÃO COMPLETA</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:84px;line-height:1">
+      <span style="color:rgba(255,255,255,.45)">TUDO QUE O GOLD ENTREGA</span><br/>
+      <span style="color:#fff">+ A OPERAÇÃO</span> <span style="color:#F07F08">TINY HOUSE</span><br/>
+      <span style="color:#fff">+ UMA TINY</span> <span style="color:#F07F08">COMO PATRIMÔNIO</span>.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:130px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid rgba(255,255,255,.16);padding-top:40px">
+    <div style="background:#161616;border:1px solid rgba(255,255,255,.1);padding:36px">
+      <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:16px">Bloco A</div>
+      <div style="font-weight:800;font-size:30px;letter-spacing:-.01em;text-transform:uppercase;color:#fff">Construção & Mobilidade</div>
+      <p style="font-size:19px;color:rgba(255,255,255,.65);line-height:1.55;margin-top:16px">Casas em Steel Frame personalizadas, industrializadas, entrega em 90 dias com prazo contratual.</p>
+    </div>
+    <div style="background:#161616;border:1px solid rgba(255,255,255,.1);padding:36px">
+      <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:16px">Bloco B</div>
+      <div style="font-weight:800;font-size:30px;letter-spacing:-.01em;text-transform:uppercase;color:#fff">Comsteel Tiny House</div>
+      <p style="font-size:19px;color:rgba(255,255,255,.65);line-height:1.55;margin-top:16px">Módulos prontos, mobiliados, instalados em 1 dia. Mercado em curva ascendente para investidores e pousadas.</p>
+    </div>
+    <div style="background:#1f1108;border:1px solid #F07F08;padding:36px">
+      <div style="font-weight:700;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:#F07F08;margin-bottom:16px">Bloco C</div>
+      <div style="font-weight:800;font-size:30px;letter-spacing:-.01em;text-transform:uppercase;color:#F07F08">Tiny showroom</div>
+      <p style="font-size:19px;color:rgba(255,255,255,.85);line-height:1.55;margin-top:16px">A Tiny House inclusa é um ativo no seu nome. Não é decoração de loja — é patrimônio que gera caixa.</p>
+    </div>
+  </div>
+  <div class="cs-page-num">14 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 15 — PREMIUM · TINY HOUSE BRAND SWITCH (capa)
+     ============================================================ -->
+<section class="slide th-bg-tabaco" style="background:var(--tabaco)">
+  <img src="assets/tiny-fachada.png" class="img-fill" style="filter:brightness(.5) saturate(.95)" alt="Tiny House em natureza"/>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(58,36,13,.75) 0%, rgba(58,36,13,.35) 50%, rgba(58,36,13,.95) 100%)"></div>
+
+  <div style="position:absolute;top:50px;left:100px;right:100px;display:flex;align-items:center;justify-content:space-between">
+    <img src="assets/logo-tiny-dark.png" style="height:64px" alt="Comsteel Tiny House" />
+    <div class="th-eyebrow" style="color:rgba(244,238,224,.6)">15 · UNIDADE 02 · COMSTEEL TINY HOUSE</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:200px">
+    <div class="th-eyebrow" style="margin-bottom:36px;color:rgba(244,238,224,.6)">UMA OUTRA MARCA. O MESMO ECOSSISTEMA.</div>
+    <h1 class="th-h1" style="color:#f4eee0;font-size:160px;line-height:.92;max-width:1700px">
+      É <span class="th-it" style="color:#c9b692">usufruir</span>,<br/>
+      não construir.
+    </h1>
+    <p class="th-body" style="color:rgba(244,238,224,.78);font-size:30px;max-width:1200px;margin-top:48px;font-weight:300">
+      A unidade Tiny House da Comsteel opera no mesmo método industrializado em Light Steel Frame —
+      mas o que sai da fábrica não vai para um canteiro. Vai direto para o terreno do cliente.
+      <span class="th-it" style="color:#c9b692"> Pronta. Mobiliada. Habitada no mesmo dia.</span>
+    </p>
+  </div>
+  <div style="position:absolute;left:100px;bottom:60px;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,238,224,.45);font-family:'Manrope',sans-serif;font-weight:500">15 / 22</div>
+  <div style="position:absolute;right:100px;bottom:60px;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,238,224,.45);font-family:'Manrope',sans-serif;font-weight:500">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 16 — TINY · MODELOS / MERCADO
+     ============================================================ -->
+<section class="slide th-bg-bege" style="background:var(--bege-2);color:var(--tabaco)">
+  <div style="position:absolute;top:50px;left:100px;right:100px;display:flex;align-items:center;justify-content:space-between">
+    <img src="assets/logo-tiny-light.png" style="height:64px" alt="Comsteel Tiny House" />
+    <div class="th-eyebrow" style="color:rgba(58,36,13,.55)">16 · O ATIVO QUE VOCÊ INSTALA NUM SÁBADO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;top:170px;width:780px">
+    <div class="th-eyebrow" style="margin-bottom:24px;color:#876c4d">PORTFÓLIO TINY HOUSE</div>
+    <h2 class="th-h2" style="color:#3a240d;font-size:80px;line-height:.95">
+      De <span class="th-it">refúgio pessoal</span><br/>
+      a <span class="th-it">ativo que rende</span><br/>
+      em alta temporada.
+    </h2>
+    <p class="th-body" style="color:#3a240d;margin-top:36px;max-width:680px">
+      Modelos de 7 a 29 m² — adega, sauna, office, hospedagem, Marrocos, Natura, London.
+      Acabamento de suíte. Estrutura de Steel Frame. Entrega por caminhão.
+    </p>
+    <div style="margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:680px">
+      <div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:48px;color:#3a240d;line-height:1">1 dia</div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:500;font-size:18px;color:#876c4d;margin-top:6px;text-transform:uppercase;letter-spacing:.08em">Instalação no terreno</div>
+      </div>
+      <div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:48px;color:#3a240d;line-height:1">90 dias</div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:500;font-size:18px;color:#876c4d;margin-top:6px;text-transform:uppercase;letter-spacing:.08em">Da assinatura à entrega</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:100px;top:170px;width:980px;height:780px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px">
+    <img src="assets/tiny-fachada.png" style="width:100%;height:100%;object-fit:cover" alt="Tiny fachada"/>
+    <img src="assets/tiny-hospedagem.png" style="width:100%;height:100%;object-fit:cover" alt="Tiny hospedagem"/>
+    <img src="assets/tiny-adega.png" style="width:100%;height:100%;object-fit:cover" alt="Tiny adega"/>
+    <img src="assets/tiny-sauna.png" style="width:100%;height:100%;object-fit:cover" alt="Tiny sauna"/>
+  </div>
+  <div style="position:absolute;left:100px;bottom:60px;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(58,36,13,.5);font-family:'Manrope',sans-serif;font-weight:500">16 / 22</div>
+  <div style="position:absolute;right:100px;bottom:60px;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(58,36,13,.5);font-family:'Manrope',sans-serif;font-weight:500">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 17 — TINY · PATRIMÔNIO + 3-EM-1
+     ============================================================ -->
+<section class="slide th-bg-tabaco" style="background:var(--tabaco)">
+  <div style="position:absolute;top:50px;left:100px;right:100px;display:flex;align-items:center;justify-content:space-between">
+    <img src="assets/logo-tiny-dark.png" style="height:64px" alt="Comsteel Tiny House" />
+    <div class="th-eyebrow" style="color:rgba(244,238,224,.55)">17 · A TINY DO PREMIUM · TRÊS PAPÉIS, UM ATIVO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:180px">
+    <div class="th-eyebrow" style="color:#c9b692;margin-bottom:30px">VOCÊ NÃO INVESTE NA MONTAGEM DE UMA LOJA</div>
+    <h2 class="th-h1" style="color:#f4eee0;font-size:108px;line-height:.95;max-width:1700px">
+      É <span class="th-it" style="color:#c9b692">patrimônio</span><br/>
+      no seu nome,<br/>
+      não <span class="th-it" style="color:#c9b692">decoração</span> da franquia.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid rgba(244,238,224,.18);padding-top:36px">
+    <div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;letter-spacing:.36em;text-transform:uppercase;color:#c9b692;margin-bottom:14px">PAPEL 01</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.01em;color:#f4eee0;line-height:1.1">SHOWROOM</div>
+      <p style="font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;color:rgba(244,238,224,.7);line-height:1.55;margin-top:14px">Ponto físico da marca no seu território — cliente entra e sente o produto, não vê catálogo.</p>
+    </div>
+    <div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;letter-spacing:.36em;text-transform:uppercase;color:#c9b692;margin-bottom:14px">PAPEL 02</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.01em;color:#f4eee0;line-height:1.1">ATIVO DE RENDA</div>
+      <p style="font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;color:rgba(244,238,224,.7);line-height:1.55;margin-top:14px">Pode ser locada por aplicativo enquanto não está em uso comercial. Caixa enquanto vende.</p>
+    </div>
+    <div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;letter-spacing:.36em;text-transform:uppercase;color:#c9b692;margin-bottom:14px">PAPEL 03</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.01em;color:#f4eee0;line-height:1.1">PATRIMÔNIO</div>
+      <p style="font-family:'Manrope',sans-serif;font-weight:300;font-size:20px;color:rgba(244,238,224,.7);line-height:1.55;margin-top:14px">Imóvel registrado no seu nome. Transportável. Você leva com você se decidir mover de cidade.</p>
+    </div>
+  </div>
+  <div style="position:absolute;left:100px;bottom:60px;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,238,224,.45);font-family:'Manrope',sans-serif;font-weight:500">17 / 22</div>
+  <div style="position:absolute;right:100px;bottom:60px;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,238,224,.45);font-family:'Manrope',sans-serif;font-weight:500">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 18 — STEEL SELECT
+     ============================================================ -->
+<section class="slide cs-bg-paper">
+  <div class="cs-topbar dark">
+    <img src="assets/logo-construcao-light.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">18 · STEEL SELECT · A FORMAÇÃO QUE FECHA O GAP TÉCNICO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:200px">
+    <div style="color:#D86B28;font-weight:600;font-size:22px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:32px">Capacitação inclusa em ambas as licenças</div>
+    <h2 class="cs-h1" style="color:#0a0a0a;font-size:96px;max-width:1700px;line-height:.95">
+      VOCÊ SAI DO PROGRAMA<br/>
+      <span style="color:#D86B28">SABENDO OPERAR</span>.<br/>
+      NÃO SABENDO TEORIA.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:130px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;border-top:2px solid #0a0a0a;padding-top:32px">
+    <div>
+      <div style="font-weight:900;font-size:54px;color:#0a0a0a;letter-spacing:-.03em;line-height:1">01</div>
+      <div style="font-weight:800;font-size:21px;text-transform:uppercase;letter-spacing:.04em;color:#0a0a0a;margin-top:14px">Construção</div>
+      <p style="color:#444;font-size:18px;line-height:1.5;margin-top:10px">Sistema construtivo Light Steel Frame: do projeto à montagem on-site.</p>
+    </div>
+    <div>
+      <div style="font-weight:900;font-size:54px;color:#0a0a0a;letter-spacing:-.03em;line-height:1">02</div>
+      <div style="font-weight:800;font-size:21px;text-transform:uppercase;letter-spacing:.04em;color:#0a0a0a;margin-top:14px">Vendas Comsteel</div>
+      <p style="color:#444;font-size:18px;line-height:1.5;margin-top:10px">Playbook validado · diagnóstico · objeções · cadência growpartner.</p>
+    </div>
+    <div>
+      <div style="font-weight:900;font-size:54px;color:#0a0a0a;letter-spacing:-.03em;line-height:1">03</div>
+      <div style="font-weight:800;font-size:21px;text-transform:uppercase;letter-spacing:.04em;color:#0a0a0a;margin-top:14px">Gestão de Obra</div>
+      <p style="color:#444;font-size:18px;line-height:1.5;margin-top:10px">Fluxo on-site, equipes, fornecedores, controle de prazo e custo.</p>
+    </div>
+    <div>
+      <div style="font-weight:900;font-size:54px;color:#D86B28;letter-spacing:-.03em;line-height:1">04</div>
+      <div style="font-weight:800;font-size:21px;text-transform:uppercase;letter-spacing:.04em;color:#0a0a0a;margin-top:14px">IPI · IA aplicada</div>
+      <p style="color:#444;font-size:18px;line-height:1.5;margin-top:10px">Treinamento de uso de Inteligência Artificial Produtiva no dia-a-dia da operação.</p>
+    </div>
+  </div>
+  <div class="cs-page-num dark">18 / 22</div>
+  <div class="cs-page-tag dark">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 19 — PARA QUEM É (PERFIL DO LICENCIADO)
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">19 · O PERFIL QUE BUSCAMOS</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:170px">
+    <div class="cs-eyebrow" style="margin-bottom:30px">MARCUS, ISTO AQUI É IMPORTANTE</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:92px;line-height:.95">
+      ISTO NÃO É PARA<br/>
+      <span style="color:#F07F08">TODO MUNDO</span>.<br/>
+      É PARA QUEM TEM<br/>
+      AMBIÇÃO DE PROCESSO.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:140px;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;border-top:1px solid rgba(255,255,255,.16);padding-top:36px">
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:#F07F08;margin-bottom:14px">PERFIL 01</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.1">Arquitetos</div>
+      <p style="color:rgba(255,255,255,.6);font-size:16px;line-height:1.5;margin-top:10px">Que querem deixar de assinar projeto e passar a operar uma plataforma.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:#F07F08;margin-bottom:14px">PERFIL 02</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.1">Engenheiros</div>
+      <p style="color:rgba(255,255,255,.6);font-size:16px;line-height:1.5;margin-top:10px">Civis e de produção que dominam canteiro e querem assumir a marca.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:#F07F08;margin-bottom:14px">PERFIL 03</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.1">Construtores</div>
+      <p style="color:rgba(255,255,255,.6);font-size:16px;line-height:1.5;margin-top:10px">Da alvenaria convencional, prontos para industrializar a operação.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:#F07F08;margin-bottom:14px">PERFIL 04</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.1">Empreendedores</div>
+      <p style="color:rgba(255,255,255,.6);font-size:16px;line-height:1.5;margin-top:10px">Investidores com reserva, rede local e disciplina de processo.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:#F07F08;margin-bottom:14px">PERFIL 05</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.1">Montadores LSF</div>
+      <p style="color:rgba(255,255,255,.6);font-size:16px;line-height:1.5;margin-top:10px">Profissionais autônomos do Steel Frame que querem o respaldo de uma marca.</p>
+    </div>
+  </div>
+  <div class="cs-page-num">19 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 20 — INVESTIMENTO · GOLD
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">20 · INVESTIMENTO · MODALIDADE GOLD</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:170px">
+    <div class="cs-eyebrow" style="margin-bottom:32px">MARCUS, AGORA OS NÚMEROS</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:84px;line-height:.95">
+      MODALIDADE GOLD.<br/>
+      <span style="color:#F07F08">CONSTRUTORA SEM CONSTRUIR</span>.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:480px;display:grid;grid-template-columns:1fr 1fr;gap:48px">
+    <div style="background:#161616;border:1px solid rgba(255,255,255,.12);padding:48px">
+      <div style="font-weight:700;font-size:14px;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px">Valor cheio</div>
+      <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:104px;letter-spacing:-.04em;line-height:.95;color:rgba(255,255,255,.6);text-decoration:line-through;text-decoration-thickness:4px">R$ 59.000</div>
+      <div style="font-size:18px;color:rgba(255,255,255,.55);margin-top:14px;line-height:1.5">Taxa de licenciamento integral · acesso ao ecossistema completo Comsteel Construção & Mobilidade.</div>
+    </div>
+    <div style="background:#1f1108;border:2px solid #F07F08;padding:48px;position:relative">
+      <div style="position:absolute;top:-14px;left:48px;background:#F07F08;color:#0a0a0a;font-weight:800;font-size:14px;letter-spacing:.3em;text-transform:uppercase;padding:8px 18px">CONDIÇÃO DE LANÇAMENTO</div>
+      <div style="font-weight:700;font-size:14px;letter-spacing:.36em;text-transform:uppercase;color:#F07F08;margin-bottom:18px;margin-top:14px">VALOR PARA MARCUS</div>
+      <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:128px;letter-spacing:-.04em;line-height:.95;color:#fff">R$ 49.000</div>
+      <div style="font-size:21px;color:rgba(255,255,255,.85);margin-top:14px;line-height:1.5">Desconto de <strong style="color:#F07F08">R$ 10.000</strong> para os primeiros licenciados — válido na janela de lançamento.</div>
+    </div>
+  </div>
+  <div class="cs-page-num">20 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 21 — INVESTIMENTO · PREMIUM
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">21 · INVESTIMENTO · MODALIDADE PREMIUM</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:140px">
+    <div class="cs-eyebrow" style="margin-bottom:24px">O PITT PRINCIPAL DO LANÇAMENTO</div>
+    <h2 class="cs-h1" style="color:#fff;font-size:80px;line-height:.95">
+      A LICENÇA SAI<br/>
+      <span style="color:#F07F08">DE CORTESIA</span>.<br/>
+      VOCÊ INVESTE NO ATIVO.
+    </h2>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:440px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:stretch">
+      <div style="background:#161616;border:1px solid rgba(255,255,255,.12);padding:36px">
+        <div style="font-weight:700;font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px">Tiny House (showroom)</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:64px;letter-spacing:-.04em;line-height:.95;color:#fff">R$ 169.000</div>
+        <div style="font-size:17px;color:rgba(255,255,255,.62);margin-top:14px;line-height:1.5">Investimento direto no ativo. Patrimônio físico no seu nome.</div>
+      </div>
+      <div style="background:#161616;border:1px solid rgba(255,255,255,.12);padding:36px">
+        <div style="font-weight:700;font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px">Taxa de licenciamento</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:64px;letter-spacing:-.04em;line-height:.95;color:rgba(255,255,255,.55);text-decoration:line-through;text-decoration-thickness:3px">R$ 59.000</div>
+        <div style="font-size:17px;color:rgba(255,255,255,.62);margin-top:14px;line-height:1.5">Acesso ao ecossistema das duas unidades — <strong style="color:#F07F08">cortesia no lançamento</strong>.</div>
+      </div>
+      <div style="background:#1f1108;border:2px solid #F07F08;padding:36px;position:relative">
+        <div style="position:absolute;top:-14px;right:24px;background:#F07F08;color:#0a0a0a;font-weight:800;font-size:13px;letter-spacing:.3em;text-transform:uppercase;padding:8px 16px">VALOR MARCUS</div>
+        <div style="font-weight:700;font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:#F07F08;margin-bottom:16px;margin-top:10px">VOCÊ PAGA</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:80px;letter-spacing:-.04em;line-height:.95;color:#fff">R$ 169.000</div>
+        <div style="font-size:17px;color:rgba(255,255,255,.85);margin-top:14px;line-height:1.5">Em vez de R$ 228.000. Você economiza <strong style="color:#F07F08">R$ 59.000</strong> e leva um patrimônio para casa.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;border-top:1px solid rgba(255,255,255,.16);padding-top:28px;font-size:24px;line-height:1.55;color:rgba(255,255,255,.82);max-width:1700px;font-weight:400">
+      "Você não está investindo na montagem da loja de uma franquia que não vira patrimônio.
+      Está adquirindo a Tiny House mais moderna do segmento — e <strong style="color:#F07F08">a licença vem junto, sem custo adicional</strong>."
+    </div>
+  </div>
+  <div class="cs-page-num">21 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 22 — CTA FINAL · PRÓXIMO PASSO
+     ============================================================ -->
+<section class="slide cs-bg-black">
+  <img src="assets/mosaico-fabrica.png" class="img-fill" style="filter:brightness(.35) saturate(.8)" alt="Fábrica Comsteel"/>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.95) 100%)"></div>
+
+  <div class="cs-topbar">
+    <img src="assets/logo-construcao-dark.png" class="logo-img" alt="Comsteel" />
+    <div class="brand-text">22 · PRÓXIMO PASSO</div>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;top:200px">
+    <div class="cs-eyebrow" style="margin-bottom:36px">MARCUS, A DECISÃO É DE TERRITÓRIO — NÃO DE PRODUTO</div>
+    <h1 class="cs-h1" style="color:#fff;font-size:144px;line-height:.92;max-width:1700px">
+      VENHA VER A<br/>
+      OPERAÇÃO DE PERTO.<br/>
+      <span style="color:#F07F08">NOVO HAMBURGO / RS</span>.
+    </h1>
+    <p class="cs-body" style="color:rgba(255,255,255,.78);font-size:26px;max-width:1300px;margin-top:36px;font-weight:400">
+      Visita à fábrica, conversa com Felipe (engenharia) e Ramão (comercial),
+      tour por uma obra em andamento e análise da demanda do seu território.
+      Antes de qualquer assinatura, você vê tudo de perto.
+    </p>
+  </div>
+
+  <div style="position:absolute;left:100px;right:100px;bottom:130px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid rgba(255,255,255,.18);padding-top:32px">
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:#F07F08;margin-bottom:12px">PASSO 01</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.15">Qualificação de território</div>
+      <p style="color:rgba(255,255,255,.68);font-size:17px;line-height:1.5;margin-top:8px">Conversa de 30 minutos para validar o potencial da sua região.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:#F07F08;margin-bottom:12px">PASSO 02</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.15">Visita à fábrica</div>
+      <p style="color:rgba(255,255,255,.68);font-size:17px;line-height:1.5;margin-top:8px">Operação de perto · obra ao vivo · time técnico e comercial.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:#F07F08;margin-bottom:12px">PASSO 03</div>
+      <div style="font-weight:800;font-size:22px;text-transform:uppercase;color:#fff;line-height:1.15">Proposta sob medida</div>
+      <p style="color:rgba(255,255,255,.68);font-size:17px;line-height:1.5;margin-top:8px">Modalidade, território, condições e cronograma de implantação.</p>
+    </div>
+  </div>
+  <div class="cs-page-num">22 / 22</div>
+  <div class="cs-page-tag">CONFIDENCIAL · MARCUS</div>
+</section>
+
+</body>
+</html>
