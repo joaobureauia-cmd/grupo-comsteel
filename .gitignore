@@ -17,6 +17,13 @@
 !Design System/01_Logos/**/*.PNG
 !Design System/01_Logos/**/*.jpg
 !Design System/01_Logos/**/*.JPG
+# Exceções: assets das apresentações de licenciamento (versionados para deploy Vercel)
+!03 Licenciados/**/assets/**/*.png
+!03 Licenciados/**/assets/**/*.PNG
+!03 Licenciados/**/assets/**/*.jpg
+!03 Licenciados/**/assets/**/*.JPG
+!03 Licenciados/**/assets/**/*.jpeg
+!03 Licenciados/**/assets/**/*.JPEG
 
 # ─── Vídeos ────────────────────────────────────
 *.mp4
